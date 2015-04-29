@@ -1,0 +1,3 @@
+class Rouge < Character
+
+end

@@ -1,0 +1,39 @@
+-if @character
+	%h1 #{@character.character_name}'s Details
+
+%strong Race:
+=@character.race.capitalize
+%br
+
+-if @character.race != "human"
+	%strong Subrace:
+	=@character.subrace.capitalize
+	%br
+
+
+%strong Class:
+=@character.character_class.capitalize
+%br
+
+- if !params[:new_ability] # Dont show Level or ability until time
+	%strong Level:
+	=@character.level
+	%br
+	%strong Background:
+	=@character.background
+	%br
+	%strong Experience Points:
+	=@character.xp
+	%br
+
+%strong Alignmet:
+=@character.alignment
+%br
+
+%strong Player Name:
+=@character.player_name
+%br
+%br
+
+- if params[:show] # Show link to edit character only while showing pregenerated/saved character
+	=link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)

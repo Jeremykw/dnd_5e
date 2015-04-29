@@ -1,0 +1,9 @@
+= render template: "characters/show" # show character states up to now
+
+
+= render :partial => "#{@character.character_class}"
+= form_tag :action => :create do	
+	= render partial: "new"
+
+
+

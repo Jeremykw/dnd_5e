@@ -1,0 +1,3 @@
+class Fighter < Character
+
+end

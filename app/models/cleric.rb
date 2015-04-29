@@ -1,0 +1,3 @@
+class Cleric < Character
+
+end
