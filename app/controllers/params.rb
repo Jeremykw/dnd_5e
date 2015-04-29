@@ -8,7 +8,10 @@ def id_params
 end
 
 # attr_assasable :character
-def abilities_params
-	params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
+
+
+
+def character_id_params
+	params.require(:character_id)
 end
 

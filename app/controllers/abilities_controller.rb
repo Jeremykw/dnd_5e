@@ -2,7 +2,9 @@ class AbilitiesController < ApplicationController
 	require "params.rb"
 
 	def create
-		Ability.create(abilities_params)
+		Ability.create!(abilities_params)
+		@character = Character.find(abilities_params[:id])
+		redirect_to character_path(character_id_params)
 	end
 	def new
 		@character = Character.find(character_id_params)
@@ -25,6 +27,3 @@ class AbilitiesController < ApplicationController
 	end
 end
 
-def character_id_params
-	params.require(:character_id)
-end

@@ -34,6 +34,10 @@
 =@character.player_name
 %br
 %br
+-# Render Abilities template if abilities have been saved
 
+= render partial: "abilities/show"
+%br
+%br
 - if params[:show] # Show link to edit character only while showing pregenerated/saved character
 	=link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
