@@ -3,9 +3,15 @@ class AbilitiesController < ApplicationController
 
 	def create
 		@character = Character.find(character_id_params)
-		@character.create_ability(ability_params)
-		redirect_to character_path(character_id_params)
+		
+		if @character.create_ability(ability_params).invalid?
+			flash[:notice] = "#{@character.character_name}'s six statistics must be numbers between 3 and 20"
+			redirect_to new_character_ability_path(@character.id)
+		else
+			redirect_to character_path(character_id_params)
+		end
 	end
+
 	def new
 		@character = Character.find(character_id_params)
 # Redirect to indext if character not found
@@ -27,6 +33,9 @@ class AbilitiesController < ApplicationController
 	end
 end
 
+###
+# Strong Parameters
+###
 
 def ability_params
 	params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
