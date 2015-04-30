@@ -8,6 +8,8 @@ class AbilitiesController < ApplicationController
 			flash[:notice] = "#{@character.character_name}'s six statistics must be numbers between 3 and 20"
 			redirect_to new_character_ability_path(@character.id)
 		else
+			add_racial_ability_modifyer
+			@character.save
 			redirect_to character_path(character_id_params)
 		end
 	end
@@ -45,3 +47,28 @@ def character_id_params
 	params.require(:character_id)
 end
 
+
+def add_racial_ability_modifyer
+
+	case @character.subrace
+	when "mountain"
+		# +2 str
+		# +2 con
+	when "hill"
+		# +1 wis
+		# +2 con
+	when "high"
+		# +2 dex
+		# +1 int
+	when "wood"
+		# +2 dex
+		# +1 wis
+	when "lightfoot"
+		# +1 char
+	when "stout"
+		# +1 con, 
+	when nil
+		#+1 everything
+	end
+
+end
