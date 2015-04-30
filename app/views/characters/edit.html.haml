@@ -1,5 +1,8 @@
 %h1 Edit #{@character.character_name}'s Details
 
+-# Show edit Character form
 = form_tag character_path(@character), :method => :put do	
 	= render partial: "new_or_edit"
+
+-# Show edit abilities form
 	

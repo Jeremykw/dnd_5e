@@ -3,26 +3,4 @@
 
 = render :partial => "#{@character.character_class}"
 = form_tag :action => :create do	
-	= label :ability, :str, "Strength:"
-	= text_field :ability, :str, :value => "#{@recomended_ability[0]}"
-
-	= label :ability, :dex, "Dexterity:"
-	= text_field :ability, :dex, :value => "#{@recomended_ability[1]}"
-
-	= label :ability, :con, "Constitution:"
-	= text_field :ability, :con, :value => "#{@recomended_ability[2]}"
-
-	= label :ability, :int, "Intelligence:"
-	= text_field :ability, :int, :value => "#{@recomended_ability[3]}"
-
-	= label :ability, :wis, "wisdom:"
-	= text_field :ability, :wis, :value => "#{@recomended_ability[4]}"
-
-	= label :ability, :char, "Charisma:"
-	= text_field :ability, :char, :value => "#{@recomended_ability[5]}"
-
-	%br
-	= submit_tag "Save Abilities"
-
-
-
+	= render :partial => "new_or_edit"
