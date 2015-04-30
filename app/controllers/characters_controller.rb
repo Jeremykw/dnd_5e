@@ -39,6 +39,7 @@ class CharactersController < ApplicationController
 		# Seperate race into race/subrace
 		race_subrace
 		# Save character based on class
+
 		case character_class
 		when "fighter"
 			@character = Fighter.create!(@character)

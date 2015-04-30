@@ -9,8 +9,6 @@ end
 
 # attr_assasable :character
 
-
-
 def character_id_params
 	params.require(:character_id)
 end

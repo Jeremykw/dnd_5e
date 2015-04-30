@@ -1,5 +1,5 @@
 class Character < ActiveRecord::Base
-	has_one :ability
+	has_one :ability, dependent: :destroy
 	
 	def racial_traits(race)
 		case race

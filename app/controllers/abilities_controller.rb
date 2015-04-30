@@ -2,8 +2,8 @@ class AbilitiesController < ApplicationController
 	require "params.rb"
 
 	def create
-		Ability.create!(abilities_params)
-		@character = Character.find(abilities_params[:id])
+		@character = Character.find(character_id_params)
+		@character.create_ability(ability_params)
 		redirect_to character_path(character_id_params)
 	end
 	def new
@@ -25,5 +25,14 @@ class AbilitiesController < ApplicationController
 		end
 		params[:new_ability] = 1
 	end
+end
+
+
+def ability_params
+	params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
+end
+
+def character_id_params
+	params.require(:character_id)
 end
 
