@@ -1,6 +1,6 @@
-= render template: "characters/show" # show character states up to now
+= render template: "characters/show" # show saved character states
 
-
+-# Show new Character abilities form
 = render :partial => "#{@character.character_class}"
 = form_tag :action => :create do	
 	= render :partial => "new_or_edit"

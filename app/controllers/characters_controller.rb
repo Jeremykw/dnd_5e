@@ -21,6 +21,7 @@ class CharactersController < ApplicationController
 
 	def edit
 		@character = Character.find(id_params)
+		@recomended_ability = Ability.abilities_array(@character) 
 		params[:edit] = 1
 	end
 

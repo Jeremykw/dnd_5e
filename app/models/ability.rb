@@ -5,8 +5,37 @@ class Ability < ActiveRecord::Base
 	stats = :str, :dex, :con, :int, :wis, :char
 	validates_presence_of stats
 	validates_numericality_of stats, only_integer: true, greater_than: 2, less_than: 21
-	def add_racial_ability_modifyer
-		
+
+###
+# Load abilities into array for Edit or New forms
+###
+	def self.abilities_array(character)
+		@character = character
+		if abilities = character.ability
+				@abilities_array = [abilities.str]
+				@abilities_array << abilities.dex
+				@abilities_array << abilities.con
+				@abilities_array << abilities.int
+				@abilities_array << abilities.wis
+				@abilities_array << abilities.char
+
+		else
+			if @character.character_class == "fighter"
+				@abilities_array = [15, 13, 14, 8, 10, 12]
+			elsif @character.character_class == "cleric"
+				@abilities_array = [13, 8, 14, 10, 15, 12]
+			elsif @character.character_class == "rouge"
+				@abilities_array = [12, 15, 10, 14, 8, 13]
+			elsif @character.character_class == "wizard"
+				@abilities_array = [8, 13, 14, 15, 10, 12]
+			end		
+		end
+	end
+	
+###
+# Add Racial abbility modifiers befor saving
+###
+	def add_racial_ability_modifyer		
 		subrace = Character.find(self.character_id).subrace
 		case subrace
 		when "mountain"
@@ -14,7 +43,7 @@ class Ability < ActiveRecord::Base
 			self.con += 2 # +2 con
 		when "hill"
 			self.wis += 1 # +1 wis
-			self.com += 2 # +2 con
+			self.con += 2 # +2 con
 		when "high"
 			self.dex += 2 # +2 dex
 			self.int += 1 # +1 int
@@ -33,13 +62,10 @@ class Ability < ActiveRecord::Base
 			self.wis += 1
 			self.char += 1
 		end
-
 	end
+	# To pull abilities out of prams for add_racial_ability_modifyer
 	def ability_params
 		params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
 	end
-
-
-
 
 end

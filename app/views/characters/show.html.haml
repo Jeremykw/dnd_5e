@@ -1,4 +1,6 @@
--if @character
+-if @character.character_name.blank?
+	%h1 Character Details
+-elsif @character
 	%h1 #{@character.character_name}'s Details
 
 %strong Race:
