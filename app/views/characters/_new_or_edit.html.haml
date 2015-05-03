@@ -1,18 +1,35 @@
 = label :character, :character_name, "Name:"
 = text_field :character, :character_name
 
+= label :character, :level, "Level:"
+= text_field :character, :level 
 
-= label :character, :character_class, "Class:"
-= select :character, :character_class, [['Fighter', 'fighter'], ['Cleric', 'cleric'], ['Rouge', 'rouge'], ['Wizard', 'wizard']]
+- if params[:new]
+	= label :character, :character_class, "Class:"
+	= select :character, :character_class, [['Fighter', 'fighter'], ['Cleric', 'cleric'], ['Rouge', 'rouge'], ['Wizard', 'wizard']]
+- else
+	%br
+	%strong Class:
+	#{@character.character_class.capitalize}
 
-- if !params[:new]
+- # If new show racial options other wise display race
+- if params[:new]
+	= label :character, :race, "Race:"
+	= select :character, :race, [['Dwarf, Hill', 'dwarf_hill'], ['Dwarf, Mountain', 'dwarf_mountain'], ['Elf, High', 'elf_high'], ['Elf, Wood', 'elf_wood'], ['Halfling, Lightfoot', 'halfling_lightfoot'], ['Halfling, Stout', 'halfling_stout'], ['Human', 'human'], ]
+- else
+	%br
+	%strong Race:
+	#{@character.subrace.capitalize} #{@character.race.capitalize}
+
+- if params[:new]
 	= label :character, :background, "Background:"
 	= select :character, :background, [['Acolyte', 'acolyte'], ['Criminal', 'criminal'], ['Folk Hero', 'folk_hero'], ['Noble', 'noble'], ['Sage', 'sage'], ['Soldier', 'soldier']]
-	= label :character, :level, "Level:"
-	= text_field :character, :level 
+- else
+	%br
+	%strong Background
+	#{@character.background.capitalize}
+%br
 
-= label :character, :race, "Race:"
-= select :character, :race, [['Dwarf, Hill', 'dwarf_hill'], ['Dwarf, Mountain', 'dwarf_mountain'], ['Elf, High', 'elf_high'], ['Elf, Wood', 'elf_wood'], ['Halfling, Lightfoot', 'halfling_lightfoot'], ['Halfling, Stout', 'halfling_stout'], ['Human', 'human'], ]
 
 = label :character, :alignment, "Alignment:"
 = text_field :character, :alignment
@@ -23,14 +40,11 @@
 = label :character, :player_name, "Player Name:"
 = text_field :character, :player_name
 
-
--# cancle link will Redirect to appropriat page 
 - if params[:new]
 	%br
 	= submit_tag "Continue to Abilities"
 	= link_to "Cancel", characters_path
 - if params[:edit]
 	%br
-	= submit_tag "Save Character"
+	= submit_tag "Save #{@character.character_name}"
 	= link_to "Cancel", character_path(@character)
-	

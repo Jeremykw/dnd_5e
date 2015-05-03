@@ -6,9 +6,5 @@
 -# Show edit Character form
 = form_tag character_path(@character), :method => :put do	
 	= render partial: "new_or_edit"
-
+	= render "abilities/new_or_edit"
 -# Show edit abilities form
-- if @character.ability
-	= form_tag edit_character_ability_path(@character, @character.ability) do
-		= render "abilities/new_or_edit"
-	

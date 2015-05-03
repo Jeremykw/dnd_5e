@@ -17,4 +17,9 @@
 = text_field :ability, :char, :value => "#{@recomended_ability[5]}"
 
 %br
-= submit_tag "Save Abilities"
+- if params[:edit]
+	%br
+	= submit_tag "Save #{@character.character_name}"
+	= link_to "Cancel", character_path(@character)
+- else
+	= submit_tag "Save Abilities"

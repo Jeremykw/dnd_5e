@@ -1,5 +1,5 @@
 class AbilitiesController < ApplicationController	
-	require "params.rb"
+	
 
 	def create
 		@character = Character.find(character_id_params)

@@ -1,5 +1,4 @@
 class CharactersController < ApplicationController
-	require "params.rb"
 
 	def index
 		@characters = Character.all
@@ -16,7 +15,6 @@ class CharactersController < ApplicationController
 			redirect_to character_index_path
 		end
 		params[:show] = 1 #indicating if routing from Character Show
-
 	end
 
 	def edit
@@ -26,8 +24,15 @@ class CharactersController < ApplicationController
 	end
 
 	def update
-		Character.update(id_params, character_params)
-		flash[:notice] = "#{character_params[:character_name]} has been updated."
+		@character = Character.find(id_params)
+		@ability = Ability.find_by_character_id(id_params)
+		@character.update(character_params)
+		@ability.update(ability_params)
+		if @character.character_name
+			flash[:notice] = "#{character_params[:character_name]} has been updated."
+		else
+			flash[:notice] = "Character has been updated."
+		end
 		redirect_to character_path(id_params)
 	end
 
@@ -61,40 +66,16 @@ class CharactersController < ApplicationController
 		flash[:notice] = "#{@character.character_name} has been destroyed!"
 		redirect_to characters_path
 	end
-end
 
-# Check Prams to determin class
-def character_class
-	if character_params
-		@character_class = character_params[:character_class]
-	else
-		@character_class = @character.character_class
-	end
-	@character_class
-end
 
-# Check Params to find the race
-def race_subrace # Seperates race into :race and :subrace
-	
-	race = character_params[:race]
-	case race
-	when 'dwarf_hill'
-		@character[:race] = "dwarf"
-		@character[:subrace] = "hill"
-	when 'dwarf_mountain'
-		@character[:race] = "dwarf"
-		@character[:subrace] = "mountain"
-	when 'elf_high'
-		@character[:race] = "elf"
-		@character[:subrace] = "high"
-	when 'elf_wood'
-		@character[:race] = "elf"
-		@character[:subrace] = "wood"
-	when 'halfling_lightfoot'
-		@character[:race] = "halfling"
-		@character[:subrace] = "lightfoot"
-	when 'halfling_stout'
-		@character[:race] = "halfling"
-		@character[:subrace] = "stout"
+	# Check Prams to determin class
+	def character_class
+		if character_params
+			@character_class = character_params[:character_class]
+		else
+			@character_class = @character.character_class
+		end
+		@character_class
 	end
+
 end
