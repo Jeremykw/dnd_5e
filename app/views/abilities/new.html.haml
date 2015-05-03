@@ -1,6 +1,9 @@
 = render template: "characters/show" # show saved character states
 
 -# Show new Character abilities form
-= render :partial => "#{@character.character_class}"
+%ul
+	= render :partial => "#{@character.character_class}"
+	%br
+	As a #{@character.subrace.capitalize} #{@character.race.capitalize} you will automaticaly get #{Ability.racial_ability_notice(@character.subrace)}, on save.
 = form_tag :action => :create do	
 	= render :partial => "new_or_edit"

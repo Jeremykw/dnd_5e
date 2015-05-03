@@ -63,9 +63,25 @@ class Ability < ActiveRecord::Base
 			self.char += 1
 		end
 	end
-	# To pull abilities out of prams for add_racial_ability_modifyer
-	def ability_params
-		params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
+###
+# Generates ability modifier Notice
+###
+	def self.racial_ability_notice(subrace)
+		case subrace
+		when "mountain"
+			" +2 to strenght and +2 to constitution"
+		when "hill"
+			" +1 to strenght and +2 to constitution"
+		when "high"
+			" +2 to dexterity and +1 to intelligence"
+		when "wood"
+			" +2 to dexterity and +1 to wisdom"
+		when "lightfoot"
+			" +1 charisma"
+		when "stout"
+			" +1 constitution"
+		when nil # Human, does not have a sub class
+			" +1 to all abilities"
+		end
 	end
-
 end
