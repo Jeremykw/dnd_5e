@@ -13,9 +13,9 @@
 		- @characters.each do |char|
 			%tr
 				%td= char.character_name
-				%td= char.race.capitalize
+				%td= char.race
 				%td= char.level
-				%td= char.character_class.capitalize
+				%td= char.character_class
 				%td= link_to "Veiw #{char.character_name}'s character sheet", character_path(char)
 				%td= link_to "Delete", character_path(char), :method => :delete, :confirm => "Are you sure you want to permantly remove #{char.character_name}?", :id => char.id
 
