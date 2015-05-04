@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429151303) do
+ActiveRecord::Schema.define(version: 20150504185517) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "str"
@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20150429151303) do
     t.string  "race"
     t.string  "alignment"
     t.integer "xp"
-    t.string  "type"
     t.string  "subrace"
+    t.integer "klass_id"
+    t.string  "klass_type"
   end
 
 end

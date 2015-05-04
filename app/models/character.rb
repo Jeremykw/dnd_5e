@@ -1,5 +1,6 @@
 class Character < ActiveRecord::Base
 	has_one :ability, dependent: :destroy
+	belongs_to :klass, polymorphic: true
 	before_create	:race_into_subrace
 	#require "../controllers/params.rb"
 	
@@ -27,23 +28,23 @@ class Character < ActiveRecord::Base
 		race = self.race
 		case race
 		when 'dwarf_hill'
-			@character[:race] = "dwarf"
-			@character[:subrace] = "hill"
+			self[:race] = "dwarf"
+			self[:subrace] = "hill"
 		when 'dwarf_mountain'
-			@character[:race] = "dwarf"
-			@character[:subrace] = "mountain"
+			self[:race] = "dwarf"
+			self[:subrace] = "mountain"
 		when 'elf_high'
-			@character[:race] = "elf"
-			@character[:subrace] = "high"
+			self[:race] = "elf"
+			self[:subrace] = "high"
 		when 'elf_wood'
-			@character[:race] = "elf"
-			@character[:subrace] = "wood"
+			self[:race] = "elf"
+			self[:subrace] = "wood"
 		when 'halfling_lightfoot'
-			@character[:race] = "halfling"
-			@character[:subrace] = "lightfoot"
+			self[:race] = "halfling"
+			self[:subrace] = "lightfoot"
 		when 'halfling_stout'
-			@character[:race] = "halfling"
-			@character[:subrace] = "stout"
+			self[:race] = "halfling"
+			self[:subrace] = "stout"
 		end
 	end
 end

@@ -42,8 +42,7 @@ class CharactersController < ApplicationController
 
 	def create
 		@character = character_params
-		# Seperate race into race/subrace
-		race_subrace
+
 		# Save character based on class
 
 		case character_class
