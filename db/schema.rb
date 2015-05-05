@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504185517) do
+ActiveRecord::Schema.define(version: 20150505113855) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "str"
@@ -37,6 +37,27 @@ ActiveRecord::Schema.define(version: 20150504185517) do
     t.string  "subrace"
     t.integer "klass_id"
     t.string  "klass_type"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.boolean "acro"
+    t.boolean "animal"
+    t.boolean "arcana"
+    t.boolean "Athletics"
+    t.boolean "Decept"
+    t.boolean "hist"
+    t.boolean "insight"
+    t.boolean "intimidation"
+    t.boolean "invest"
+    t.boolean "med"
+    t.boolean "nature"
+    t.boolean "percept"
+    t.boolean "perform"
+    t.boolean "persuasion"
+    t.boolean "religion"
+    t.boolean "sleight"
+    t.boolean "stealth"
+    t.boolean "survial"
   end
 
 end
