@@ -42,21 +42,9 @@ class CharactersController < ApplicationController
 
 	def create
 		@character = character_params
-
 		# Save character based on class
-
-		case character_class
-		when "fighter"
-			@character = Fighter.create!(@character)
-		when "cleric"
-			@character = Cleric.create!(@character)
-		when "rouge"
-			@character = Rouge.create!(@character)
-		when "wizard"
-			@character = Wizard.create!(@character)
-		end
+		save_by_class		
 		redirect_to new_character_ability_path(@character.id)
-
 	end
 
 	def destroy
@@ -74,7 +62,18 @@ class CharactersController < ApplicationController
 		else
 			@character_class = @character.character_class
 		end
-		@character_class
 	end
 
+	def save_by_class
+		case character_class
+		when "fighter"
+			@character = Fighter.create!(@character)
+		when "cleric"
+			@character = Cleric.create!(@character)
+		when "rouge"
+			@character = Rouge.create!(@character)
+		when "wizard"
+			@character = Wizard.create!(@character)
+		end
+	end
 end
