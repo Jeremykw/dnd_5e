@@ -1,6 +1,6 @@
 class Character < ActiveRecord::Base
 	has_one :ability, dependent: :destroy
-	belongs_to :klass, polymorphic: true
+	has_one :skill
 	before_create	:race_into_subrace
 	#require "../controllers/params.rb"
 	
