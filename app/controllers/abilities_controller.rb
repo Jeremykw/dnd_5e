@@ -8,7 +8,7 @@ class AbilitiesController < ApplicationController
 			flash[:notice] = "#{@character.character_name}'s six statistics must be numbers between 3 and 20"
 			redirect_to new_character_ability_path(@character.id)
 		else
-			redirect_to character_path(character_id_params)
+			redirect_to new_character_skill_path(character_id_params)
 		end
 	end
 

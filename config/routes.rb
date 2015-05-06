@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 	    
 	    resources :characters do
 		  	resources :abilities
+		  	resources :skills
 			end
 	  root :to => redirect('/characters') # Character index is homepage
 	end
