@@ -1,2 +1,8 @@
-= label :skill, :acro, "Acrobatics:"
-= check_box_tag :skill, :acro 
+%br
+%strong Pick #{@character.number_of_skill} skills
+
+- @character.skill_choices.each do |s|
+	- s.each do |skill, lab|
+		= label :skill, skill, "#{lab}"
+		= check_box_tag :skill, skill
+		%br

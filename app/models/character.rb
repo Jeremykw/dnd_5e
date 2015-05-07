@@ -2,24 +2,10 @@ class Character < ActiveRecord::Base
 	has_one :ability, dependent: :destroy
 	has_one :skill
 	before_create	:race_into_subrace
-	#require "../controllers/params.rb"
-	
-	def racial_traits(race)
-		case race
-		when "elf"
 
-		when "dwarf"
+	validates_presence_of :level
+	validates_numericality_of :level, only_integer: true, greater_than: 0, less_than: 21
 
-		when "halfling"
-
-		when "human"
-
-		end
-	end
-
-	def subracial_traits(subrace)
-
-	end
 ###
 # Seperates race into :race and :subrace
 ###
@@ -47,4 +33,26 @@ class Character < ActiveRecord::Base
 			self[:subrace] = "stout"
 		end
 	end
+
+###
+# Calculate proficency bonuse based on level
+###
+	def proficency_bonuse
+		level = self.level
+		case level
+		when 1..4
+			2
+		when 5..8
+			3
+		when 9..12
+			4
+		when 13..16
+			5
+		when 17..20
+			6
+		end
+	end
+
+
 end
+
