@@ -1,57 +1,25 @@
 class SkillsController < ApplicationController
 	def new
-		@character||= Character.find(character_id_params)
-		@skill_label = label_skills
+		@character ||= Character.find(character_id_params)
 	end
-	def label_skills
-		skill_lab = []
-		@character.skill_choices.each do |s|
-			skill_lab << skill_label(s)
-		end
-
-	end
-	# Decodeds Skill symbols 
-	def skill_label(sym)
-		case sym
-		when :acro
-			"Acrobatics"
-		when :animal
-			"Animal"
-		when :arcana
-			"Arcana"
-		when :athletics
-			"Athletics"
-		when :decept
-			"Deception"
-		when :hist
-			return "History"
-		when :insight
-			"Insight"
-		when :intimidation
-			"Intimidation"
-		when :invest
-			"Investigate"
-		when :med
-			"Medicine"
-		when :nature
-			"Nature"
-		when :percept
-			"Perception"
-		when :perform
-			"Performance"
-		when :persuasion
-			"Persuasion"
-		when :religion
-			"Religion"
-		when :slight
-			"Slight of Hand"
-		when :stealth
-			"Steath"
-		when :survival
-			"Survival"
-		end
-		"Milk my nuts"
+	
+	def create
+		@character = Character.find(character_id_params)
+		skill_hash
+		@character.create_skill(@skills)
+		redirect_to character_path @character
 	end
 
+	# Creates hash appropriate for create Skill from skill_params array
+	def skill_hash
+		skill_params.map do |skill|
+			@skills ||= {}
+			@skills[skill] = true
+		end
+	end
+
+	def skill_params
+		params.require(:skill)
+	end
 end
 

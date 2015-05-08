@@ -40,6 +40,8 @@
 -if @character.ability
 	=render partial: "abilities/show"
 %br
+- if @character.skill
+	= render partial: "skills/show"
 %br
 - if params[:show] # Show link to edit character only while showing pregenerated/saved character
 	=link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)

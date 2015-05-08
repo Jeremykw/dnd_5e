@@ -1,13 +1,13 @@
 class Rouge < Character
 	def saving_throws
-		[:wis => mod(self.ability.wis), :char => mod(self.ability.char)]
+		[:dex => mod(self.ability.dex), :int => mod(self.ability.int)]
 	end
 
 	def number_of_skill
-		2
+		4
 	end
 
 	def skill_choices
-		
+				[:acrobatics, :athletics, :deception, :insight, :intimidation, :investigation, :perception, :performance, :persuasion, :slight_of_hand, :stealth]
 	end
 end

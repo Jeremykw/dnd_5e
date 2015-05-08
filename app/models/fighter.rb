@@ -8,6 +8,6 @@ class Fighter < Character
 	end
 
 	def skill_choices
-		[:acro => "Acrobatics", :animal => "Animal Handeling", :athletics => "Athletics", :hist => "History", :insight => "Insight", :intimidation => "Intimidation", :percept => "Perception", :survival => "Survival"]
+		[:acrobatics, :animal_handling, :athletics, :history, :insight, :intimidation, :perception, :survival]
 	end
 end

@@ -8,6 +8,6 @@ class Cleric < Character
 	end
 
 	def skill_choices
-		[:hist, :med, :insight, :religion, :persuasion]
+		[:history, :medicine, :insight, :religion, :persuasion]
 	end
 end

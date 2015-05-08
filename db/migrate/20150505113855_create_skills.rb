@@ -1,24 +1,25 @@
 class CreateSkills < ActiveRecord::Migration
   def change
     create_table :skills do |t|
-      t.boolean :acro
-      t.boolean :animal
+      t.boolean :acrobatics
+      t.boolean :animal_handling
       t.boolean :arcana
-      t.boolean :Athletics
-      t.boolean :Decept
-      t.boolean :hist
+      t.boolean :athletics
+      t.boolean :deception
+      t.boolean :history
       t.boolean :insight
       t.boolean :intimidation
-      t.boolean :invest
-      t.boolean :med
+      t.boolean :investigation
+      t.boolean :medicine
       t.boolean :nature
-      t.boolean :percept
-      t.boolean :perform
+      t.boolean :perception
+      t.boolean :performance
       t.boolean :persuasion
       t.boolean :religion
-      t.boolean :sleight
+      t.boolean :sleight_of_hand
       t.boolean :stealth
       t.boolean :survial
+      t.integer :character_id
     end
   end
 end
