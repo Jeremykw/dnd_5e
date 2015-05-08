@@ -20,6 +20,9 @@ class CharactersController < ApplicationController
 	def edit
 		@character = Character.find(id_params)
 		@recomended_ability = Ability.abilities_array(@character) 
+		if @character.skill
+			@skills_chose = load_skill_choices
+		end
 		params[:edit] = 1
 	end
 
@@ -79,5 +82,13 @@ class CharactersController < ApplicationController
 		when "wizard"
 			@character = Wizard.create(@character)
 		end
+	end
+	# If skills have been saved; Load
+	def load_skill_choices
+		skill_choices = []
+		@character.skill.attributes.each do |skill, tf|
+			skill_choices << skill if tf === true
+		end
+		skill_choices
 	end
 end

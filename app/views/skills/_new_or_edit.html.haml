@@ -2,7 +2,8 @@
 %strong Pick #{@character.number_of_skill} skills
 - @character.skill_choices.each do |skill|
 		= label :skill, skill, "#{skill.to_s.humanize.capitalize}"
-		= check_box_tag "skill[]", skill
-		%br
+		#{@skills_chose}, #{skill.to_s}
+		- if params[:edit] then check_box_tag "skill[#{skill}]", 1, @skills_chose.include?(skill) else check_box_tag :skill, skill end
+%br
 = submit_tag "Save"
 and continue to Skills
