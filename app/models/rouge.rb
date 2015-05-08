@@ -8,6 +8,6 @@ class Rouge < Character
 	end
 
 	def skill_choices
-				[:acrobatics, :athletics, :deception, :insight, :intimidation, :investigation, :perception, :performance, :persuasion, :slight_of_hand, :stealth]
+				[:acrobatics, :athletics, :deception, :insight, :intimidation, :investigation, :perception, :performance, :persuasion, :sleight_of_hand, :stealth]
 	end
 end
