@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507183805) do
+ActiveRecord::Schema.define(version: 20150508012257) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "str"

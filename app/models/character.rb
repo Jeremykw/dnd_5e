@@ -1,7 +1,7 @@
 class Character < ActiveRecord::Base
 	has_one :ability, dependent: :destroy
 	has_one :skill
-	before_create	:race_into_subrace
+	before_create :race_into_subrace
 
 	validates_presence_of :level
 	validates_numericality_of :level, only_integer: true, greater_than: 0, less_than: 21
@@ -52,7 +52,10 @@ class Character < ActiveRecord::Base
 			6
 		end
 	end
-
-
+	# Calculates Ability modifier
+	def mod(ability)
+		modify = (ability - 10)/2
+	end
+	
 end
 

@@ -1,8 +1,8 @@
 %br
 %strong Pick #{@character.number_of_skill} skills
-
-- @character.skill_choices.each do |s|
-	- s.each do |skill, lab|
-		= label :skill, skill, "#{lab}"
+- n = 0
+- @character.skill_choices.each do |skill|
+		= label :skill, skill, "#{@skill_label[n]}"
 		= check_box_tag :skill, skill
+		- n += 1
 		%br
