@@ -5,21 +5,12 @@ class SkillsController < ApplicationController
 	
 	def create
 		@character = Character.find(character_id_params)
-		skill_hash
-		@character.create_skill(@skills)
+		@character.create_skill(skill_params)
 		redirect_to character_path @character
 	end
 
-	# Creates hash appropriate for create Skill from skill_params array
-	def skill_hash
-		skill_params.map do |skill|
-			@skills ||= {}
-			@skills[skill] = true
-		end
-	end
-
 	def skill_params
-		params.require(:skill)
+		params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival)
 	end
 end
 
