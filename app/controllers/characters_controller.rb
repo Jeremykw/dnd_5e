@@ -21,7 +21,7 @@ class CharactersController < ApplicationController
 		@character = Character.find(id_params)
 		@recomended_ability = Ability.abilities_array(@character) 
 		if @character.skill
-			@skills_chose = load_skill_choices
+			@skills_chose = @character.skill.load_skill_choices
 		end
 		params[:edit] = 1
 	end
@@ -29,8 +29,10 @@ class CharactersController < ApplicationController
 	def update
 		@character = Character.find(id_params)
 		@ability = Ability.find_by_character_id(id_params)
+		@skill = Skill.find_by_character_id(id_params)
 		@character.update(character_params)
 		@ability.update(ability_params)
+		@skill.update_skill
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
 		else
@@ -83,12 +85,8 @@ class CharactersController < ApplicationController
 			@character = Wizard.create(@character)
 		end
 	end
-	# If skills have been saved; Load
-	def load_skill_choices
-		skill_choices = []
-		@character.skill.attributes.each do |skill, tf|
-			skill_choices << skill if tf === true
-		end
-		skill_choices
+
+	def skill_params
+		params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival)
 	end
 end

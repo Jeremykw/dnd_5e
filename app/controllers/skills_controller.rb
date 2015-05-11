@@ -8,7 +8,6 @@ class SkillsController < ApplicationController
 		@character.create_skill(skill_params)
 		redirect_to character_path @character
 	end
-
 	def skill_params
 		params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival)
 	end

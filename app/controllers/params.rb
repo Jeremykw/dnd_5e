@@ -2,6 +2,7 @@
 # Strong Parameters
 ###
 
+
 def ability_params
 	params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
 end
@@ -22,5 +23,7 @@ def character_id_params
 	params.require(:character_id)
 end
 
-
+def skill_params
+	params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival)
+end
 
