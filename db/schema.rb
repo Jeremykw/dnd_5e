@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20150505113855) do
     t.string  "background"
     t.string  "player_name"
     t.string  "race"
+    t.string  "subrace"
     t.string  "alignment"
     t.integer "xp"
-    t.string  "subrace"
     t.string  "type"
   end
 
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150505113855) do
     t.boolean "religion"
     t.boolean "sleight_of_hand"
     t.boolean "stealth"
-    t.boolean "survial"
+    t.boolean "survival"
     t.integer "character_id"
   end
 

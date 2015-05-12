@@ -18,7 +18,7 @@ class CreateSkills < ActiveRecord::Migration
       t.boolean :religion
       t.boolean :sleight_of_hand
       t.boolean :stealth
-      t.boolean :survial
+      t.boolean :survival
       t.integer :character_id
     end
   end

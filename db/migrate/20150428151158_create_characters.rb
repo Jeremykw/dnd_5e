@@ -7,6 +7,7 @@ class CreateCharacters < ActiveRecord::Migration
   		c.string 'background'
   		c.string 'player_name'
   		c.string 'race'
+      c.string 'subrace'
   		c.string 'alignment'
   		c.integer 'xp'
   		c.string 'type' # For single table inheratance of Character_class
