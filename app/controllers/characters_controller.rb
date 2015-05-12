@@ -28,11 +28,11 @@ class CharactersController < ApplicationController
 
 	def update
 		@character = Character.find(id_params)
-		@skill = Skill.find(@character.id)
+		#@skill = Skill.find(@character.id)
 		@character.update(character_params)
 		@character.ability.update(ability_params)
-		@skill.set_all_skills_to_nil
-		@skill.update_attributes(skill_params)
+		@character.skill.set_all_skills_to_nil
+		@character.skill.update_attributes(skill_params)
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
 		else

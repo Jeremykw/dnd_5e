@@ -4,8 +4,11 @@ class Skill < ActiveRecord::Base
 	def correct_number_of_skills
 
 	end
-
-	def set_all_skills_to_nil
+###
+# Set all attributes to nil so that on update
+# unchecked skills get saved as unchecked
+###
+	def set_all_skills_to_nil	
     self.acrobatics = nil
     self.animal_handling = nil
     self.arcana = nil
@@ -23,10 +26,11 @@ class Skill < ActiveRecord::Base
     self.religion = nil
     self.sleight_of_hand = nil
     self.stealth = nil
-    self.survival = nil
+    self.survival = nil  
 	end
-
-		# If skills have been saved; Load
+###
+# Creates array of saved skills for Character#Edit
+###
 	def load_skill_choices
 		skill_choices = []
 		self.attributes.each do |skill, tf|
