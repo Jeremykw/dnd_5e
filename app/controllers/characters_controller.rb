@@ -22,7 +22,9 @@ class CharactersController < ApplicationController
 		@recomended_ability = Ability.abilities_array(@character) 
 		if @character.skill
 			@skills_chose = @character.skill.load_skill_choices
+
 		end
+		@skills_chose ||= ["one"]
 		params[:edit] = 1
 	end
 
@@ -31,11 +33,13 @@ class CharactersController < ApplicationController
 		#@skill = Skill.find(@character.id)
 		@character.update(character_params)
 		@character.ability.update(ability_params)
-		@character.skill.set_all_skills_to_nil
-		if !@character.skill.update_attributes(skill_params)
-			# flash[:notice] = @character.errors[:skill]
-			flash[:notice] = "You mush chose #{@character.number_of_skill} skills!"
-			redirect_to edit_character_path(@character) and return
+		if @character.skill
+			@character.skill.set_all_skills_to_nil
+			if !@character.skill.update_attributes(skill_params)
+				# flash[:notice] = @character.errors[:skill]
+				flash[:notice] = "You mush chose #{@character.number_of_skill} skills!"
+				redirect_to edit_character_path(@character) and return
+			end
 		end
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
@@ -91,6 +95,8 @@ class CharactersController < ApplicationController
 	end
 
 	def skill_params
-		params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival)
+		if params[:skill]
+			params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival) 
+			end
 	end
 end
