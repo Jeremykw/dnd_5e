@@ -6,8 +6,7 @@ class Skill < ActiveRecord::Base
 		@character = Character.find(self.character_id)
 		number_of_skills = @character.number_of_skill
 		if skill_list.reject(&:blank?).size != number_of_skills
-	    errors[:base] << ("Make sure you have chosen #{number_of_skills} skills before saving.")
-	    redirect_to edit_character_skill_path(@character.id)
+	    errors.add(:skill, "Make sure you have chosen #{number_of_skills} skills before saving.")
 	  end
 	end
 

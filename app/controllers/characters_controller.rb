@@ -32,7 +32,11 @@ class CharactersController < ApplicationController
 		@character.update(character_params)
 		@character.ability.update(ability_params)
 		@character.skill.set_all_skills_to_nil
-		@character.skill.update_attributes(skill_params)
+		if !@character.skill.update_attributes(skill_params)
+			# flash[:notice] = @character.errors[:skill]
+			flash[:notice] = "You mush chose #{@character.number_of_skill} skills!"
+			redirect_to edit_character_path(@character) and return
+		end
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
 		else
