@@ -5,10 +5,10 @@ class SkillsController < ApplicationController
 	
 	def create
 		@character = Character.find(character_id_params)
-		if !@character.create_skill(skill_params)
+		if @character.create_skill(skill_params).invalid?
 			flash[:notice] = "You must chose #{@character.number_of_skill} Skills!"
 			@character.skill.set_all_skills_to_nil
-			redirect_to new_character_skill_path(@character)
+			redirect_to new_character_skill_path(@character) and return
 		end
 		redirect_to character_path @character
 	end
