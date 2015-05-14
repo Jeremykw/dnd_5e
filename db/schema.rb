@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505113855) do
+ActiveRecord::Schema.define(version: 20150514191907) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "str"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20150505113855) do
     t.integer  "character_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "backgrounds", force: :cascade do |t|
+    t.text     "personality"
+    t.text     "ideal"
+    t.text     "bond"
+    t.text     "flaw"
+    t.text     "back_story"
+    t.string   "type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "characters", force: :cascade do |t|
