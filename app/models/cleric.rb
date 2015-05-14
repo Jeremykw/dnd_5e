@@ -1,6 +1,6 @@
 class Cleric < Character
 	def saving_throws
-		[:wis => mod(self.ability.wis), :char => mod(self.ability.char)]
+		[:wis => ability_modifier(self.ability.wis), :char => ability_modifier(self.ability.char)]
 	end
 
 	def number_of_skill

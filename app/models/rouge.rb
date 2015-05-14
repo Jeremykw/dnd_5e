@@ -1,6 +1,6 @@
 class Rouge < Character
 	def saving_throws
-		[:dex => mod(self.ability.dex), :int => mod(self.ability.int)]
+		[:dex => ability_modifier(self.ability.dex), :int => ability_modifier(self.ability.int)]
 	end
 
 	def number_of_skill

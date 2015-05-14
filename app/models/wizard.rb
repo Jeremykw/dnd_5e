@@ -1,6 +1,6 @@
 class Wizard < Character
 	def saving_throws
-			[:int => mod(self.ability.int), :wis => mod(self.ability.wis)]
+			[:int => ability_modifier(self.ability.int), :wis => ability_modifier(self.ability.wis)]
 	end
 
 	def number_of_skill

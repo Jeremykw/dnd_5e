@@ -51,27 +51,35 @@ class Skill < ActiveRecord::Base
 	###
 	# Hash keyed with skill ability dependancy
 	###
-	def self.skill_ability
+	def skill_ability
+		@character = Character.find(self.character_id)
 		skill_ability = {
-			"acrobatics" => :dex,
-			"animal_handling" => :wis,
-			"arcana" => :int,
-			"athletics" => :str,
-			"deception" => :char,
-			"history" => :int,
-			"insight" => :wis,
-			"intimidation" => :char,
-			"investigation" => :int,
-			"medicine" => :wis,
-			"nature" => :int,
-			"perception" => :wis,
-			"performance" => :char,
-			"persuasion" => :char,
-			"religion" => :int,
-			"sleight_of_hand" => :dex,
-			"stealth" => :dex,
-			"survival" => :wis,
+			"acrobatics" => [:dex, (calculate_skill_modifier("acrobatics", :dex)) ],
+			"animal_handling" => [ :wis, (calculate_skill_modifier("animal_handling", :wis)) ],
+			"arcana" => [ :int, (calculate_skill_modifier("arcana", :int)) ],
+			"athletics" => [ :str, (calculate_skill_modifier("athletics", :str)) ],
+			"deception" => [ :char, (calculate_skill_modifier("deception", :char)) ],
+			"history" => [ :int, (calculate_skill_modifier("history", :int)) ],
+			"insight" => [ :wis, (calculate_skill_modifier("insight", :wis)) ],
+			"intimidation" => [ :char, (calculate_skill_modifier("intimidation", :char)) ],
+			"investigation" => [ :int, (calculate_skill_modifier("investigation", :int)) ],
+			"medicine" => [ :wis, (calculate_skill_modifier("medicine", :wis)) ],
+			"nature" => [ :int, (calculate_skill_modifier("nature", :int)) ],
+			"perception" => [ :wis, (calculate_skill_modifier("perception", :wis)) ],
+			"performance" => [ :char, (calculate_skill_modifier("performance", :char)) ],
+			"persuasion" => [ :char, (calculate_skill_modifier("persuasion", :char)) ],
+			"religion" => [ :int, (calculate_skill_modifier("religion", :int)) ],
+			"sleight_of_hand" => [ :dex, (calculate_skill_modifier("sleight_of_hand", :dex)) ],
+			"stealth" => [ :dex, (calculate_skill_modifier("stealth", :dex)) ],
+			"survival" => [ :wis, (calculate_skill_modifier("survival", :wis)) ]
 		}
 	end
+	def calculate_skill_modifier(skill, dependant_ability)
 
+		modifier = @character.ability_modifier(@character.ability[dependant_ability])
+		if @character.skill.load_skill_choices.include?(skill)
+			modifier = modifier + @character.proficency_bonuse
+		end
+		modifier
+	end
 end

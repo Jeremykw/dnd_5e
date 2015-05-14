@@ -1,6 +1,6 @@
 class Fighter < Character
 	def saving_throws
-			[:str => mod(self.ability.str), :con => mod(self.ability.con)]
+			[:str => ability_modifier(self.ability.str), :con => ability_modifier(self.ability.con)]
 	end
 
 	def number_of_skill

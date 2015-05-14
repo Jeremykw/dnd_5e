@@ -14,8 +14,8 @@ class CharactersController < ApplicationController
 			flash[:notice] = "Sorry, record does not exist"
 			redirect_to character_index_path
 		end
-		@skill_ability = Skill.skill_ability # Hash with skill ability dependancy; Skill.rb
-		@skill_modifiers = skill_modifiers
+		@skill_ability = @character.skill.skill_ability # Hash with skill ability dependancy; Skill.rb
+		# @skill_modifiers = skill_modifiers
 		params[:show] = 1 #indicating if routing from Character Show
 	end
 
@@ -24,9 +24,8 @@ class CharactersController < ApplicationController
 		@recomended_ability = Ability.abilities_array(@character) 
 		if @character.skill
 			@skills_chose = @character.skill.load_skill_choices
-
 		end
-		@skills_chose ||= ["one"]
+		# @skills_chose ||= ["one"]
 		params[:edit] = 1
 	end
 
@@ -96,14 +95,14 @@ class CharactersController < ApplicationController
 	end
 
 	# Calculate skill modifier
-	def skill_modifiers
-		skill_mod = {}
-		@character.skill.attributes.each do |a|
-			abi = Skill.skill_ability[a.to_s]
-			skill_mod = { a => @character.proficency_bonuse + ability_modifier(@character.ability.) }
-		end
-		skill_mod
-	end
+	# def skill_modifiers
+	# 	skill_mod = {}
+	# 	@character.skill.attributes.each do |a|
+	# 		abi = Skill.skill_ability[a.to_s]
+	# 		skill_mod = { a => @character.proficency_bonuse + ability_modifier(@character.ability.) }
+	# 	end
+	# 	skill_mod
+	# end
 
 	def skill_params
 		if params[:skill]
