@@ -14,6 +14,8 @@ class CharactersController < ApplicationController
 			flash[:notice] = "Sorry, record does not exist"
 			redirect_to character_index_path
 		end
+		@skill_ability = Skill.skill_ability # Hash with skill ability dependancy; Skill.rb
+		@skill_modifiers = skill_modifiers
 		params[:show] = 1 #indicating if routing from Character Show
 	end
 
@@ -30,7 +32,6 @@ class CharactersController < ApplicationController
 
 	def update
 		@character = Character.find(id_params)
-		#@skill = Skill.find(@character.id)
 		@character.update(character_params)
 		@character.ability.update(ability_params)
 		if @character.skill
@@ -92,6 +93,16 @@ class CharactersController < ApplicationController
 		when "wizard"
 			@character = Wizard.create(@character)
 		end
+	end
+
+	# Calculate skill modifier
+	def skill_modifiers
+		skill_mod = {}
+		@character.skill.attributes.each do |a|
+			abi = Skill.skill_ability[a.to_s]
+			skill_mod = { a => @character.proficency_bonuse + ability_modifier(@character.ability.) }
+		end
+		skill_mod
 	end
 
 	def skill_params

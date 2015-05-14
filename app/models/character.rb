@@ -53,7 +53,7 @@ class Character < ActiveRecord::Base
 		end
 	end
 	# Calculates Ability modifier
-	def mod(ability)
+	def ability_modifier(ability)
 		modify = (ability - 10)/2
 	end
 	

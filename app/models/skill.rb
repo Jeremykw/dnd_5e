@@ -48,5 +48,30 @@ class Skill < ActiveRecord::Base
 		end
 		skill_choices
 	end
+	###
+	# Hash keyed with skill ability dependancy
+	###
+	def self.skill_ability
+		skill_ability = {
+			"acrobatics" => :dex,
+			"animal_handling" => :wis,
+			"arcana" => :int,
+			"athletics" => :str,
+			"deception" => :char,
+			"history" => :int,
+			"insight" => :wis,
+			"intimidation" => :char,
+			"investigation" => :int,
+			"medicine" => :wis,
+			"nature" => :int,
+			"perception" => :wis,
+			"performance" => :char,
+			"persuasion" => :char,
+			"religion" => :int,
+			"sleight_of_hand" => :dex,
+			"stealth" => :dex,
+			"survival" => :wis,
+		}
+	end
 
 end

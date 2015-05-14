@@ -2,5 +2,5 @@
 %br
 - @character.skill.attributes.each do |skill, tf|
 	- if tf == true
-		#{skill.to_s.humanize.capitalize}
+		#{skill.to_s.humanize.capitalize}(#{@skill_ability[skill].to_s}): #{}
 		%br
