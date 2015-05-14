@@ -1,0 +1,10 @@
+%strong Proficency Bonus:
+= @character.proficency_bonuse
+%br
+%br
+%strong Saving Throws
+%br
+- @character.saving_throws.each do |a, b| # show Saving Throws modifiers
+	= b[0]
+	= b[1]
+	%br

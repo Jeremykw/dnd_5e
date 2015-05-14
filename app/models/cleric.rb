@@ -1,6 +1,6 @@
 class Cleric < Character
 	def saving_throws
-		[:wis => ability_modifier(self.ability.wis), :char => ability_modifier(self.ability.char)]
+		{:wis => ['Wisdom:', ability_modifier(self.ability.wis) + proficency_bonuse ], :char => ['Charisma:', ability_modifier(self.ability.char) + proficency_bonuse ] }
 	end
 
 	def number_of_skill

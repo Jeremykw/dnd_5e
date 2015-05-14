@@ -1,14 +1,7 @@
 = render template: "characters/show" # show saved character states
-%h1 Abilities
+%h1 Skills
 
-%strong Proficency Bonus:
-= @character.proficency_bonuse
-%br
-- @character.saving_throws.each do |a| # show Saving Throws modifiers
-	- a.each do |a, m|
-		= a
-		= m
-		%br
+= render :partial => "proficiancy_and_saving_throws"
 
 
 = form_tag :action => :create do	

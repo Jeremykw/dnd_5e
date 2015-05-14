@@ -1,6 +1,6 @@
 class Fighter < Character
 	def saving_throws
-			[:str => ability_modifier(self.ability.str), :con => ability_modifier(self.ability.con)]
+			{:str => ["Strength:", ability_modifier(self.ability.str) + proficency_bonuse ], :con => ['Constitution:', ability_modifier(self.ability.con) + proficency_bonuse ]}
 	end
 
 	def number_of_skill
