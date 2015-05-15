@@ -1,0 +1,3 @@
+class Sage < Background
+
+end

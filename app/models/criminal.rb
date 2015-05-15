@@ -1,0 +1,3 @@
+class Criminal < Background
+
+end

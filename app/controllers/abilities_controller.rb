@@ -24,5 +24,11 @@ class AbilitiesController < ApplicationController
 		params[:new_ability] = 1
 	end
 
+	###
+	# Strong Params
+	###
+	def ability_params
+		params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
+	end
 end
 

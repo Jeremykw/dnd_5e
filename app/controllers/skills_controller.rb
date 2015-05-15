@@ -12,6 +12,10 @@ class SkillsController < ApplicationController
 		end
 		redirect_to character_path @character
 	end
+
+	###
+	# Stong Params
+	###
 	def skill_params
 		params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival) if params[:skill]
 	end

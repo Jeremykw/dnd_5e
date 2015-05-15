@@ -33,6 +33,18 @@ class CharactersController < ApplicationController
 		@character = Character.find(id_params)
 		@character.update(character_params)
 		@character.ability.update(ability_params)
+		set_skills_to_nil
+		if @character.character_name
+			flash[:notice] = "#{character_params[:character_name]} has been updated."
+		else
+			flash[:notice] = "Character has been updated."
+		end
+		redirect_to character_path(id_params)
+	end
+
+	# skills would not save unselected skills as unselected
+	# setting all to nil prior to updating new skills solved this
+	def set_skills_to_nil
 		if @character.skill
 			@character.skill.set_all_skills_to_nil
 			if !@character.skill.update_attributes(skill_params)
@@ -41,12 +53,6 @@ class CharactersController < ApplicationController
 				redirect_to edit_character_path(@character) and return
 			end
 		end
-		if @character.character_name
-			flash[:notice] = "#{character_params[:character_name]} has been updated."
-		else
-			flash[:notice] = "Character has been updated."
-		end
-		redirect_to character_path(id_params)
 	end
 
 	def new
@@ -71,16 +77,9 @@ class CharactersController < ApplicationController
 		redirect_to characters_path
 	end
 
-
-	# Check Prams to determin class
-	def character_class
-		if character_params
-			@character_class = character_params[:character_class]
-		else
-			@character_class = @character.character_class
-		end
-	end
-
+	###
+	# Create Character by Class
+	###
 	def save_by_class
 		case character_class
 		when "fighter"
@@ -94,19 +93,43 @@ class CharactersController < ApplicationController
 		end
 	end
 
-	# Calculate skill modifier
-	# def skill_modifiers
-	# 	skill_mod = {}
-	# 	@character.skill.attributes.each do |a|
-	# 		abi = Skill.skill_ability[a.to_s]
-	# 		skill_mod = { a => @character.proficency_bonuse + ability_modifier(@character.ability.) }
-	# 	end
-	# 	skill_mod
-	# end
+	# Check Prams to determin class for create character
+	def character_class
+		if character_params
+			@character_class = character_params[:character_class]
+		else
+			@character_class = @character.character_class
+		end
+	end
 
+	###
+	# Create character background so that skills can 
+	# access background skill options before background
+	# choces are made
+	###
+	def creat_background
+		case @character.background
+		when "acolyte"
+			@character.background.background.create
+		end
+
+	end
+
+###
+# Strong Params
+###
 	def skill_params
 		if params[:skill]
 			params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival) 
 			end
 	end
+
+	def character_id_params
+		params.require(:character_id)
+	end
+
+	def character_params
+		params.require(:character).permit(:character_id, :character_name, :character_class, :level, :background, :player_name, :race, :alignment, :xp, :subrace)
+	end
+
 end

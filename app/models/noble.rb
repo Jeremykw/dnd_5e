@@ -1,0 +1,3 @@
+class Noble < Background
+
+end

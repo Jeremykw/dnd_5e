@@ -1,0 +1,3 @@
+class Acolyte < Background
+
+end

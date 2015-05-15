@@ -1,0 +1,3 @@
+class FolkHero < Background
+
+end
