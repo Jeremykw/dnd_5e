@@ -14,7 +14,9 @@ class CharactersController < ApplicationController
 			flash[:notice] = "Sorry, record does not exist"
 			redirect_to character_index_path
 		end
-		@skill_ability = @character.skill.skill_ability # Hash with skill ability dependancy; Skill.rb
+		if @character.skill # Hash with skill ability dependancy; Skill.rb
+			@skill_ability = @character.skill.skill_ability 
+		end
 		# @skill_modifiers = skill_modifiers
 		params[:show] = 1 #indicating if routing from Character Show
 	end
@@ -62,7 +64,7 @@ class CharactersController < ApplicationController
 	def create
 		@character = character_params
 		# Save character based on class
-		if save_by_class.invalid?
+		if create_character.invalid?
 			flash[:notice] = @character.errors
 			redirect_to new_character_path(@character)
 		else
@@ -80,17 +82,36 @@ class CharactersController < ApplicationController
 	###
 	# Create Character by Class
 	###
-	def save_by_class
+	def create_character
 		case character_class
 		when "fighter"
 			@character = Fighter.create(@character)
+			create_ability
 		when "cleric"
 			@character = Cleric.create(@character)
+			create_ability
 		when "rouge"
 			@character = Rouge.create(@character)
+			create_ability
 		when "wizard"
 			@character = Wizard.create(@character)
+			create_ability
 		end
+		@character
+	end
+
+	# Create abilities
+	def create_ability
+		ability = Ability.new(:character_id => @character.id)
+		count = 0
+		score = Ability.abilities_array(@character)
+		ability.str = score[0]
+		ability.dex = score[1]
+		ability.con = score[2]
+		ability.int = score[3]
+		ability.wis = score[4]
+		ability.char = score[5]
+		ability.save
 	end
 
 	# Check Prams to determin class for create character
