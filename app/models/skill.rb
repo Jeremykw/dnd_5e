@@ -77,7 +77,7 @@ class Skill < ActiveRecord::Base
 	def calculate_skill_modifier(skill, dependant_ability)
 
 		modifier = @character.ability_modifier(@character.ability[dependant_ability])
-		if @character.skill.load_skill_choices.include?(skill)
+		if @character.skill.load_skill_choices.include?(skill) || @character.background.background_skills.to_s.include?(skill)
 			modifier = modifier + @character.proficency_bonuse
 		end
 		modifier
