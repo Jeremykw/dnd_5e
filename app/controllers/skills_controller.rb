@@ -11,7 +11,7 @@ class SkillsController < ApplicationController
 			@character.skill.set_all_skills_to_nil
 			redirect_to new_character_skill_path(@character) and return
 		end
-		redirect_to character_path @character
+		redirect_to new_character_background_path(@character)
 	end
 
 	###

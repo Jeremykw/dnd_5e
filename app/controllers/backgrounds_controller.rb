@@ -17,7 +17,7 @@ class BackgroundsController < ApplicationController
 
 	def new
 		# @character = Character.find(character_id_params)
-		# # Redirect to indext if character not found
+		# # Redirect to index if character not found
 		# if !@character 
 		# 	flash[:notice] = "Charcter record does not exits"
 		# 	redirect_to character_index_path

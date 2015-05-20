@@ -2,7 +2,10 @@
 = text_field :character, :character_name
 
 = label :character, :level, "Level:"
-= text_field :character, :level 
+- if params[:new]
+	= text_field :character, :level, :value => 1
+-else
+	= text_field :character, :level	
 
 - if params[:new]
 	= label :character, :character_class, "Class:"
