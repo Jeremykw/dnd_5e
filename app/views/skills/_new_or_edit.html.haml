@@ -1,5 +1,12 @@
 %br
-%strong Pick #{@character.number_of_skill} skills
+%strong As a #{@character.past.humanize.capitalize}, you start with the Skills:
+%br
+#{@character.background.background_skills[0].to_s.humanize.capitalize}
+%br
+#{@character.background.background_skills[1].to_s.humanize.capitalize}
+%br
+%br
+%strong Additionaly pick #{@character.number_of_skill} more skills, as a #{@character.character_class.to_s.humanize.capitalize}
 
 - # If rendering from New; list all skills as blank
 - # If rendering from Edit; check skill boxes save in db
