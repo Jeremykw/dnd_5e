@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
 	def new
 		@character ||= Character.find(character_id_params)
+		@skill_choices = @character.skill_choices - @character.background.background_skills
 	end
 	
 	def create

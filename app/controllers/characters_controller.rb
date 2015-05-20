@@ -25,6 +25,7 @@ class CharactersController < ApplicationController
 		@character = Character.find(id_params)
 		@recomended_ability = Ability.abilities_array(@character) 
 		if @character.skill
+			@skill_choices = @character.skill_choices - @character.background.background_skills
 			@skills_chose = @character.skill.load_skill_choices
 		end
 		# @skills_chose ||= ["one"]
@@ -119,7 +120,7 @@ class CharactersController < ApplicationController
 			Soldier.create(:character_id => @character.id)
 		end	
 	end
-	
+
 	# Create abilities
 	def create_ability
 		ability = Ability.new(:character_id => @character.id)
