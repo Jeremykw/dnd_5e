@@ -1,6 +1,8 @@
 class Character < ActiveRecord::Base
 	has_one :ability, dependent: :destroy
 	has_one :skill
+	has_one :background
+
 	before_create :race_into_subrace
 
 	validates_presence_of :level

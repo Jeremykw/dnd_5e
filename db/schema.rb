@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20150514191907) do
     t.text     "flaw"
     t.text     "back_story"
     t.string   "type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "character_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "characters", force: :cascade do |t|

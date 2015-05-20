@@ -1,5 +1,5 @@
 class Skill < ActiveRecord::Base
-
+	belongs_to :character
 	validate :correct_number_of_skills
 
 	def correct_number_of_skills

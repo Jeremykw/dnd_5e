@@ -7,6 +7,7 @@ class CreateBackgrounds < ActiveRecord::Migration
       t.text :flaw
       t.text :back_story
       t.string :type
+      t.integer :character_id
 
       t.timestamps null: false
     end

@@ -86,20 +86,40 @@ class CharactersController < ApplicationController
 		case character_class
 		when "fighter"
 			@character = Fighter.create(@character)
-			create_ability
 		when "cleric"
 			@character = Cleric.create(@character)
-			create_ability
 		when "rouge"
 			@character = Rouge.create(@character)
-			create_ability
 		when "wizard"
 			@character = Wizard.create(@character)
-			create_ability
 		end
+		create_ability
+		create_background		
 		@character
 	end
 
+	###
+	# Create character background so that skills can 
+	# access background skill options before background
+	# choces are made
+	###
+	def create_background
+		case @character.past
+		when "acolyte"
+			Acolyte.create(:character_id => @character.id)
+		when "criminal"
+			Criminal.create(:character_id => @character.id)
+		when "folk_hero"
+			FolkHero.create(:character_id => @character.id)
+		when "noble"
+			Noble.create(:character_id => @character.id)
+		when "sage"
+			Sage.create(:character_id => @character.id)
+		when "soldier"
+			Soldier.create(:character_id => @character.id)
+		end	
+	end
+	
 	# Create abilities
 	def create_ability
 		ability = Ability.new(:character_id => @character.id)
@@ -123,18 +143,8 @@ class CharactersController < ApplicationController
 		end
 	end
 
-	###
-	# Create character background so that skills can 
-	# access background skill options before background
-	# choces are made
-	###
-	def creat_background
-		case @character.background
-		when "acolyte"
-			@character.background.background.create
-		end
 
-	end
+
 
 ###
 # Strong Params
