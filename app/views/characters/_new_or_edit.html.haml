@@ -22,12 +22,12 @@
 	#{@character.subrace.capitalize} #{@character.race.capitalize}
 
 - if params[:new]
-	= label :character, :background, "Background:"
-	= select :character, :background, [['Acolyte', 'acolyte'], ['Criminal', 'criminal'], ['Folk Hero', 'folk_hero'], ['Noble', 'noble'], ['Sage', 'sage'], ['Soldier', 'soldier']]
+	= label :character, :past, "Background:"
+	= select :character, :past, [['Acolyte', 'acolyte'], ['Criminal', 'criminal'], ['Folk Hero', 'folk_hero'], ['Noble', 'noble'], ['Sage', 'sage'], ['Soldier', 'soldier']]
 - else
 	%br
 	%strong Background
-	#{@character.background.capitalize}
+	#{@character.past.capitalize}
 %br
 
 

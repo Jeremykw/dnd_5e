@@ -27,6 +27,10 @@ class AbilitiesController < ApplicationController
 	###
 	# Strong Params
 	###
+	def character_id_params
+		params.require(:character_id)
+	end
+	
 	def ability_params
 		params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
 	end

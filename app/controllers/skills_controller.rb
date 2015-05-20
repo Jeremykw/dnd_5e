@@ -19,5 +19,10 @@ class SkillsController < ApplicationController
 	def skill_params
 		params.require(:skill).permit(:acrobatics, :animal_handling, :arcana, :athletics, :deception, :history, :insight, :intimidation, :investigation, :medicine, :nature, :perception, :perforamance, :persuasion, :religion, :sleight_of_hand, :stealth, :survival) if params[:skill]
 	end
+	
+	def character_id_params
+		params.require(:character_id)
+	end
+
 end
 

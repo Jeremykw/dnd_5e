@@ -4,7 +4,7 @@ class CreateCharacters < ActiveRecord::Migration
 			c.string 'character_name'
   		c.string 'character_class'
   		c.integer 'level'
-  		c.string 'background'
+  		c.string 'past'
   		c.string 'player_name'
   		c.string 'race'
       c.string 'subrace'

@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150514191907) do
     t.string  "character_name"
     t.string  "character_class"
     t.integer "level"
-    t.string  "background"
+    t.string  "past"
     t.string  "player_name"
     t.string  "race"
     t.string  "subrace"
