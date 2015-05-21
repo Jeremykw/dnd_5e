@@ -1,16 +1,16 @@
 -if @character.character_name.blank?
-	%h1 Character Details
+  %h1 Character Details
 -elsif @character
-	%h1 #{@character.character_name}'s Details
+  %h1 #{@character.character_name}'s Details
 
 %strong Race:
 =@character.race.capitalize
 %br
 
 -if @character.race != "human"
-	%strong Subrace:
-	=@character.subrace.capitalize
-	%br
+  %strong Subrace:
+  =@character.subrace.capitalize
+  %br
 
 
 %strong Class:
@@ -36,10 +36,14 @@
 %br
 -# Render Abilities template if abilities have been saved
 -if @character.ability && !params[:new_ability]
-	=render partial: "abilities/show"
+  = render partial: "abilities/show"
 %br
 - if @character.skill
-	= render partial: "skills/show"
+  = render partial: "skills/show"
+%br
+- if @character.background
+  = render partial: "backgrounds/show"
+%br
 %br
 - if params[:show] # Show link to edit character only while showing pregenerated/saved character
-	=link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
+  =link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
