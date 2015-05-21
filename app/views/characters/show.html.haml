@@ -37,7 +37,7 @@
 %br
 %br
 -# Render Abilities template if abilities have been saved
--if @character.ability
+-if @character.ability && !params[:new_ability]
 	=render partial: "abilities/show"
 %br
 - if @character.skill

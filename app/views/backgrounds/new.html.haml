@@ -1,1 +1,7 @@
-Background
+.show
+  = render template: "characters/show" # show saved character states
+  = render :partial => "skills/proficiancy_and_saving_throws"
+.new
+  %h1 Background
+  = form_tag :action => :create do  
+    = render :partial => "new_or_edit"

@@ -16,15 +16,16 @@ class BackgroundsController < ApplicationController
 	end
 
 	def new
-		# @character = Character.find(character_id_params)
-		# # Redirect to index if character not found
-		# if !@character 
-		# 	flash[:notice] = "Charcter record does not exits"
-		# 	redirect_to character_index_path
-		# end
-		# # Ability sujestions based on class
-		# @recomended_ability = Ability.abilities_array(@character)
-		# params[:new_ability] = 1
+		
+		# Redirect to index if character not found
+		if !@character = Character.find(character_id_params)
+			flash[:notice] = "Charcter record does not exits"
+			redirect_to character_index_path
+		end
+		if @character.skill # Hash with skill ability dependancy; Skill.rb
+			@skill_ability = @character.skill.skill_ability 
+		end
+
 	end
 
 	def edit
@@ -37,6 +38,15 @@ class BackgroundsController < ApplicationController
 
 	def destroy
 
+	end
+
+	###
+	# Strong Params
+	###
+
+
+	def character_id_params
+		params.require(:character_id)
 	end
 
 end
