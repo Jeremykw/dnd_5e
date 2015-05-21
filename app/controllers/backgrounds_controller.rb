@@ -6,9 +6,9 @@ class BackgroundsController < ApplicationController
 	
 	def create
 		@character = Character.find(character_id_params)
-		if @character.create_background(background_params).invalid?
+		if !@character.background.update(background_params)
 			flash[:notice] = "Please#{@character.character_name.pluralize} Background"
-			redirect_to new_character_background_path(@character.id)
+			redirect_to new_character_background_path(@character.id) and return
 		end
 		redirect_to character_path(@character)
 
