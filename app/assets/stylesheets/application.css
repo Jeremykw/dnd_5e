@@ -6,6 +6,16 @@ html, body {
   font-family: Tahoma, Verdana, sans-serif;
   font-size: 10pt;
 }
+.show {
+  display: inline-block;
+  float: left;
+  width: 20%;
+}
+.new{
+  display: inline-block;
+
+  width: 20%;
+}
 #title {
   color: DarkSlateGrey;
   font-size: 20pt;

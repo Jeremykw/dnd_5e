@@ -1,8 +1,7 @@
-= render template: "characters/show" # show saved character states
-%h1 Skills
-
-= render :partial => "proficiancy_and_saving_throws"
-
-
-= form_tag :action => :create do	
-	= render :partial => "new_or_edit"
+.show
+  = render template: "characters/show" # show saved character states
+.new
+  %h1 Skills
+  = render :partial => "proficiancy_and_saving_throws"
+  = form_tag :action => :create do	
+    = render :partial => "new_or_edit"
