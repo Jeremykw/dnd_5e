@@ -15,7 +15,7 @@ class CharactersController < ApplicationController
 			redirect_to character_index_path
 		end
 		if @character.skill # Hash with skill ability dependancy; Skill.rb
-			@skill_ability = @character.skill.skill_ability 
+			load_skills # from skill and from background
 		end
 		# @skill_modifiers = skill_modifiers
 		params[:show] = 1 #indicating if routing from Character Show
