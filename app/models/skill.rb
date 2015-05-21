@@ -52,7 +52,7 @@ class Skill < ActiveRecord::Base
 	# Hash keyed with skill ability dependancy
 	###
 	def skill_ability
-		@character = Character.find(self.character_id)
+		@character = Character.find(character_id)
 		skill_ability = {
 			"acrobatics" => [:dex, (calculate_skill_modifier("acrobatics", :dex)) ],
 			"animal_handling" => [ :wis, (calculate_skill_modifier("animal_handling", :wis)) ],

@@ -14,10 +14,12 @@ class CharactersController < ApplicationController
 			flash[:notice] = "Sorry, record does not exist"
 			redirect_to character_index_path
 		end
+		# if @character.skill # Hash with skill ability dependancy; Skill.rb
+		# 	load_skills # from skill and from background
+		# end
 		if @character.skill # Hash with skill ability dependancy; Skill.rb
-			load_skills # from skill and from background
+			@skill_ability = @character.skill.skill_ability 
 		end
-		# @skill_modifiers = skill_modifiers
 		params[:show] = 1 #indicating if routing from Character Show
 	end
 

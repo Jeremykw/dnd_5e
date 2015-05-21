@@ -6,6 +6,9 @@
   %h1 Abillities
   = render :partial => "#{@character.character_class}"
   %br
-  As a #{@character.subrace.capitalize} #{@character.race.capitalize} you will automaticaly get #{Ability.racial_ability_notice(@character.subrace)}, on save.
+  - if @character.race == "human"
+    As a Human you will automaticaly get +1 to all your ability scores, on save.
+  - else
+    As a #{@character.subrace.capitalize} #{@character.race.capitalize} you will automaticaly get #{Ability.racial_ability_notice(@character.subrace)}, on save.  
   = form_tag :action => :create do	
     = render :partial => "new_or_edit"

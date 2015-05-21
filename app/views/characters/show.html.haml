@@ -16,17 +16,15 @@
 %strong Class:
 =@character.character_class.capitalize
 %br
-
-- if !params[:new_ability] # Dont show Level or ability until time
-	%strong Level:
-	=@character.level
-	%br
-	%strong Background:
-	=@character.past.humanize.capitalize
-	%br
-	%strong Experience Points:
-	=@character.xp
-	%br
+%strong Level:
+=@character.level
+%br
+%strong Background:
+=@character.past.humanize.capitalize
+%br
+%strong Experience Points:
+=@character.xp
+%br
 
 %strong Alignmet:
 =@character.alignment

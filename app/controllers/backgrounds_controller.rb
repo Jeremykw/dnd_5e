@@ -5,18 +5,16 @@ class BackgroundsController < ApplicationController
 	end
 	
 	def create
-		# @character = Character.find(character_id_params)
-		
-		# if @character.create_ability(ability_params).invalid?
-		# 	flash[:notice] = "#{@character.character_name}'s six statistics must be numbers between 3 and 20"
-		# 	redirect_to new_character_ability_path(@character.id)
-		# else
-		# 	redirect_to new_character_skill_path(@character)
-		# end
+		@character = Character.find(character_id_params)
+		if @character.create_background(background_params).invalid?
+			flash[:notice] = "Please#{@character.character_name.pluralize} Background"
+			redirect_to new_character_background_path(@character.id)
+		end
+		redirect_to character_path(@character)
+
 	end
 
-	def new
-		
+	def new		
 		# Redirect to index if character not found
 		if !@character = Character.find(character_id_params)
 			flash[:notice] = "Charcter record does not exits"
@@ -25,7 +23,6 @@ class BackgroundsController < ApplicationController
 		if @character.skill # Hash with skill ability dependancy; Skill.rb
 			@skill_ability = @character.skill.skill_ability 
 		end
-
 	end
 
 	def edit
@@ -43,11 +40,12 @@ class BackgroundsController < ApplicationController
 	###
 	# Strong Params
 	###
-
+	def background_params
+		params.require(:background).permit(:personality, :ideal, :bond, :flaw, :back_story)
+	end
 
 	def character_id_params
 		params.require(:character_id)
 	end
 
 end
-
