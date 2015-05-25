@@ -1,15 +1,18 @@
 = label :character, :character_name, "Name:"
-= text_field :character, :character_name
+- if params[:new]
+	= text_field :character, :character_name, :value => "Sally Waffles"
+- else
+	= text_field :character, :character_name
 
 = label :character, :level, "Level:"
 - if params[:new]
-	= text_field :character, :level, :value => 1
+	= text_field :character, :level, :value => 2
 -else
 	= text_field :character, :level	
 
 - if params[:new]
 	= label :character, :character_class, "Class:"
-	= select :character, :character_class, [['Fighter', 'fighter'], ['Cleric', 'cleric'], ['Rouge', 'rouge'], ['Wizard', 'wizard']]
+	= select :character, :character_class, Character::CLASS_CHOICE_LIST
 - else
 	%br
 	%strong Class:
@@ -18,7 +21,7 @@
 - # If new show racial options other wise display race
 - if params[:new]
 	= label :character, :race, "Race:"
-	= select :character, :race, [['Dwarf, Hill', 'dwarf_hill'], ['Dwarf, Mountain', 'dwarf_mountain'], ['Elf, High', 'elf_high'], ['Elf, Wood', 'elf_wood'], ['Halfling, Lightfoot', 'halfling_lightfoot'], ['Halfling, Stout', 'halfling_stout'], ['Human', 'human'], ]
+	= select :character, :race, Character::RACE_CHOICE_LIST
 - else
 	%br
 	%strong Race:
@@ -26,7 +29,7 @@
 
 - if params[:new]
 	= label :character, :past, "Background:"
-	= select :character, :past, [['Acolyte', 'acolyte'], ['Criminal', 'criminal'], ['Folk Hero', 'folk_hero'], ['Noble', 'noble'], ['Sage', 'sage'], ['Soldier', 'soldier']]
+	= select :character, :past, Character.background_choices
 - else
 	%br
 	%strong Background
@@ -35,13 +38,19 @@
 
 
 = label :character, :alignment, "Alignment:"
-= text_field :character, :alignment
+= select :character, :alignment, Character.alignment_choices
 
 = label :character, :xp, "Experience Points:"
-= text_field :character, :xp
+- if params[:new]
+	= text_field :character, :xp, :value => 500
+- else
+	= text_field :character, :xp	
 
 = label :character, :player_name, "Player Name:"
-= text_field :character, :player_name
+- if params[:new]
+	= text_field :character, :player_name, :value => "Jeremy"
+- else
+	= text_field :character, :player_name
 
 - if params[:new]
 	%br

@@ -68,7 +68,7 @@ class CharactersController < ApplicationController
 		@character = character_params
 		# Save character based on class
 		if create_character.invalid?
-			flash[:notice] = @character.errors
+			flash[:notice] = @character.errors.full_messages
 			redirect_to new_character_path(@character)
 		else
 			redirect_to new_character_ability_path(@character.id)
@@ -96,7 +96,7 @@ class CharactersController < ApplicationController
 		when "wizard"
 			@character = Wizard.create(@character)
 		end
-		create_ability
+		# create_ability
 		create_background		
 		@character
 	end
