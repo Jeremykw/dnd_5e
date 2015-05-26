@@ -29,7 +29,7 @@
 
 - if params[:new]
 	= label :character, :past, "Background:"
-	= select :character, :past, Character.background_choices
+	= select :character, :past, Character::BACKGROUND_CHOICE_LIST
 - else
 	%br
 	%strong Background
@@ -38,7 +38,7 @@
 
 
 = label :character, :alignment, "Alignment:"
-= select :character, :alignment, Character.alignment_choices
+= select :character, :alignment, Character::ALIGNMENT_CHOICE_LIST
 
 = label :character, :xp, "Experience Points:"
 - if params[:new]

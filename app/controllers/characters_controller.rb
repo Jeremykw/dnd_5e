@@ -25,7 +25,7 @@ class CharactersController < ApplicationController
 
 	def edit
 		@character = Character.find(id_params)
-		@recomended_ability = Ability.abilities_array(@character) 
+		@recomended_ability = @character.ability.abilities_array
 		if @character.skill
 			@skill_choices = @character.skill_choices - @character.background.background_skills
 			@skills_chose = @character.skill.load_skill_choices
@@ -38,7 +38,7 @@ class CharactersController < ApplicationController
 		@character = Character.find(id_params)
 		@character.update(character_params)
 		@character.ability.update(ability_params)
-		set_skills_to_nil
+		set_skills_to_nil_and_save
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
 		else
@@ -47,9 +47,11 @@ class CharactersController < ApplicationController
 		redirect_to character_path(id_params)
 	end
 
+	###
 	# skills would not save unselected skills as unselected
 	# setting all to nil prior to updating new skills solved this
-	def set_skills_to_nil
+	###
+	def set_skills_to_nil_and_save
 		if @character.skill
 			@character.skill.set_all_skills_to_nil
 			if !@character.skill.update_attributes(skill_params)
@@ -66,8 +68,7 @@ class CharactersController < ApplicationController
 
 	def create
 		@character = character_params
-		# Save character based on class
-		if create_character.invalid?
+		if create_character.invalid? # Save character based on class
 			flash[:notice] = @character.errors.full_messages
 			redirect_to new_character_path(@character)
 		else
@@ -96,7 +97,6 @@ class CharactersController < ApplicationController
 		when "wizard"
 			@character = Wizard.create(@character)
 		end
-		# create_ability
 		create_background		
 		@character
 	end
@@ -122,21 +122,6 @@ class CharactersController < ApplicationController
 			Soldier.create(:character_id => @character.id)
 		end	
 	end
-
-	# Create abilities
-	def create_ability
-		ability = Ability.new(:character_id => @character.id)
-		count = 0
-		score = Ability.abilities_array(@character)
-		ability.str = score[0]
-		ability.dex = score[1]
-		ability.con = score[2]
-		ability.int = score[3]
-		ability.wis = score[4]
-		ability.char = score[5]
-		ability.save
-	end
-
 	# Check Prams to determin class for create character
 	def character_class
 		if character_params
@@ -145,9 +130,6 @@ class CharactersController < ApplicationController
 			@character_class = @character.character_class
 		end
 	end
-
-
-
 
 ###
 # Strong Params

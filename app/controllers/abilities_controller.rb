@@ -1,9 +1,7 @@
 class AbilitiesController < ApplicationController	
 	
-
 	def create
-		@character = Character.find(character_id_params)
-		
+		@character = Character.find(character_id_params)	
 		if @character.create_ability(ability_params).invalid?
 			flash[:notice] = "#{@character.character_name}'s six statistics must be numbers between 3 and 20"
 			redirect_to new_character_ability_path(@character.id)
@@ -12,15 +10,12 @@ class AbilitiesController < ApplicationController
 		end
 	end
 
-	def new
-		@character = Character.find(character_id_params)
-		# Redirect to indext if character not found
-		if !@character 
+	def new				
+		if !@character = Character.find(character_id_params) # Redirect to indext if character not found
 			flash[:notice] = "Charcter record does not exits"
-			redirect_to character_index_path
-		end
-		# Ability sujestions based on class
-		@recomended_ability = Ability.abilities_array(@character)
+			redirect_to character_index_path and return
+		end		
+		@recomended_ability = Ability.recomended_abilities(@character.character_class) # Ability sujestions based on class
 		params[:new_ability] = 1
 	end
 

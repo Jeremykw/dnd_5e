@@ -9,27 +9,21 @@ class Ability < ActiveRecord::Base
 ###
 # Load abilities into array for Edit or New forms
 ###
-	def self.abilities_array(character)
-		@character = character
-		if abilities = character.ability
-				@abilities_array = [abilities.str]
-				@abilities_array << abilities.dex
-				@abilities_array << abilities.con
-				@abilities_array << abilities.int
-				@abilities_array << abilities.wis
-				@abilities_array << abilities.char
+	def self.recomended_abilities(klass) # For Character#new
+		case klass
+		when "fighter"
+			@abilities_array = [15, 13, 14, 8, 10, 12]
+		when "cleric"
+			@abilities_array = [13, 8, 14, 10, 15, 12]
+		when "rouge"
+			@abilities_array = [12, 15, 10, 14, 8, 13]
+		when "wizard"
+			@abilities_array = [8, 13, 14, 15, 10, 12]
+		end		
+	end
 
-		else
-			if @character.character_class == "fighter"
-				@abilities_array = [15, 13, 14, 8, 10, 12]
-			elsif @character.character_class == "cleric"
-				@abilities_array = [13, 8, 14, 10, 15, 12]
-			elsif @character.character_class == "rouge"
-				@abilities_array = [12, 15, 10, 14, 8, 13]
-			elsif @character.character_class == "wizard"
-				@abilities_array = [8, 13, 14, 15, 10, 12]
-			end		
-		end
+	def ability_array # For Character#edit
+		@abilities_array = [str, dex, con, int, wis, char]
 	end
 	
 ###
@@ -63,9 +57,23 @@ class Ability < ActiveRecord::Base
 			self.char += 1
 		end
 	end
-###
-# Generates ability modifier Notice
-###
+
+	def self.new_ability_suggestions(klass)
+		case klass
+		when "cleric"
+			"As a Cleric, you want Wisdom to be your highest score followed by Strength or Constitution."
+		when "fighter"
+			"As a Fighter, you want Strength or Dexterity to be your highest score, depending on whether you want to focus on melee or on archery. Your next highest score should be Constitution."
+		when "rouge"
+			"As a Rouge, you want Dexterity to be your highest score. Make Intelligence your next-highest if you want to excel at Investigation, or Charisma instead if you plan to emphasize deception and social interaction."
+		when "wizard"
+			"As a Wizard, Intelligence should be you highest score, followed by Constitution or Dexterity."
+		end
+	end
+
+	###
+	# Generates ability modifier Notice
+	###
 	def self.racial_ability_notice(subrace)
 		case subrace
 		when "mountain"

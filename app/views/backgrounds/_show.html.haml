@@ -1,20 +1,21 @@
-%strong Personality:
-%br
-= @character.background.personality
-%br
-%strong Ideal:
-%br
-= @character.background.ideal
-%br
-%strong Bond:
-%br
-= @character.background.bond
-%br
-%strong Flaw:
-%br
-= @character.background.flaw
-%br
-%strong Back Story:
-%br
-= @character.background.back_story
-%br
+- if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
+	%strong Personality:
+	%br
+	= @character.background.personality
+	%br
+	%strong Ideal:
+	%br
+	= @character.background.ideal
+	%br
+	%strong Bond:
+	%br
+	= @character.background.bond
+	%br
+	%strong Flaw:
+	%br
+	= @character.background.flaw
+	%br
+	%strong Back Story:
+	%br
+	= @character.background.back_story
+	%br
