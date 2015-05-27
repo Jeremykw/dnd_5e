@@ -20,8 +20,8 @@
 
 - # If new show racial options other wise display race
 - if params[:new]
-	= label :character, :race, "Race:"
-	= select :character, :race, CharactersHelper::RACE_CHOICE_LIST
+	= label :character, :race_subrace, "Race:"
+	= select :character, :race_subrace, CharactersHelper::RACE_CHOICE_LIST
 - else
 	%br
 	%strong Race:

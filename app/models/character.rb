@@ -3,24 +3,18 @@ class Character < ActiveRecord::Base
 	has_one :skill
 	has_one :background
 
-	before_create :race_into_subrace
+	before_validation :race_into_subrace, on: :create
 	###
 	# Lists of choices for character#new select boxes and validation
 	###
 	CLASS_LIST = [ 'fighter', 'rouge', 'wizard', 'cleric' ]
-	RACE_LIST = [ 'dwarf_hill', 'dwarf_mountain', 'elf_high', 'elf_wood', 'halfling_lightfoot', 'halfling_stout', 'human', 'dwarf', 'elf', 'halfling' ]
+	
+	RACE_SUBRACE_LIST = [ 'dwarf_hill', 'dwarf_mountain', 'elf_high', 'elf_wood', 'halfling_lightfoot', 'halfling_stout', 'human']
+	RACE_LIST = [ 'human', 'dwarf', 'elf', 'halfling' ]
+	SUBRACE_LIST = ['hill', 'mountain', 'high', 'wood', 'lightfoot', 'stout', 'human']
+	
 	ALIGNMENT_LIST = [ 'lg', 'ng', 'cg', 'ln', 'n', 'cn', 'le', 'ne', 'ce' ]
 	BACKGROUND_LIST = [ 'acolyte', 'criminal', 'folk_hero', 'noble', 'sage', 'soldier' ]
-	SUBRACE_LIST = ['hill', 'mountain', 'high', 'wood', 'lightfoot', 'stout', nil]
-
-	def self.validation_list(list) # creates array of classes for class validation from constants
-		choice_list = []
-		list.each do |c|
-			choice_list << c[1]
-		end
-		choice_list += ['dwarf', 'elf', 'halfling'] if list == RACE_CHOICE_LIST
-		choice_list
-	end
 
 	validates :character_name, :presence => true, :length => { :maximum => 50 }
 	validates :level, :presence => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 20 }
@@ -36,7 +30,7 @@ class Character < ActiveRecord::Base
 	# Seperates race into :race /subrace
 	###
 	def race_into_subrace 
-		case race
+		case self.race_subrace
 		when 'dwarf_hill'
 			self[:race] = "dwarf"
 			self[:subrace] = "hill"
@@ -55,12 +49,15 @@ class Character < ActiveRecord::Base
 		when 'halfling_stout'
 			self[:race] = "halfling"
 			self[:subrace] = "stout"
+		when 'human'
+			self[:race] = 'human'
+			self[:subrace] = 'human'
 		end
 	end
 
-###
-# Calculate proficency bonuse based on level
-###
+	###
+	# Calculate proficency bonuse based on level
+	###
 	def proficency_bonuse
 		level = self.level
 		case level

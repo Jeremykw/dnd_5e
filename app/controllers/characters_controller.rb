@@ -50,7 +50,7 @@ class CharactersController < ApplicationController
 
 	def create
 		@character = character_params
-		if create_character.invalid? # Save character based on class
+		if create_character(@character).invalid? # Save character based on class
 			flash[:notice] = @character.errors.full_messages
 			redirect_to new_character_path(@character)
 		else
@@ -70,24 +70,20 @@ class CharactersController < ApplicationController
 	###
 	# Create Character by Class
 	###
-	def create_character
+	def create_character(character)
 		case character_class
 		when "fighter"
-			@character = Fighter.create(@character)
+			@character = Fighter.create(character)
 		when "cleric"
-			@character = Cleric.create(@character)
+			@character = Cleric.create(character)
 		when "rouge"
-			@character = Rouge.create(@character)
+			@character = Rouge.create(character)
 		when "wizard"
-			@character = Wizard.create(@character)
+			@character = Wizard.create(character)
 		end
 		create_background		
 		@character
 	end
-
-###
-private
-###
 
 	###
 	# Create character background so that skills can 
@@ -148,7 +144,7 @@ private
 	end
 
 	def character_params
-		params.require(:character).permit(:character_id, :character_name, :character_class, :level, :past, :player_name, :race, :alignment, :xp, :subrace)
+		params.require(:character).permit(:character_id, :character_name, :character_class, :level, :past, :player_name, :race, :alignment, :xp, :subrace, :race_subrace)
 	end
 
 	def id_params

@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150514191907) do
     t.integer "level"
     t.string  "past"
     t.string  "player_name"
+    t.string  "race_subrace"
     t.string  "race"
     t.string  "subrace"
     t.string  "alignment"
