@@ -40,22 +40,23 @@ class CharactersController < ApplicationController
 		else
 			flash[:notice] = "Character has been updated."
 		end
-		redirect_to character_path(id_params)
+		redirect_to character_path(id_params) and return
 	end
-
 
 	def new
 		params[:new] = 1
 	end
 
 	def create
-		@character = character_params
-		if create_character(@character).invalid? # Save character based on class
-			flash[:notice] = @character.errors.full_messages
-			redirect_to new_character_path(@character)
-		else
+		@character = Character.create_character(character_params) # Save character based on class
+		if @character.invalid?
+			Background.create_background(@character)			
 			redirect_to new_character_ability_path(@character.id)
+		else
+			flash[:notice] = @character.errors.full_messages
+			redirect_to new_character_path(@character) and return
 		end
+
 	end
 
 	def destroy
@@ -65,56 +66,6 @@ class CharactersController < ApplicationController
 		redirect_to characters_path
 	end
 
-	private
-
-	###
-	# Create Character by Class
-	###
-	def create_character(character)
-		case character_class
-		when "fighter"
-			@character = Fighter.create(character)
-		when "cleric"
-			@character = Cleric.create(character)
-		when "rouge"
-			@character = Rouge.create(character)
-		when "wizard"
-			@character = Wizard.create(character)
-		end
-		create_background		
-		@character
-	end
-
-	###
-	# Create character background so that skills can 
-	# access background skill options before background
-	# choces are made
-	###
-	def create_background
-		case @character.past
-		when "acolyte"
-			Acolyte.create(:character_id => @character.id)
-		when "criminal"
-			Criminal.create(:character_id => @character.id)
-		when "folk_hero"
-			FolkHero.create(:character_id => @character.id)
-		when "noble"
-			Noble.create(:character_id => @character.id)
-		when "sage"
-			Sage.create(:character_id => @character.id)
-		when "soldier"
-			Soldier.create(:character_id => @character.id)
-		end	
-	end
-	# Check Prams to determin class for create character
-	def character_class
-		if character_params
-			@character_class = character_params[:character_class]
-		else
-			@character_class = @character.character_class
-		end
-	end	
-	
 	###
 	# skills would not save unselected skills as unselected
 	# setting all to nil prior to updating new skills solved this

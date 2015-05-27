@@ -7,12 +7,10 @@ class Character < ActiveRecord::Base
 	###
 	# Lists of choices for character#new select boxes and validation
 	###
-	CLASS_LIST = [ 'fighter', 'rouge', 'wizard', 'cleric' ]
-	
+	CLASS_LIST = [ 'fighter', 'rouge', 'wizard', 'cleric' ]	
 	RACE_SUBRACE_LIST = [ 'dwarf_hill', 'dwarf_mountain', 'elf_high', 'elf_wood', 'halfling_lightfoot', 'halfling_stout', 'human']
 	RACE_LIST = [ 'human', 'dwarf', 'elf', 'halfling' ]
-	SUBRACE_LIST = ['hill', 'mountain', 'high', 'wood', 'lightfoot', 'stout', 'human']
-	
+	SUBRACE_LIST = ['hill', 'mountain', 'high', 'wood', 'lightfoot', 'stout', 'human']	
 	ALIGNMENT_LIST = [ 'lg', 'ng', 'cg', 'ln', 'n', 'cn', 'le', 'ne', 'ce' ]
 	BACKGROUND_LIST = [ 'acolyte', 'criminal', 'folk_hero', 'noble', 'sage', 'soldier' ]
 
@@ -25,6 +23,23 @@ class Character < ActiveRecord::Base
 	validates :alignment, :presence => true, :inclusion => { in: ALIGNMENT_LIST }
 	validates :xp, :presence => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 0, :less_than_or_equal_to => 355000 }
 	validates :player_name, :presence => true, :length => { :maximum => 50 }
+
+	###
+	# Create Character by Class
+	###
+	def self.create_character(character)
+		case character[:character_class]
+		when "fighter"
+			@character = Fighter.create(character)
+		when "cleric"
+			@character = Cleric.create(character)
+		when "rouge"
+			@character = Rouge.create(character)
+		when "wizard"
+			@character = Wizard.create(character)
+		end
+		@character
+	end
 
 	###
 	# Seperates race into :race /subrace
