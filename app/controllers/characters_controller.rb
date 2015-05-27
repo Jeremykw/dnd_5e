@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-	def index
+	def index 
 		@characters = Character.all
 		#raise @characters.inspect
 		#@characters.sort_by!{|name| name.character_name.downcase}
@@ -43,20 +43,6 @@ class CharactersController < ApplicationController
 		redirect_to character_path(id_params)
 	end
 
-	###
-	# skills would not save unselected skills as unselected
-	# setting all to nil prior to updating new skills solved this
-	###
-	def set_skills_to_nil_and_save
-		if @character.skill
-			@character.skill.set_all_skills_to_nil
-			if !@character.skill.update_attributes(skill_params)
-				# flash[:notice] = @character.errors[:skill]
-				flash[:notice] = "You mush chose #{@character.number_of_skill} skills!"
-				redirect_to edit_character_path(@character) and return
-			end
-		end
-	end
 
 	def new
 		params[:new] = 1
@@ -79,6 +65,8 @@ class CharactersController < ApplicationController
 		redirect_to characters_path
 	end
 
+	private
+
 	###
 	# Create Character by Class
 	###
@@ -96,6 +84,10 @@ class CharactersController < ApplicationController
 		create_background		
 		@character
 	end
+
+###
+private
+###
 
 	###
 	# Create character background so that skills can 
@@ -124,6 +116,21 @@ class CharactersController < ApplicationController
 			@character_class = character_params[:character_class]
 		else
 			@character_class = @character.character_class
+		end
+	end	
+	
+	###
+	# skills would not save unselected skills as unselected
+	# setting all to nil prior to updating new skills solved this
+	###
+	def set_skills_to_nil_and_save
+		if @character.skill
+			@character.skill.set_all_skills_to_nil
+			if !@character.skill.update_attributes(skill_params)
+				# flash[:notice] = @character.errors[:skill]
+				flash[:notice] = "You mush chose #{@character.number_of_skill} skills!"
+				redirect_to edit_character_path(@character) and return
+			end
 		end
 	end
 

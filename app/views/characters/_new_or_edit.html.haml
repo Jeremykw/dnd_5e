@@ -12,7 +12,7 @@
 
 - if params[:new]
 	= label :character, :character_class, "Class:"
-	= select :character, :character_class, Character::CLASS_CHOICE_LIST
+	= select :character, :character_class, CharactersHelper::CLASS_CHOICE_LIST
 - else
 	%br
 	%strong Class:
@@ -21,15 +21,15 @@
 - # If new show racial options other wise display race
 - if params[:new]
 	= label :character, :race, "Race:"
-	= select :character, :race, Character::RACE_CHOICE_LIST
+	= select :character, :race, CharactersHelper::RACE_CHOICE_LIST
 - else
 	%br
 	%strong Race:
-	#{@character.subrace.capitalize} #{@character.race.capitalize}
+	= race(@character)
 
 - if params[:new]
 	= label :character, :past, "Background:"
-	= select :character, :past, Character::BACKGROUND_CHOICE_LIST
+	= select :character, :past, CharactersHelper::BACKGROUND_CHOICE_LIST
 - else
 	%br
 	%strong Background
@@ -38,7 +38,7 @@
 
 
 = label :character, :alignment, "Alignment:"
-= select :character, :alignment, Character::ALIGNMENT_CHOICE_LIST
+= select :character, :alignment, CharactersHelper::ALIGNMENT_CHOICE_LIST
 
 = label :character, :xp, "Experience Points:"
 - if params[:new]

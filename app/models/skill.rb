@@ -54,31 +54,31 @@ class Skill < ActiveRecord::Base
 	def skill_ability
 		@character = Character.find(character_id)
 		skill_ability = {
-			"acrobatics" => [:dex, (calculate_skill_modifier("acrobatics", :dex)) ],
-			"animal_handling" => [ :wis, (calculate_skill_modifier("animal_handling", :wis)) ],
-			"arcana" => [ :int, (calculate_skill_modifier("arcana", :int)) ],
-			"athletics" => [ :str, (calculate_skill_modifier("athletics", :str)) ],
-			"deception" => [ :char, (calculate_skill_modifier("deception", :char)) ],
-			"history" => [ :int, (calculate_skill_modifier("history", :int)) ],
-			"insight" => [ :wis, (calculate_skill_modifier("insight", :wis)) ],
-			"intimidation" => [ :char, (calculate_skill_modifier("intimidation", :char)) ],
-			"investigation" => [ :int, (calculate_skill_modifier("investigation", :int)) ],
-			"medicine" => [ :wis, (calculate_skill_modifier("medicine", :wis)) ],
-			"nature" => [ :int, (calculate_skill_modifier("nature", :int)) ],
-			"perception" => [ :wis, (calculate_skill_modifier("perception", :wis)) ],
-			"performance" => [ :char, (calculate_skill_modifier("performance", :char)) ],
-			"persuasion" => [ :char, (calculate_skill_modifier("persuasion", :char)) ],
-			"religion" => [ :int, (calculate_skill_modifier("religion", :int)) ],
-			"sleight_of_hand" => [ :dex, (calculate_skill_modifier("sleight_of_hand", :dex)) ],
-			"stealth" => [ :dex, (calculate_skill_modifier("stealth", :dex)) ],
-			"survival" => [ :wis, (calculate_skill_modifier("survival", :wis)) ]
+			"acrobatics" => [:dex, (calculate_skill_modifier("acrobatics", :dex, @character)) ],
+			"animal_handling" => [ :wis, (calculate_skill_modifier("animal_handling", :wis, @character)) ],
+			"arcana" => [ :int, (calculate_skill_modifier("arcana", :int, @character)) ],
+			"athletics" => [ :str, (calculate_skill_modifier("athletics", :str, @character)) ],
+			"deception" => [ :char, (calculate_skill_modifier("deception", :char, @character)) ],
+			"history" => [ :int, (calculate_skill_modifier("history", :int, @character)) ],
+			"insight" => [ :wis, (calculate_skill_modifier("insight", :wis, @character)) ],
+			"intimidation" => [ :char, (calculate_skill_modifier("intimidation", :char, @character)) ],
+			"investigation" => [ :int, (calculate_skill_modifier("investigation", :int, @character)) ],
+			"medicine" => [ :wis, (calculate_skill_modifier("medicine", :wis, @character)) ],
+			"nature" => [ :int, (calculate_skill_modifier("nature", :int, @character)) ],
+			"perception" => [ :wis, (calculate_skill_modifier("perception", :wis, @character)) ],
+			"performance" => [ :char, (calculate_skill_modifier("performance", :char, @character)) ],
+			"persuasion" => [ :char, (calculate_skill_modifier("persuasion", :char, @character)) ],
+			"religion" => [ :int, (calculate_skill_modifier("religion", :int, @character)) ],
+			"sleight_of_hand" => [ :dex, (calculate_skill_modifier("sleight_of_hand", :dex, @character)) ],
+			"stealth" => [ :dex, (calculate_skill_modifier("stealth", :dex, @character)) ],
+			"survival" => [ :wis, (calculate_skill_modifier("survival", :wis, @character)) ]
 		}
 	end
-	def calculate_skill_modifier(skill, dependant_ability)
-
-		modifier = @character.ability_modifier(@character.ability[dependant_ability])
-		if @character.skill.load_skill_choices.include?(skill) || @character.background.background_skills.to_s.include?(skill)
-			modifier = modifier + @character.proficency_bonuse
+private
+	def calculate_skill_modifier(skill, dependant_ability, character)
+		modifier = character.ability_modifier(character.ability[dependant_ability])
+		if character.skill.load_skill_choices.include?(skill) || character.background.background_skills.to_s.include?(skill)
+			modifier = modifier + character.proficency_bonuse
 		end
 		modifier
 	end
