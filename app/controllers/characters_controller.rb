@@ -14,9 +14,6 @@ class CharactersController < ApplicationController
 			flash[:notice] = "Sorry, record does not exist"
 			redirect_to character_index_path
 		end
-		# if @character.skill # Hash with skill ability dependancy; Skill.rb
-		# 	load_skills # from skill and from background
-		# end
 		if @character.skill # Hash with skill ability dependancy; Skill.rb
 			@skill_ability = @character.skill.skill_ability 
 		end
@@ -25,12 +22,11 @@ class CharactersController < ApplicationController
 
 	def edit
 		@character = Character.find(id_params)
-		@recomended_ability = @character.ability.abilities_array
+		@recomended_ability = @character.ability.ability_array
 		if @character.skill
 			@skill_choices = @character.skill_choices - @character.background.background_skills
 			@skills_chose = @character.skill.load_skill_choices
 		end
-		# @skills_chose ||= ["one"]
 		params[:edit] = 1
 	end
 
