@@ -2,10 +2,6 @@
 %br
 %strong Skills:
 %br
-- @character.skill.attributes.each do |skill, tf|
-	- if tf == true
-		#{skill.to_s.humanize.capitalize}(#{@skill_ability[skill][0].to_s}): #{@skill_ability[skill][1].to_s}
-		%br
-- @character.background.background_skills.each do |s|
-	#{s.to_s.humanize.capitalize}(#{@skill_ability[s.to_s][0]}:) #{@skill_ability[s.to_s][1]}
+- show_skills_array(@character).each do |skill|
+	= skill
 	%br

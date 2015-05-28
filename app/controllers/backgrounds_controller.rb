@@ -25,18 +25,6 @@ class BackgroundsController < ApplicationController
 		end
 	end
 
-	def edit
-
-	end
-
-	def update
-
-	end
-
-	def destroy
-
-	end
-
 	###
 	# Strong Params
 	###

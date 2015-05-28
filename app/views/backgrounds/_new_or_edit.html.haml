@@ -1,14 +1,14 @@
 = label :background, :personality, "Personality Trait:"
-= text_area :background, :personality, :value => @character.background.personality_suggestion
+= text_area :background, :personality, :value => background_suggestion(@character)[0]
 
 = label :background, :ideal, "Ideal:"
-= text_area :background, :ideal, :value => @character.background.ideal_suggestion
+= text_area :background, :ideal, :value => background_suggestion(@character)[1]
 
 = label :background, :bond, "Bond:"
-= text_area :background, :bond, :value => @character.background.bond_suggestion
+= text_area :background, :bond, :value => background_suggestion(@character)[2]
 
 = label :background, :flaw, "Flaw:"
-= text_area :background, :flaw, :value => @character.background.flaw_suggestion
+= text_area :background, :flaw, :value => background_suggestion(@character)[3]
 
 = label :background, :back_story, "Back Story:"
 = text_area :background, :back_story, :placeholder => "Fill in Backstory here"
