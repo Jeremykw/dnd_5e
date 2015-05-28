@@ -1,5 +1,5 @@
 .show
-  = render template: "characters/show" # show saved character states
+  = render partial: "characters/show" # show saved character states
 .new
   %h1 Background
   = form_tag :action => :create do  

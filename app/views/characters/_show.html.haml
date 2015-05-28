@@ -1,0 +1,32 @@
+%h1= character_title(@character)
+
+%strong Race:
+= race(@character)
+%br
+%strong Class:
+=@character.character_class.capitalize
+%br
+%strong Level:
+=@character.level
+%br
+%strong Background:
+=@character.past.humanize.capitalize
+%br
+%strong Experience Points:
+=@character.xp
+%br
+%strong Alignmet:
+= show_alignment(@character.alignment) # decodes alingment for display
+%br
+%strong Player Name:
+= @character.player_name
+%br
+%br
+-# Render Abilities template if abilities have been saved
+
+= render partial: "abilities/show" if @character.ability
+%br
+= render partial: "skills/show" if @character.skill
+%br
+= render partial: "backgrounds/show" if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
+
