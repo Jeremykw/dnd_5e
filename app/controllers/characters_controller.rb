@@ -50,11 +50,11 @@ class CharactersController < ApplicationController
 	def create
 		@character = Character.create_character(character_params) # Save character based on class
 		if @character.invalid?
-			Background.create_background(@character)			
-			redirect_to new_character_ability_path(@character.id)
-		else
 			flash[:notice] = @character.errors.full_messages
 			redirect_to new_character_path(@character) and return
+		else
+			Background.create_background(@character)			
+			redirect_to new_character_ability_path(@character.id)
 		end
 
 	end
