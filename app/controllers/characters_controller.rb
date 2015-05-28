@@ -22,7 +22,7 @@ class CharactersController < ApplicationController
 
 	def edit
 		@character = Character.find(id_params)
-		@recomended_ability = @character.ability.ability_array
+		@recomended_ability = view_context.load_abilities(@character.ability)
 		if @character.skill
 			@skill_choices = @character.skill_choices - @character.background.background_skills
 			@skills_chose = @character.skill.load_skill_choices

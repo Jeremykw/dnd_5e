@@ -15,7 +15,7 @@ class AbilitiesController < ApplicationController
 			flash[:notice] = "Charcter record does not exits"
 			redirect_to character_index_path and return
 		end		
-		@recomended_ability = Ability.recomended_abilities(@character.character_class) # Ability sujestions based on class
+		@recomended_ability = view_context.recomended_abilities(@character.character_class) # Ability sujestions based on class
 		params[:new_ability] = 1
 	end
 

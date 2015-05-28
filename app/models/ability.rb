@@ -6,29 +6,9 @@ class Ability < ActiveRecord::Base
 	validates_presence_of stats
 	validates_numericality_of stats, only_integer: true, greater_than: 2, less_than: 21
 
-###
-# Load abilities into array for Edit or New forms
-###
-	def self.recomended_abilities(klass) # For Character#new
-		case klass
-		when "fighter"
-			@abilities_array = [15, 13, 14, 8, 10, 12]
-		when "cleric"
-			@abilities_array = [13, 8, 14, 10, 15, 12]
-		when "rouge"
-			@abilities_array = [12, 15, 10, 14, 8, 13]
-		when "wizard"
-			@abilities_array = [8, 13, 14, 15, 10, 12]
-		end		
-	end
-
-	def ability_array # For Character#edit
-		@abilities_array = [str, dex, con, int, wis, char]
-	end
-	
-###
-# Add Racial abbility modifiers befor saving
-###
+	###
+	# Add Racial abbility modifiers befor saving
+	###
 	def add_racial_ability_modifyer		
 		subrace = Character.find(self.character_id).subrace
 		case subrace
