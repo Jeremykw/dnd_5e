@@ -4,11 +4,8 @@
 .new
   -# Show new Character abilities form
   %h1 Abillities
-  = Ability.new_ability_suggestions(@character.character_class)
+  = new_ability_suggestions(@character.character_class)
   %br
-  - if @character.race == "human"
-    As a Human you will automaticaly get +1 to all your ability scores, on save.
-  - else
-    As a #{@character.subrace.capitalize} #{@character.race.capitalize} you will automaticaly get #{Ability.racial_ability_notice(@character.subrace)}, on save.  
+  = racial_ability_notice(@character)
   = form_tag :action => :create do	
     = render :partial => "new_or_edit"
