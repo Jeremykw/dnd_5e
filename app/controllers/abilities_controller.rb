@@ -26,14 +26,13 @@ class AbilitiesController < ApplicationController
 	end
 
 	def update
-		@ability= Ability.find(id_params)
-		@ability.update(ability_params)
-		if @ability.character.character_name
+		@ability= Ability.find(id_params)		
+		if @ability.update(ability_params)
 			flash[:notice] = "#{@ability.character.character_name} has been updated."
 			redirect_to character_path(@ability.character.id) and return
 		else
-			flash[:notice] = "Character has been updated."
-			redirect_to character_path(@ability.character.id) and return
+			flash[:notice] = @ability.errors.full_messages
+			redirect_to edit_character_ability_path(@ability.character, @ability) and return
 		end
 	end
 

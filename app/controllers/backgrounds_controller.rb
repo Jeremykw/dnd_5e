@@ -31,14 +31,13 @@ class BackgroundsController < ApplicationController
 	end
 
 	def update
-		@background = Background.find(character_id_params)
-		@background.update(background_params)
-		if @background.character.character_name
+		@background = Background.find(character_id_params)		
+		if @background.update(background_params)
 			flash[:notice] = "#{@background.character.character_name} has been updated."
 			redirect_to character_path(@background.character.id) and return
 		else
-			flash[:notice] = "Character has been updated."
-			redirect_to character_path(@background.character.id) and return
+			flash[:notice] = @background.errors.full_messages
+			redirect_to edit_character_background_path(@background.character, @background) and return
 		end
 	end
 
