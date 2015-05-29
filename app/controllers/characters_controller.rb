@@ -12,26 +12,19 @@ class CharactersController < ApplicationController
 			@character = Character.find(id_params)
 		else
 			flash[:notice] = "Sorry, record does not exist"
-			redirect_to character_index_path
+			redirect_to characters_path
 		end
 		params[:show] = 1 #indicating if routing from Character Show
 	end
 
 	def edit
 		@character = Character.find(id_params)
-		
-		# if @character.skill
-		# 	@skill_choices = @character.skill_choices - @character.background.background_skills
-		# 	@skills_chose = @character.skill.load_skill_choices
-		# end
 		params[:edit] = 1
 	end
 
 	def update
 		@character = Character.find(id_params)
 		@character.update(character_params)
-		# @character.ability.update(ability_params)
-		# set_skills_to_nil_and_save
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
 		else
@@ -61,21 +54,6 @@ class CharactersController < ApplicationController
 		@character.destroy
 		flash[:notice] = "#{@character.character_name} has been destroyed!"
 		redirect_to characters_path
-	end
-
-	###
-	# skills would not save unselected skills as unselected
-	# setting all to nil prior to updating new skills solved this
-	###
-	def set_skills_to_nil_and_save
-		if @character.skill
-			@character.skill.set_all_skills_to_nil
-			if !@character.skill.update_attributes(skill_params)
-				# flash[:notice] = @character.errors[:skill]
-				flash[:notice] = "You mush chose #{@character.number_of_skill} skills!"
-				redirect_to edit_character_path(@character) and return
-			end
-		end
 	end
 
 ###

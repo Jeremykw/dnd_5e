@@ -43,6 +43,7 @@ class AbilitiesController < ApplicationController
 	def id_params
 		params.require(:id)
 	end
+	
 	def character_id_params
 		params.require(:character_id)
 	end

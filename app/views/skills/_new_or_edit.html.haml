@@ -12,7 +12,7 @@
 - # If rendering from Edit; check skill boxes save in db
 - @skill_choices.each do |skill|
 	= label :skill, skill, "#{skill.to_s.humanize.capitalize}"
-	- if params[:edit] && @skills_chose.include?(skill.to_s)
+	- if @skills_chose.include?(skill.to_s)
 		= check_box_tag "skill[#{skill}]", 1, :checked => "checked"
 	- else 
 		= check_box_tag "skill[#{skill}]"

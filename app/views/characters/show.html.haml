@@ -33,7 +33,8 @@
   = link_to "Create #{@character.character_name}'s Abilities", new_character_ability_path(@character)
 %br
 - if @character.skill
-  = render partial: "skills/show" 
+  = render partial: "skills/show"
+  = link_to "Edit #{@character.character_name}'s Skills", edit_character_skill_path(@character, @character.skill)
 - elsif @character.ability
   = link_to "Create #{@character.character_name}'s Skills",new_character_skill_path(@character) 
 %br
