@@ -21,10 +21,14 @@
 %strong Player Name:
 = @character.player_name
 %br
+- if params[:show] # Show link to edit character only while showing pregenerated/saved character
+  = link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
+%br
 %br
 -# Render Abilities template if abilities have been saved
 - if @character.ability
-  = render partial: "abilities/show" 
+  = render partial: "abilities/show"
+  = link_to "Edit #{@character.character_name}'s Abilities", edit_character_ability_path(@character, @character.ability)
 - else
   = link_to "Create #{@character.character_name}'s Abilities", new_character_ability_path(@character)
 %br
@@ -40,5 +44,3 @@
   = link_to "Create #{@character.character_name}'s Background", new_character_background_path(@character)
 %br
 %br
-- if params[:show] # Show link to edit character only while showing pregenerated/saved character
-  = link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)

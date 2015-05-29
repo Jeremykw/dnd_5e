@@ -19,19 +19,19 @@ class CharactersController < ApplicationController
 
 	def edit
 		@character = Character.find(id_params)
-		@recomended_ability = view_context.load_abilities(@character.ability)
-		if @character.skill
-			@skill_choices = @character.skill_choices - @character.background.background_skills
-			@skills_chose = @character.skill.load_skill_choices
-		end
+		
+		# if @character.skill
+		# 	@skill_choices = @character.skill_choices - @character.background.background_skills
+		# 	@skills_chose = @character.skill.load_skill_choices
+		# end
 		params[:edit] = 1
 	end
 
 	def update
 		@character = Character.find(id_params)
 		@character.update(character_params)
-		@character.ability.update(ability_params)
-		set_skills_to_nil_and_save
+		# @character.ability.update(ability_params)
+		# set_skills_to_nil_and_save
 		if @character.character_name
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
 		else

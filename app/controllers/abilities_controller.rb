@@ -19,15 +19,36 @@ class AbilitiesController < ApplicationController
 		params[:new_ability] = 1
 	end
 
+	def edit
+		if @character = Character.find(character_id_params)
+			@recomended_ability = view_context.load_abilities(@character.ability)
+		end	
+	end
+
+	def update
+		@ability= Ability.find(id_params)
+		@ability.update(ability_params)
+		if @ability.character.character_name
+			flash[:notice] = "#{@ability.character.character_name} has been updated."
+			redirect_to character_path(id_params) and return
+		else
+			flash[:notice] = "Character has been updated."
+			redirect_to character_path(id_params) and return
+		end
+	end
+
 	###
 	# Strong Params
 	###
+	def id_params
+		params.require(:id)
+	end
 	def character_id_params
 		params.require(:character_id)
 	end
 	
 	def ability_params
-		params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char)
+		params.require(:ability).permit(:str, :dex, :con, :int, :wis, :char, :id)
 	end
 end
 
