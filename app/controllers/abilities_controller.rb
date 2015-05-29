@@ -30,10 +30,10 @@ class AbilitiesController < ApplicationController
 		@ability.update(ability_params)
 		if @ability.character.character_name
 			flash[:notice] = "#{@ability.character.character_name} has been updated."
-			redirect_to character_path(id_params) and return
+			redirect_to character_path(@ability.character.id) and return
 		else
 			flash[:notice] = "Character has been updated."
-			redirect_to character_path(id_params) and return
+			redirect_to character_path(@ability.character.id) and return
 		end
 	end
 
