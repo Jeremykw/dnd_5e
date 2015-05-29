@@ -11,7 +11,10 @@
 = text_area :background, :flaw, :value => background_suggestion(@character)[3]
 
 = label :background, :back_story, "Back Story:"
-= text_area :background, :back_story, :placeholder => "Fill in Backstory here"
+- if params[:new]
+  = text_area :background, :back_story, :placeholder => "Fill in Backstory here"
+- else
+  = text_area :background, :back_story, :value => background_suggestion(@character)[4] 
 
 = submit_tag "Save background"
 and continue

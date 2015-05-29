@@ -14,7 +14,8 @@ class BackgroundsController < ApplicationController
 
 	end
 
-	def new		
+	def new	
+		params[:new] = 1	
 		# Redirect to index if character not found
 		if !@character = Character.find(character_id_params)
 			flash[:notice] = "Charcter record does not exits"
@@ -22,6 +23,22 @@ class BackgroundsController < ApplicationController
 		end
 		if @character.skill # Hash with skill ability dependancy; Skill.rb
 			@skill_ability = @character.skill.skill_ability 
+		end
+	end
+
+	def edit
+		@character = Character.find(character_id_params)
+	end
+
+	def update
+		@background = Background.find(character_id_params)
+		@background.update(background_params)
+		if @background.character.character_name
+			flash[:notice] = "#{@background.character.character_name} has been updated."
+			redirect_to character_path(@background.character.id) and return
+		else
+			flash[:notice] = "Character has been updated."
+			redirect_to character_path(@background.character.id) and return
 		end
 	end
 

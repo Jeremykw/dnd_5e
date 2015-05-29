@@ -40,7 +40,8 @@
 %br
 
 - if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
-  = render partial: "backgrounds/show" 
+  = render partial: "backgrounds/show"
+  = link_to "Edit #{@character.character_name}'s Background", edit_character_background_path(@character, @character.background)
 - else
   = link_to "Create #{@character.character_name}'s Background", new_character_background_path(@character)
 %br
