@@ -2,9 +2,6 @@ class CharactersController < ApplicationController
 
 	def index 
 		@characters = Character.all
-		#raise @characters.inspect
-		#@characters.sort_by!{|name| name.character_name.downcase}
-
 	end
 
 	def show
@@ -24,13 +21,15 @@ class CharactersController < ApplicationController
 
 	def update
 		@character = Character.find(id_params)
-		@character.update(character_params)
-		if @character.character_name
+		
+		if @character.update(character_params)
 			flash[:notice] = "#{character_params[:character_name]} has been updated."
+			redirect_to character_path(id_params) and return
 		else
-			flash[:notice] = "Character has been updated."
+			flash[:notice] = @character.errors.full_messages
+			redirect_to edit_character_path(@character)
 		end
-		redirect_to character_path(id_params) and return
+		
 	end
 
 	def new

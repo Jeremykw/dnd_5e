@@ -1,16 +1,14 @@
-- if @character.character_name.blank?
-	%h1 Edit Character Details
-- elsif @character
-	%h1 Edit #{@character.character_name}'s Details
-
+.show
+  = render partial: "characters/show" # show saved character states
+%h1 Character Details
 -# Show edit Character form
-= form_tag character_path(@character), :method => :put do	
-	= render partial: "new_or_edit"  # Show edit character form
-	/ = render "abilities/new_or_edit" # Show edit abilities form
-	/ - if @character.skill 					 # Show edit skill form if skill
-	/ 	= render "skills/new_or_edit"
-	/ - else													 # Show link to new skill form if !skill
-	/ 	= link_to "Select Skills", new_character_skill_path(@character)
+= form_tag character_path(@character), :method => :put do 
+  = render partial: "new_or_edit"  # Show edit character form
+  / = render "abilities/new_or_edit" # Show edit abilities form
+  / - if @character.skill            # Show edit skill form if skill
+  /   = render "skills/new_or_edit"
+  / - else                           # Show link to new skill form if !skill
+  /   = link_to "Select Skills", new_character_skill_path(@character)
 
 
 
