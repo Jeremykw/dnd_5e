@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514191907) do
+ActiveRecord::Schema.define(version: 20150530160333) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "str"
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 20150514191907) do
     t.boolean "stealth"
     t.boolean "survival"
     t.integer "character_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "user_name"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
