@@ -1,6 +1,6 @@
 module BackgroundsHelper
 	def background_suggestion(character)
-    if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
+    if character.background.personality || character.background.ideal || character.background.flaw || character.background.back_story
       backgrounds = [character.background.personality]
       backgrounds << character.background.ideal
       backgrounds << character.background.bond

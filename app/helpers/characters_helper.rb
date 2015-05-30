@@ -33,4 +33,14 @@ module CharactersHelper
 		end
 	end
 
+	def continue_character_creation(character)
+		if !character.ability
+  		render_haml(link_to "Create #{@character.character_name}'s Abilities", new_character_ability_path(@character) )
+  	elsif !character.skill
+  		render_haml(link_to "Create #{@character.character_name}'s Skills",new_character_skill_path(@character) )
+		elsif !character.background.personality && !character.background.ideal && !character.background.flaw && !character.background.back_story
+			render_haml(link_to "Create #{@character.character_name}'s Background", new_character_background_path(@character) )
+		end
+	end
+
 end
