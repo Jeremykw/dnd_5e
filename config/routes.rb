@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	Dnd5e::Application.routes.draw do
-	    
+	    resources :users
 	    resources :characters do
 		  	resources :abilities
 		  	resources :skills
