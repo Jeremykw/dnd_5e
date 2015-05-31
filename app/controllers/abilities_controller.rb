@@ -1,5 +1,7 @@
 class AbilitiesController < ApplicationController	
 	
+		before_action :confirm_logged_in
+	
 	def create
 		@character = Character.find(character_id_params)	
 		if @character.create_ability(ability_params).invalid?
@@ -35,6 +37,8 @@ class AbilitiesController < ApplicationController
 			redirect_to edit_character_ability_path(@ability.character, @ability) and return
 		end
 	end
+
+	private
 
 	###
 	# Strong Params

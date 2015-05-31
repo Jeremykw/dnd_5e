@@ -3,4 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  private
+
+  def confirm_logged_in
+    unless session[:authorized_user_id]
+      flash[:notice] = 'Please log in.'
+      redirect_to login_path
+      return false
+    else
+      return true
+    end
+  end
+  
 end

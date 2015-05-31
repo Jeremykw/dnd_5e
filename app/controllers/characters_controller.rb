@@ -1,5 +1,7 @@
 class CharactersController < ApplicationController
 
+	before_action :confirm_logged_in
+
 	def index 
 		@characters = Character.all
 	end
@@ -54,6 +56,8 @@ class CharactersController < ApplicationController
 		flash[:notice] = "#{@character.character_name} has been destroyed!"
 		redirect_to characters_path
 	end
+
+	private
 
 ###
 # Strong Params

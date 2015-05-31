@@ -1,4 +1,7 @@
 class SkillsController < ApplicationController
+	
+	before_action :confirm_logged_in
+
 	def new
 		@character ||= Character.find(character_id_params)
 		@skill_choices = @character.skill_choices - @character.background.background_skills

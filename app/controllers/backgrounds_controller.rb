@@ -1,4 +1,6 @@
 class BackgroundsController < ApplicationController	
+
+	before_action :confirm_logged_in
 	
 	def show
 
@@ -40,6 +42,8 @@ class BackgroundsController < ApplicationController
 			redirect_to edit_character_background_path(@background.character, @background) and return
 		end
 	end
+
+	private
 
 	###
 	# Strong Params

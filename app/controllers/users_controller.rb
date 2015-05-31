@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def new
     @user = User.new
   end
@@ -25,7 +26,9 @@ class UsersController < ApplicationController
       end
     end
     if authorized_user
-      session[:authorized_user_id] = found_user.id
+      session[:authorized_user_id] = authorized_user.id
+      session[:namn] = authorized_user.first_name
+      session[:email] = authorized_user.email 
       flash[:notice] = "Welcome #{found_user.first_name}, you are now logged in"
       redirect_to characters_path and return
     else
@@ -35,13 +38,15 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:user_id] = nil
+    session[:authorized_user_id] = nil
+    session[:namn] = nil
+    session[:email] = nil
     flash[:notice] = "You have logged out"
     redirect_to login_path
   end
 
-
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
