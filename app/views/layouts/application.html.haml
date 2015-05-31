@@ -8,6 +8,11 @@
 
   %body
     #title= link_to "Dungons and Dragons 5th Edition, Character Builder", characters_path
+    #login_logout      
+      - if !session[:authorized_user_id]
+        = link_to "login", login_path
+      - else
+        = link_to "logout", logout_path unless params[:action] == 'login'
     - if flash[:notice]
       #notice.message= flash[:notice]
     - if flash[:warning]

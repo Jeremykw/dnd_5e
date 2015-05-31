@@ -19,6 +19,12 @@ html, body {
 #title {
   color: DarkSlateGrey;
   font-size: 20pt;
+
+}
+#login_logout {
+  float: right;
+  display: inline-block;
+  margin: 5pt
 }
 div#main {
   margin: 0;

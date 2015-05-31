@@ -4,21 +4,42 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to characters_path
+    if @user = User.create(user_params)
+      session[:authorized_user_id] = @user.id
+      flash[:notice] = "Welcome #{@user.first_name}, you are now logged in"
+      redirect_to characters_path
+    else
+      flash[:notice] = "Authentication fails, try agin"
+      reditect_to user_path
+    end    
   end
 
-  def edit
-
+  def login
+    # TO USER LOG IN FORM
   end
 
-  def update
-
+  def attempt_login
+    if user_params[:email].present? && user_params[:password].present?
+      if found_user = User.find_by_email(user_params[:email])
+        authorized_user = found_user.authenticate(user_params[:password])
+      end
+    end
+    if authorized_user
+      session[:authorized_user_id] = found_user.id
+      flash[:notice] = "Welcome #{found_user.first_name}, you are now logged in"
+      redirect_to characters_path and return
+    else
+      flash[:notice] = "Sorry, invalid Email Address or Password"
+      redirect_to login_path and return
+    end
   end
 
-  def destroy
-
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "You have logged out"
+    redirect_to login_path
   end
+
 
   private
   def user_params
