@@ -5,13 +5,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @user = User.create(user_params)
+    @user = User.create(user_params)
+    if @user.invalid?
+      flash[:notice] = @user.errors.full_messages
+      redirect_to new_user_path
+    else
       session[:authorized_user_id] = @user.id
       flash[:notice] = "Welcome #{@user.first_name}, you are now logged in"
       redirect_to characters_path
-    else
-      flash[:notice] = "Authentication fails, try agin"
-      reditect_to user_path
     end    
   end
 
