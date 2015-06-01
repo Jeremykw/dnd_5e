@@ -9,18 +9,20 @@ html, body {
 .show {
   display: inline-block;
   float: left;
-  width: 25%;
+  margin-right: 5px;
+  width: 35%;
+
 }
 .new{
   display: inline-block;
-
-  width: 25%;
+  margin: 5px;
+  width: 35%;
 }
 #title {
   color: DarkSlateGrey;
   font-size: 20pt;
-  max-width: 75%;
   display: inline-block;
+  margin: 5px;
 
 }
 #login_logout {
@@ -44,6 +46,7 @@ h1 {
   font-style: italic;
   display: block;
   width: 100%;
+
   border-bottom: 1px solid DarkSlateGrey;
 }
 h1.title {

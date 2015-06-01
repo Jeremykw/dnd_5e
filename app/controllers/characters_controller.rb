@@ -54,9 +54,10 @@ class CharactersController < ApplicationController
 
 	def destroy
 		@character = Character.find(id_params)
-		@character.destroy
-		flash[:notice] = "#{@character.character_name} has been destroyed!"
-		redirect_to characters_path
+		if @character.destroy
+			flash[:notice] = "#{@character.character_name} has been destroyed!"
+			redirect_to characters_path
+		end
 	end
 
 	private

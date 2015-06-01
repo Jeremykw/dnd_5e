@@ -11,8 +11,7 @@ class UsersController < ApplicationController
         redirect_to edit_user_path(id_params)
       else
         flash[:notice] = "#{@user.first_name.capitalize} has been updated"
-        session[:namn] = @user.first_name
-        session[:email] = @user.email 
+        set_user_session(@user)
         redirect_to root_path
       end
     end
@@ -28,8 +27,8 @@ class UsersController < ApplicationController
       flash[:notice] = @user.errors.full_messages
       redirect_to new_user_path(user_params)
     else
-      session[:authorized_user_id] = @user.id
-      flash[:notice] = "Welcome #{@user.first_name}, you are now logged in"
+      set_user_session(@user)
+      flash[:notice] = "Welcome #{@user.first_name}!"
       redirect_to characters_path
     end    
   end
@@ -45,9 +44,7 @@ class UsersController < ApplicationController
       end
     end
     if authorized_user
-      session[:authorized_user_id] = authorized_user.id
-      session[:namn] = authorized_user.first_name
-      session[:email] = authorized_user.email 
+      set_user_session(authorized_user)
       flash[:notice] = "Welcome #{found_user.first_name}, you are now logged in"
       redirect_to characters_path and return
     else
@@ -57,14 +54,36 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:authorized_user_id] = nil
-    session[:namn] = nil
-    session[:email] = nil
+    set_user_session(nil)
     flash[:notice] = "You have logged out"
     redirect_to login_path
   end
 
+  def delete
+    @user = User.find(id_params)
+    if @user.destroy
+      flash[:notice] = "#{@user.first_name} has been Deleted"
+      set_user_session(nil) 
+      redirect_to login_path and return
+    else
+      flash[:notice] = "#{@user.first_name} was not Deleted"
+      redirect_to edit_user_path(id_params)
+    end
+  end
+
   private
+
+  def set_user_session(user)    
+    if user
+      session[:authorized_user_id] = user.id
+      session[:name] = user.first_name
+      session[:email] = user.email
+    else
+      session[:authorized_user_id] = nil
+      session[:name] = nil
+      session[:email] = nil
+    end
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)

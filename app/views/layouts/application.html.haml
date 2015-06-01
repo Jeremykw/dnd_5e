@@ -10,7 +10,7 @@
     #title= link_to "Dungons and Dragons 5th Edition, Character Builder", characters_path
     #login_logout      
       - if session[:authorized_user_id]
-        = link_to "#{session[:namn]}, edit", edit_user_path(session[:authorized_user_id])
+        = link_to "#{session[:name]}, edit", edit_user_path(session[:authorized_user_id])
         = link_to "logout", logout_path 
 
     - if flash[:notice]

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 	Dnd5e::Application.routes.draw do
-    resources :users
+    resources :users do
+    	member do
+    		get :delete
+    	end
+    end
     resources :characters do
 	  	resources :abilities, :except => [:show]
 	  	resources :skills, :except => [:show]
