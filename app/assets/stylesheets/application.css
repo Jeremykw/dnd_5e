@@ -19,12 +19,14 @@ html, body {
 #title {
   color: DarkSlateGrey;
   font-size: 20pt;
+  max-width: 75%;
+  display: inline-block;
 
 }
 #login_logout {
   float: right;
   display: inline-block;
-  margin: 5pt
+  margin: 10pt;
 }
 div#main {
   margin: 0;
@@ -72,6 +74,7 @@ table#characters th, table#characters td {
   background: rosybrown;
   margin: 1em 0;
   padding: 4px;
+  margin: 10px;
 }
 form label {
   display: block;

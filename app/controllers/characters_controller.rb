@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
 	before_action :confirm_logged_in
 
 	def index 
-		@characters = Character.all
+		@characters = Character.where(user_id:  session[:authorized_user_id])
 	end
 
 	def show
@@ -39,7 +39,8 @@ class CharactersController < ApplicationController
 	end
 
 	def create
-		@character = Character.create_character(character_params) # Save character based on class
+		@character = Character.create_character(character_params, session[:authorized_user_id]) # Save character based on class
+
 		if @character.invalid?
 			flash[:notice] = @character.errors.full_messages
 			redirect_to new_character_path(@character) and return

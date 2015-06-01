@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150530160333) do
     t.string  "alignment"
     t.integer "xp"
     t.string  "type"
+    t.integer "user_id"
   end
 
   create_table "skills", force: :cascade do |t|

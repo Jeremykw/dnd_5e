@@ -27,7 +27,8 @@ class Character < ActiveRecord::Base
 	###
 	# Create Character by Class
 	###
-	def self.create_character(character)
+	def self.create_character(char, user)
+		character = char.merge( :user_id => user )
 		case character[:character_class]
 		when "fighter"
 			@character = Fighter.create(character)

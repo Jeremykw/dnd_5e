@@ -12,6 +12,7 @@ class CreateCharacters < ActiveRecord::Migration
   		c.string 'alignment'
   		c.integer 'xp'
   		c.string 'type' # For single table inheratance of Character_class
+      c.integer 'user_id'
   		c.timestamp
     end
   end
