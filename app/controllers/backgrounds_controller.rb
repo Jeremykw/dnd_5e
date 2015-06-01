@@ -1,7 +1,7 @@
 class BackgroundsController < ApplicationController	
 
 	before_action :confirm_logged_in
-	
+	before_action :confirm_user_posession_of_character, :except => [:index, :new, :create, :update]
 	def show
 
 	end
@@ -23,8 +23,8 @@ class BackgroundsController < ApplicationController
 			flash[:notice] = "Charcter record does not exits"
 			redirect_to character_index_path
 		end
-		if @character.skill # Hash with skill ability dependancy; Skill.rb
-			@skill_ability = @character.skill.skill_ability 
+		if @character.skill # Hash with skill background dependancy; Skill.rb
+			@skill_background = @character.skill.background_skills 
 		end
 	end
 
@@ -45,6 +45,21 @@ class BackgroundsController < ApplicationController
 
 	private
 
+	def confirm_user_posession_of_character
+		if Background.exists?(id_params)
+			@background = Background.find(id_params)
+			if @background.character.user_id != session[:authorized_user_id]
+				flash[:notice] = "Incorrect Character ID, Permission denied"
+				redirect_to characters_path
+			else
+				true
+			end
+		else
+			flash[:notice] = "Character does not exist"
+			redirect_to characters_path
+		end
+	end
+
 	###
 	# Strong Params
 	###
@@ -54,6 +69,10 @@ class BackgroundsController < ApplicationController
 
 	def character_id_params
 		params.require(:character_id)
+	end
+
+	def id_params
+		params.require(:id)
 	end
 
 end

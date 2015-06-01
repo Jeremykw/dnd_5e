@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.invalid?
       flash[:notice] = @user.errors.full_messages
-      redirect_to new_user_path
+      redirect_to new_user_path(user_params)
     else
       session[:authorized_user_id] = @user.id
       flash[:notice] = "Welcome #{@user.first_name}, you are now logged in"

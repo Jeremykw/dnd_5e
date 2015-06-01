@@ -1,6 +1,7 @@
 class AbilitiesController < ApplicationController	
 	
 		before_action :confirm_logged_in
+		before_action :confirm_user_posession_of_character, :except => [:index, :new, :create, :update]
 	
 	def create
 		@character = Character.find(character_id_params)	
@@ -39,6 +40,21 @@ class AbilitiesController < ApplicationController
 	end
 
 	private
+
+	def confirm_user_posession_of_character
+		if Ability.exists?(id_params)
+			@ability = Ability.find(id_params)
+			if @ability.character.user_id != session[:authorized_user_id]
+				flash[:notice] = "Incorrect Character ID, Permission denied"
+				redirect_to characters_path
+			else
+				true
+			end
+		else
+			flash[:notice] = "Character does not exist"
+			redirect_to characters_path
+		end
+	end
 
 	###
 	# Strong Params

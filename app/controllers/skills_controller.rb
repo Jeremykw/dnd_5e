@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
 	
 	before_action :confirm_logged_in
+	before_action :confirm_user_posession_of_character, :except => [:index, :new, :create, :update]
 
 	def new
 		@character ||= Character.find(character_id_params)
@@ -35,7 +36,20 @@ class SkillsController < ApplicationController
 	end
 
 	private
-
+	def confirm_user_posession_of_character
+		if Skill.exists?(id_params)
+			@skill = Skill.find(id_params)
+			if @skill.character.user_id != session[:authorized_user_id]
+				flash[:notice] = "Incorrect Character ID, Permission denied"
+				redirect_to characters_path
+			else
+				true
+			end
+		else
+			flash[:notice] = "Character does not exist"
+			redirect_to characters_path
+		end
+	end
 	###
 	# skills would not save unselected skills as unselected
 	# setting all to nil prior to updating new skills solved this

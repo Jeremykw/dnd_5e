@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
 
 	before_action :confirm_logged_in
+	before_action :confirm_user_posession_of_character, :except => [:index, :new, :create, :update]
 
 	def index 
 		@characters = Character.where(user_id:  session[:authorized_user_id])
@@ -17,7 +18,7 @@ class CharactersController < ApplicationController
 	end
 
 	def edit
-		@character = Character.find(id_params)
+		@character = Character.find(id_params) if Character.exists?(id_params)
 		params[:edit] = 1
 	end
 
@@ -59,6 +60,18 @@ class CharactersController < ApplicationController
 	end
 
 	private
+
+	def confirm_user_posession_of_character
+		if Character.exists?(id_params)
+			@character = Character.find(id_params)
+			if @character.user_id != session[:authorized_user_id]
+				flash[:notice] = "Incorect Character ID, please try again"
+				redirect_to characters_path
+			else
+				true
+			end
+		end
+	end
 
 ###
 # Strong Params
