@@ -23,8 +23,11 @@ class BackgroundsController < ApplicationController
 			flash[:notice] = "Charcter record does not exits"
 			redirect_to character_index_path
 		end
-		if @character.skill # Hash with skill background dependancy; Skill.rb
-			@skill_background = @character.skill.background_skills 
+		# if @character.skill # Hash with skill background dependancy; Skill.rb
+		# 	@skill_background = @character.skill.background_skills 
+		# end
+		if @character.skill # Hash with skill ability dependancy; Skill.rb
+			@skill_ability = @character.skill.skill_ability 
 		end
 	end
 

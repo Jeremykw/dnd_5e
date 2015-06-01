@@ -1,5 +1,23 @@
 class UsersController < ApplicationController
   
+  def edit
+    @user = User.find(id_params) if User.exists?(id_params)
+  end
+
+  def update
+    if @user = User.find(id_params)
+      unless @user.update(user_params)
+        flash[:notice] = @user.errors.full_messages
+        redirect_to edit_user_path(id_params)
+      else
+        flash[:notice] = "#{@user.first_name.capitalize} has been updated"
+        session[:namn] = @user.first_name
+        session[:email] = @user.email 
+        redirect_to root_path
+      end
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -50,6 +68,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def id_params
+    params.require(:id)
   end
 
 end

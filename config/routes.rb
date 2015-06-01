@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 	Dnd5e::Application.routes.draw do
     resources :users
     resources :characters do
-	  	resources :abilities
-	  	resources :skills
-      resources :backgrounds
+	  	resources :abilities, :except => [:show]
+	  	resources :skills, :except => [:show]
+      resources :backgrounds, :except => [:show]
 		end
     post 'login', :to => "users#attempt_login"
     get 'login', :to => 'users#login'
