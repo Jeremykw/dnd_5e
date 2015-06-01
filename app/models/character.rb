@@ -1,4 +1,6 @@
 class Character < ActiveRecord::Base
+	belongs_to :user
+	
 	has_one :ability, dependent: :destroy
 	has_one :skill, dependent: :destroy
 	has_one :background, dependent: :destroy
