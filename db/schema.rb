@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530160333) do
+ActiveRecord::Schema.define(version: 20150601235543) do
 
   create_table "abilities", force: :cascade do |t|
     t.integer  "str"
@@ -50,6 +50,26 @@ ActiveRecord::Schema.define(version: 20150530160333) do
     t.integer "xp"
     t.string  "type"
     t.integer "user_id"
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "item"
+    t.integer  "weight"
+    t.string   "properties"
+    t.integer  "cost"
+    t.integer  "ac"
+    t.boolean  "dex_mod"
+    t.boolean  "dex_mod_max"
+    t.integer  "str_min"
+    t.boolean  "stealth_disadvantage"
+    t.integer  "damage_min"
+    t.integer  "damage_max"
+    t.boolean  "ranged"
+    t.integer  "speed"
+    t.boolean  "waterborne"
+    t.string   "type"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "skills", force: :cascade do |t|
