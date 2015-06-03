@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150601235543) do
     t.integer "user_id"
   end
 
-  create_table "equipment", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "item"
     t.integer  "weight"
     t.string   "properties"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150601235543) do
     t.boolean  "ranged"
     t.integer  "speed"
     t.boolean  "waterborne"
-    t.string   "type"
+    t.string   "catagory"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
