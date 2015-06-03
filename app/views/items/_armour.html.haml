@@ -1,0 +1,19 @@
+%h1 Armour
+%table#characters
+	%thead
+		%tr
+			%th Armour
+			%th Cost
+			%th Armour Class (AC)
+			%th Strength
+			%th Stealth
+			%th Weight
+	%tbody
+		- @armour.each do |k, v|
+			%tr
+				%td= name(k, v)
+				%td= v[:cost]
+				%td= display_armour_class(v)
+				%td= if !v[:strength] then "---" else v[:strength] end
+				%td= "Disadvantage" if v[:stealth]
+				%td= weight(v[:weight])

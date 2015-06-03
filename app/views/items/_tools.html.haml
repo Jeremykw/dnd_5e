@@ -1,0 +1,13 @@
+%h1 Tools
+%table#characters
+	%thead
+		%tr
+			%th Name
+			%th Cost
+			%th Weight
+	%tbody
+		- @tools.each do |k, v|
+			%tr
+				%td= name(k, v)
+				%td= cost_converter(v[:cost])
+				%td= weight(v[:weight])

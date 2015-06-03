@@ -1,23 +1,7 @@
-%h1 Armour
-%table#characters
-	%thead
-		%tr
-			%th Armour
-			%th Cost
-			%th Armour Class (AC)
-			%th Strength
-			%th Stealth
-			%th Weight
-	%tbody
-		- @armour.each do |i|
-			%tr
-				%td= i.item
-				%td= i.cost
-%h1 Weapons
-
-%h1 Adventuring Gear
-
-%h1 Tools
+= render partial: "armour"
+= render partial: "weapons"
+= render partial: "adventuring_gear"
+= render partial: "tools"
 
 %h1 Vehicles
 

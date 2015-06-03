@@ -1,0 +1,17 @@
+%h1 Weapons
+%table#characters
+	%thead
+		%tr
+			%th Name
+			%th Cost
+			%th Damage
+			%th Weight
+			%th Properties
+	%tbody
+		- @weapons.each do |k, v|
+			%tr
+				%td= name(k, v)
+				%td= cost_converter(v[:cost])
+				%td= v[:damage]
+				%td= weight(v[:weight])
+				%td= v[:properties]

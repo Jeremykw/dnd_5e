@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
 
 	def index
-		@armour = Item.where(:catagory => 'armour')
-		@weapons = Item.where(:catagory => 'weapon')
-		@gear = Item.where(:catagory => 'gear')
-		@tools = Item.where(:catagory => 'tool')
-		@vehicle = Item.where(:catagory => 'vehicle')
-		@mounts = Item.where(:catagory => 'mounts')
+		@armour = Item.armour
+		@weapons = Item.weapons
+		@adventuring_gear = Item.adventuring_gear
+		@tools = Item.tools
+		# @vehicle = Item.where(:catagory => 'vehicle')
+		# @mounts = Item.where(:catagory => 'mounts')
 	end
 
 	private
