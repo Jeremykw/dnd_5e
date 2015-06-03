@@ -54,22 +54,10 @@ ActiveRecord::Schema.define(version: 20150601235543) do
 
   create_table "items", force: :cascade do |t|
     t.string   "item"
-    t.integer  "weight"
-    t.string   "properties"
-    t.integer  "cost"
-    t.integer  "ac"
-    t.boolean  "dex_mod"
-    t.boolean  "dex_mod_max"
-    t.integer  "str_min"
-    t.boolean  "stealth_disadvantage"
-    t.integer  "damage_min"
-    t.integer  "damage_max"
-    t.boolean  "ranged"
-    t.integer  "speed"
-    t.boolean  "waterborne"
-    t.string   "catagory"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "character_id"
+    t.integer  "quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "skills", force: :cascade do |t|

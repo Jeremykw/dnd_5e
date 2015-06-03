@@ -1,19 +1,4 @@
 class ItemsController < ApplicationController
-	def new
-		@item = Item.new
-	end
-
-	def create
-		@item = Item.new(item_params)
-		if @item.valid?
-			@item.save
-			flash[:notice] = "#{@item.item} has been created!"
-			redirect_to items_path and return
-		else 
-			flash[:notice] = "Item was not sucsessfully created!"
-			redirect_to new_item_path(@item) and return
-		end
-	end
 
 	def index
 		@armour = Item.where(:catagory => 'armour')
