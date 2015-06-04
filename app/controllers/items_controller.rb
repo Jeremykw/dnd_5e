@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
 
 	def index
 
-		@armour = Item.armour
+		armour = Item.armour.group_by { |t| t[:category] }
+		@armour = {"light" => armour["light"], "medium" => armour["medium"], "heavy" => armour["heavy"]}
 		@weapons = Item.weapons
 		@adventuring_gear = Item.adventuring_gear
 		@tools = Item.tools

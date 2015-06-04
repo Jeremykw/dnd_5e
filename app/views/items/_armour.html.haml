@@ -9,11 +9,14 @@
 			%th Stealth
 			%th Weight
 	%tbody
-		- @armour.each do |k, v|
-			%tr
-				%td= name(k, v)
-				%td= v[:cost]
-				%td= display_armour_class(v)
-				%td= if !v[:strength] then "---" else v[:strength] end
-				%td= "Disadvantage" if v[:stealth]
-				%td= weight(v[:weight])
+		- @armour.each do |category, items|
+			%td
+				%strong= category.to_s.capitalize
+			- items.each do |item|
+				%tr
+					%td= item[:name]
+					%td= cost_converter(item[:cost])
+					%td= display_armour_class(item)
+					%td= if !item[:strength] then "---" else item[:strength] end
+					%td= "Disadvantage" if item[:stealth]
+					%td= weight(item[:weight])
