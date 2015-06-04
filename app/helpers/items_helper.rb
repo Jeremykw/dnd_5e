@@ -22,11 +22,12 @@ module ItemsHelper
 		cost
 	end
 
-	def name(k, n)
-		if n[:name]
-			n[:name]
+	def name(k, v)
+
+		if v[:name]
+			link_to "#{v[:name]}", item_path()
 		else
-			k.to_s.capitalize 
+			link_to "#{k.to_s.capitalize}", item_path()
 		end
 	end
 

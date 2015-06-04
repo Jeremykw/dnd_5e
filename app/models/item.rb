@@ -31,4 +31,16 @@ class Item < ActiveRecord::Base
 			:alchemist => { :name => "Alchemist's supplies", :cost => 50, :weight => 8, :category => :artisan}
 		}
 	end
+
+	def self.vehicles
+		{
+			:horse => { :cost => 25, :weight => 578}
+		}
+	end
+
+	def self.mounts
+		{
+			:horse => { :cost => 100, :weight => 1000}
+		}
+	end
 end
