@@ -1,4 +1,6 @@
 class Character < ActiveRecord::Base
+	Dir['app/models/klasses/*.rb'].each {|file| require_dependency file }
+
 	belongs_to :user
 	
 	has_one :ability, dependent: :destroy

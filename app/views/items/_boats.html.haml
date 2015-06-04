@@ -6,7 +6,7 @@
       %th Cost
       %th Weight
   %tbody
-    - @vehicles.each do |k, v|
+    - @boats.each do |k, v|
       %tr
         %td= name(k, v)
         %td= cost_converter(v[:cost])

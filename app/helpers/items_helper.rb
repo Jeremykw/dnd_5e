@@ -25,9 +25,9 @@ module ItemsHelper
 	def name(k, v)
 
 		if v[:name]
-			link_to "#{v[:name]}", item_path()
+			link_to "#{v[:name]}", item_path(k, :item => v)
 		else
-			link_to "#{k.to_s.capitalize}", item_path()
+			link_to "#{k.to_s.capitalize}", item_path(k, :item => v, :name => k)
 		end
 	end
 

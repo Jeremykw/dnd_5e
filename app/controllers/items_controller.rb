@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
 
 	def index
+
 		@armour = Item.armour
 		@weapons = Item.weapons
 		@adventuring_gear = Item.adventuring_gear
 		@tools = Item.tools
-		@vehicles = Item.vehicles
+		@boats = Item.boats
 		@mounts = Item.mounts
 	end
 

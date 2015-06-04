@@ -1,4 +1,6 @@
 class Background < ActiveRecord::Base
+	Dir['app/models/backgrounds/*.rb'].each {|file| require_dependency file }
+
 	belongs_to :character
 
 	###
