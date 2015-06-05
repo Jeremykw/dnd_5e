@@ -38,4 +38,15 @@ module ItemsHelper
 			"#{lb} lb" 
 		end
 	end
+
+	def categorize_items(items)
+		items.group_by do |t| 
+			if t[:category]
+				t[:category]
+			else
+				t[:name]
+			end
+		end
+	end
+	
 end

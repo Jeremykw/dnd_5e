@@ -1,27 +1,27 @@
 %h1 Adventuring Gear
 %table#characters
-	%thead
-		%tr
-			%th Name
-			%th Cost
-			%th Weight
-	%tbody
-		- @adventuring_gear.each do |k, v|
-			%tr
-				%td= name(k, v)
-				%td= cost_converter(v[:cost])
-				%td= weight(v[:weight])
-
-
-	/ %tbody
-	/ 	- @weapons.each do |category, items|
-	/ 		- sorted_items = items.sort_by { |hsh| hsh[:cost] }
-	/ 		%td
-	/ 			%strong= category.humanize.capitalize
-	/ 		- sorted_items.each do |item|
-	/ 			%tr
-	/ 				%td= item[:name]
-	/ 				%td= cost_converter(item[:cost])
-	/ 				%td= item[:damage]
-	/ 				%td= weight(item[:weight])
-	/ 				%td= item[:properties]
+  %thead
+    %tr
+      %th Name
+      %th Cost
+      %th Weight
+  %tbody
+    -itemss = categorize_items(@adventuring_gear).sort
+    - itemss.each do |category, items|
+      - sorted_items = items.sort_by { |hsh| hsh[:name] }
+      / = sorted_items.inspect
+      - if items.count > 1
+        %td
+          %strong= category.humanize.capitalize
+        - sorted_items.each do |item|
+          %tr
+            %td
+              %em= "_#{item[:name]}"
+            %td= cost_converter(item[:cost])
+            %td= weight(item[:weight])
+      - else
+        - sorted_items.each do |item|
+          %tr
+            %td= item[:name]
+            %td= cost_converter(item[:cost])
+            %td= weight(item[:weight])
