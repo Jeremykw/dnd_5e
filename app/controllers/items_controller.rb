@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
 		armour = Item.armour.group_by { |t| t[:category] }
 		@armour = {"light" => armour["light"], "medium" => armour["medium"], "heavy" => armour["heavy"]}
-		@weapons = Item.weapons
+		@weapons = Item.weapons.group_by { |t| t[:category] }
 		@adventuring_gear = Item.adventuring_gear
 		@tools = Item.tools
 		@boats = Item.boats

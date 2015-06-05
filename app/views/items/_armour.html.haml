@@ -10,9 +10,10 @@
 			%th Weight
 	%tbody
 		- @armour.each do |category, items|
+			- sorted_items= items.sort_by { |hsh| hsh[:cost] }
 			%td
 				%strong= category.to_s.capitalize
-			- items.each do |item|
+			- sorted_items.each do |item|
 				%tr
 					%td= item[:name]
 					%td= cost_converter(item[:cost])

@@ -8,10 +8,14 @@
 			%th Weight
 			%th Properties
 	%tbody
-		- @weapons.each do |k, v|
-			%tr
-				%td= name(k, v)
-				%td= cost_converter(v[:cost])
-				%td= v[:damage]
-				%td= weight(v[:weight])
-				%td= v[:properties]
+		- @weapons.each do |category, items|
+			- sorted_items = items.sort_by { |hsh| hsh[:name] }
+			%td
+				%strong= category.humanize.capitalize
+			- sorted_items.each do |item|
+				%tr
+					%td= item[:name]
+					%td= cost_converter(item[:cost])
+					%td= item[:damage]
+					%td= weight(item[:weight])
+					%td= item[:properties]
