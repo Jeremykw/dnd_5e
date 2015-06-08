@@ -1,0 +1,9 @@
+%h1 Tack, Harness, and Draw Vehicles
+%table#characters
+  %thead
+    %tr
+      %th Name
+      %th Cost
+      %th Weight
+  %tbody
+    = render partial: "items_categorized", :locals => { :itemss => categorize_items(@tack).sort }

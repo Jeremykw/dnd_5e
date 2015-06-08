@@ -12,6 +12,8 @@ module ItemsHelper
 
 	def cost_converter(gold)
 		case
+		when gold.is_a?(String)
+			cost = gold
 		when gold >= 1
 			cost = "#{gold} gp"
 		when gold < 1 && gold >= 0.1
@@ -23,7 +25,6 @@ module ItemsHelper
 	end
 
 	def name(k, v)
-
 		if v[:name]
 			link_to "#{v[:name]}", item_path(k, :item => v)
 		else
@@ -32,10 +33,12 @@ module ItemsHelper
 	end
 
 	def weight(lb)
-		if !lb 
+		if !lb || lb == 0
 			"---" 
-		else 
+		elsif lb.is_a? Integer
 			"#{lb} lb" 
+		else
+			lb
 		end
 	end
 

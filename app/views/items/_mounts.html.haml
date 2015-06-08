@@ -4,10 +4,12 @@
     %tr
       %th Name
       %th Cost
+      %th Speed
       %th Weight
   %tbody
-    - @mounts.each do |k, v|
+    - @mounts.each do |mount|
       %tr
-        %td= name(k, v)
-        %td= cost_converter(v[:cost])
-        %td= weight(v[:weight])
+        %td= mount[:name]
+        %td= cost_converter(mount[:cost])
+        %td= mount[:speed].to_s + " ft"
+        %td= weight(mount[:weight])

@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-	
 
 	Dir['app/models/items/*.rb'].each {|file| require_dependency file }
 	extend ArmourList
@@ -8,6 +7,7 @@ class Item < ActiveRecord::Base
 	extend ToolsList
 	extend BoatsList
 	extend MountsList
+	extend TackList
 
 end
 

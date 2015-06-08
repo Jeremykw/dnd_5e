@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
 		@weapons = Item.weapons.group_by { |t| t[:category] }
 		@adventuring_gear = Item.adventuring_gear
 		@tools = Item.tools
-		@boats = Item.boats
+		@boats = Item.boats.sort_by { |hsh| hsh[:name] }
+		@tack = Item.tack
 		@mounts = Item.mounts
 	end
 

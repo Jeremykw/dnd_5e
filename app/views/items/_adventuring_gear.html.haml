@@ -6,22 +6,4 @@
       %th Cost
       %th Weight
   %tbody
-    -itemss = categorize_items(@adventuring_gear).sort
-    - itemss.each do |category, items|
-      - sorted_items = items.sort_by { |hsh| hsh[:name] }
-      / = sorted_items.inspect
-      - if items.count > 1
-        %td
-          %strong= category.humanize.capitalize
-        - sorted_items.each do |item|
-          %tr
-            %td
-              %em= "_#{item[:name]}"
-            %td= cost_converter(item[:cost])
-            %td= weight(item[:weight])
-      - else
-        - sorted_items.each do |item|
-          %tr
-            %td= item[:name]
-            %td= cost_converter(item[:cost])
-            %td= weight(item[:weight])
+    = render partial: "items_categorized", :locals => { :itemss => categorize_items(@adventuring_gear).sort }

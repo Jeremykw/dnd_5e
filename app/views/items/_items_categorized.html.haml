@@ -1,0 +1,17 @@
+- itemss.each do |category, items|
+  - sorted_items = items.sort_by { |hsh| hsh[:name] } # sorts items withing category
+  - if items.count > 1
+    %td
+      %strong= category.humanize.capitalize
+    - sorted_items.each do |item|
+      %tr
+        %td
+          %em= "_#{item[:name]}"
+        %td= cost_converter(item[:cost])
+        %td= weight(item[:weight])
+  - else
+    - sorted_items.each do |item|
+      %tr
+        %td= item[:name]
+        %td= cost_converter(item[:cost])
+        %td= weight(item[:weight])

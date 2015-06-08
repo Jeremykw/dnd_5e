@@ -1,13 +1,13 @@
-%h1 Vehicles
+%h1 Waterborne Vehicles
 %table#characters
   %thead
     %tr
       %th Name
       %th Cost
-      %th Weight
+      %th Speed
   %tbody
-    - @boats.each do |k, v|
+    - @boats.each do |boat|  
       %tr
-        %td= name(k, v)
-        %td= cost_converter(v[:cost])
-        %td= weight(v[:weight])
+        %td= boat[:name]
+        %td= cost_converter(boat[:cost])
+        %td= boat[:speed].to_s + " mph"
