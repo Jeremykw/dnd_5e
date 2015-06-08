@@ -58,20 +58,30 @@ h1.title {
   font-size: 2em;
   font-style: normal;
 }
-table#characters {
+table {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
 }
-table#characters th {
+table th {
   border: 2px solid white;
   font-weight: bold;
   background-color: wheat;
 }
-table#characters th, table#characters td {
+table th, table td {
   padding: 4px;
   text-align: left;
+}
+#weapons_and_armor{
+  max-width: 75%;
+}
+#left {
+  max-width: 50%;
+  
+}
+#right {
+  max-width: 50%;
 }
 #notice, #warning {
   background: rosybrown;

@@ -36,6 +36,8 @@ module ItemsHelper
 		if !lb || lb == 0
 			"---" 
 		elsif lb.is_a? Integer
+			"#{lb} lb"
+		elsif lb.is_a? Float
 			"#{lb} lb" 
 		else
 			lb
