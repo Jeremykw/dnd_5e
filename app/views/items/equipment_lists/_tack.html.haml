@@ -6,4 +6,4 @@
       %th Cost
       %th Weight
   %tbody
-    = render partial: "items_categorized", :locals => { :itemss => categorize_items(@tack).sort }
+    = render partial: "items/equipment_lists/items_categorized", :locals => { :itemss => categorize_items(@tack).sort }

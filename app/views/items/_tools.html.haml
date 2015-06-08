@@ -1,9 +1,0 @@
-%h1 Tools
-%table#characters
-  %thead
-    %tr
-      %th Name
-      %th Cost
-      %th Weight
-  %tbody
-    = render partial: "items_categorized", :locals => { :itemss => categorize_items(@tools).sort }

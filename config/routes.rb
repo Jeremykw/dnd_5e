@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 	Dnd5e::Application.routes.draw do
-    resources :items # Equipment
-
+    resources :items do  # Equipment
+      member do
+        get :starting_equipment
+      end
+    end
     # Character
     resources :characters do
 	  	resources :abilities, :except => [:show]
