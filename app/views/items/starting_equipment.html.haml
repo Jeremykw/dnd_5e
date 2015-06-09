@@ -1,0 +1,5 @@
+%h1 Starting Equipment
+
+= form_tag :action => :create, :id => @character.id do
+  = render :partial => "items/background_starting_equipment/#{@character.past}_starting_equipment"
+  = submit_tag "Save equipment"
