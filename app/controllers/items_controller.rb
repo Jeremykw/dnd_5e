@@ -6,12 +6,8 @@ class ItemsController < ApplicationController
 
 	def create
 		character ||= Character.find(id_params)
-		equipment_choices = items_choices_params
-		equipment_choices.each do |equipment_option|
-			equipment_option.each do |item|
-				Item.new(:id => character.id, :item => item)
-			end
-		end
+		new_items = Item.create_starting_items(character, items_choices_params)
+		redirect_to character_path(character)
 	end
 
 	def index
