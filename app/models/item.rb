@@ -20,6 +20,25 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def self.items
+  	# char_id = 
+  	item_numbers = []
+  	items = []
+  	list = Item.list
+  	i = self.all
+  	i.each do |e|
+  		item_numbers << e.item
+  	end
+  	item_numbers.each do |n|
+  		items << list.find { |h| h[:id] == n }
+  	end
+  	items
+  end
+
+  def self.list
+  	Item.armour + Item.weapons + Item.adventuring_gear + Item.tools + Item.boats + Item.tack + Item.mounts
+  end
+
   private
 
   def self.starting_items(choice)

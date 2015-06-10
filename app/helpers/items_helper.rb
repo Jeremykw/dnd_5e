@@ -1,5 +1,6 @@
 module ItemsHelper
-	def display_armour_class(armour)
+
+	def display_armour_class(armour) # Formats ac, dex_mod and dex_mod_max into string for display
 		ac = armour[:ac].to_s
 		if armour[:dex_mod]
 			ac += " + Dex modifier"
@@ -10,7 +11,7 @@ module ItemsHelper
 		ac
 	end
 
-	def cost_converter(gold)
+	def cost_converter(gold) # Converts gold decimal into sp and cp
 		case
 		when gold.is_a?(String)
 			cost = gold
@@ -24,7 +25,8 @@ module ItemsHelper
 		cost
 	end
 
-	def name(k, v)
+	def name(k, v) # Formats equipment name into link
+		### TODO ###
 		if v[:name]
 			link_to "#{v[:name]}", item_path(k, :item => v)
 		else
@@ -32,7 +34,7 @@ module ItemsHelper
 		end
 	end
 
-	def weight(lb)
+	def weight(lb) # Adds lb onto weight
 		if !lb || lb == 0
 			"---" 
 		elsif lb.is_a? Integer
@@ -52,6 +54,10 @@ module ItemsHelper
 				t[:name]
 			end
 		end
+	end
+
+	def simple_weapons # Creates and array of all simple weapons
+		Item.weapons.find_all{ |hash| hash[:category] == "simple_melee"}
 	end
 	
 end

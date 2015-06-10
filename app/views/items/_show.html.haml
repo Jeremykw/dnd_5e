@@ -1,2 +1,4 @@
-- @character.item.each do |i|
-  = i.item
+- @character.item.items.each do |item|
+	= item[:name] if item[:name]
+	#{item[:description] if item[:description]}
+	%br

@@ -73,6 +73,9 @@ table th, table td {
   padding: 4px;
   text-align: left;
 }
+table#folk_hero_equipment {
+  max-width: 400pt;
+}
 #weapons_and_armor{
   max-width: 75%;
 }

@@ -2,4 +2,9 @@
 
 = form_tag :action => :create, :id => @character.id do
   = render :partial => "items/background_starting_equipment/#{@character.past}_starting_equipment"
+  %br
+  %br
+  = render :partial => "items/class_starting_equipment/#{@character.character_class}_starting_equipment"
+  %br
+  %br
   = submit_tag "Save equipment"

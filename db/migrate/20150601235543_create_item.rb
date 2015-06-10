@@ -1,9 +1,10 @@
 class CreateItem < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.string :item
+      t.integer :item
       t.integer :character_id
       t.integer :quantity
+      t.string	:description
 
       t.timestamps null: false
     end

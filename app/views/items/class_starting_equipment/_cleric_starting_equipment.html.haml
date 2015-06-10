@@ -1,0 +1,31 @@
+%h3 As an Cleric you will start with:
+%ul
+	%li Sheild
+
+
+= label :cleric_items_choices, :cleric_items_choices_two, "Choose between:"
+= radio_button :cleric_items_choices, :cleric_items_choices_two, "cleric_4"
+A light crossbow and 20 bolts
+%br
+- simple_weapons.each do |weapon|
+	= radio_button :cleric_items_choices, :cleric_items_choices_two, weapon[:id]
+	= weapon[:name]
+	= weapon[:damage]
+	= weapon[:properties]
+	%br
+
+
+
+= label :cleric_items_choices, :cleric_items_choices_three, "Choose between:"
+= radio_button :cleric_items_choices, :cleric_items_choices_three, "cleric_6"
+Priest's pack
+= radio_button :cleric_items_choices, :cleric_items_choices_three, "cleric_7"
+Explorers's pack
+%br
+= label :cleric_items_choices, :cleric_items_choices_one, "Pick a holly symbol:"
+= radio_button :cleric_items_choices, :cleric_items_choices_one, "cleric_1"
+Amulet
+= radio_button :cleric_items_choices, :cleric_items_choices_one, "cleric_2"
+Emblem
+= radio_button :cleric_items_choices, :cleric_items_choices_one, "cleric_3"
+Reliquary
