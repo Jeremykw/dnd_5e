@@ -1,0 +1,28 @@
+%h3 As an Fighter chose:
+
+
+= radio_button :fighter_items_choices, :fighter_items_choices_two, "fighter_4"
+A light crossbow and 20 bolts
+%br
+- simple_weapons.each do |weapon|
+	= radio_button :fighter_items_choices, :fighter_items_choices_two, weapon[:id]
+	= weapon[:name]
+	= weapon[:damage]
+	= weapon[:properties]
+	%br
+
+
+
+= label :fighter_items_choices, :fighter_items_choices_three, "Choose between:"
+= radio_button :fighter_items_choices, :fighter_items_choices_three, "priest_pack"
+Priest's pack
+= radio_button :fighter_items_choices, :fighter_items_choices_three, "explorer_pack"
+Explorers's pack
+%br
+= label :fighter_items_choices, :fighter_items_choices_one, "Pick a holly symbol:"
+= radio_button :fighter_items_choices, :fighter_items_choices_one, "95"
+Amulet
+= radio_button :fighter_items_choices, :fighter_items_choices_one, "96"
+Emblem
+= radio_button :fighter_items_choices, :fighter_items_choices_one, "97"
+Reliquary
