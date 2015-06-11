@@ -11,17 +11,21 @@ class Item < ActiveRecord::Base
 	extend MountsList
 	extend TackList
 
-  def self.create_starting_items(char, items_choices)
-    items_choices.each do |k, choice|
-      starting_items(choice).each do |i|
-        char.item.build(:item => i).save
-
+  def self.create_starting_items(character, background_choices, class_choices)
+    background_choices.each do |k, choice|
+      choice = choice.to_i
+      if choice <= 240 && choice > 0
+        Item.create(:character_id => character.id, :item => choice)
+      else
+        add_background_options(character, choice)
       end
-    end
+    end    
   end
 
+
+
+  # Returns list of all items
   def self.items
-  	# char_id = 
   	item_numbers = []
   	items = []
   	list = Item.list
@@ -35,11 +39,22 @@ class Item < ActiveRecord::Base
   	items
   end
 
+  private
+  
   def self.list
-  	Item.armour + Item.weapons + Item.adventuring_gear + Item.tools + Item.boats + Item.tack + Item.mounts
+    Item.armour + Item.weapons + Item.adventuring_gear + Item.tools + Item.boats + Item.tack + Item.mounts
   end
 
-  private
+  def self.add_background_options(character, equipment_choice)
+    logger.debug"equipment_choice = #{equipment_choice}"
+    case equipment_choice
+    when 300
+      item = Item.create(:character_id => character.id, :item => 72, :description => "Prayer book")
+    when 301
+      item = Item.create(:character_id => character.id, :item => 241, :description => "Prayer wheel")
+    end
+      
+  end
 
   def self.starting_items(choice)
     case choice

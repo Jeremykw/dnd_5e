@@ -25,6 +25,9 @@ html, body {
   margin: 5px;
 
 }
+h2 {
+  color: maroon;
+}
 #login_logout {
   float: right;
   display: inline-block;

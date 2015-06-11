@@ -2,7 +2,7 @@ module ToolsList
 	def tools
 		[
 			{ :id => 145, :name => "Alchemist's supplies", :cost => 50, :weight => 8, :category => "Artisan" },
-			{ :id => 145, :name => "Brewer's supplies", :cost => 20, :weight => 8, :category => "Artisan" },
+			{ :id => 146, :name => "Brewer's supplies", :cost => 20, :weight => 8, :category => "Artisan" },
 			{ :id => 147, :name => "Calligrapher's supplies", :cost => 10, :weight => 5, :category => "Artisan" },
 			{ :id => 148, :name => "Carpenter's supplies", :cost => 8, :weight => 6, :category => "Artisan" },
 			{ :id => 149, :name => "Carographer's tools", :cost => 15, :weight => 6, :category => "Artisan" },

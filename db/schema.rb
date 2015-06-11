@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150601235543) do
     t.string  "subrace"
     t.string  "alignment"
     t.integer "xp"
+    t.boolean "starting_items"
     t.string  "type"
     t.integer "user_id"
   end

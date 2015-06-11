@@ -1,0 +1,32 @@
+%h2 As a Wizard you start with:
+%ul
+	%li Spellbook
+
+= label :class_items_choices, :class_items_choices_one, "Choose one:"
+= radio_button :class_items_choices, :class_items_choices_one, "22"
+Quarterstaff, or
+= radio_button :class_items_choices, :class_items_choices_one, "17"
+Dagger
+%br
+
+= label :class_items_choices, :class_items_choices_two, "Choose one:"
+= radio_button :class_items_choices, :class_items_choices_two, [26, 55]
+Component pouch, or an Arcane focus:
+= radio_button :class_items_choices, :class_items_choices_two, "60"
+Crystal
+= radio_button :class_items_choices, :class_items_choices_two, "61"
+Orb
+= radio_button :class_items_choices, :class_items_choices_two, "62"
+Rod
+= radio_button :class_items_choices, :class_items_choices_two, "63"
+Staff
+= radio_button :class_items_choices, :class_items_choices_two, "64"
+Wand
+%br
+
+= label :class_items_choices, :class_items_choices_three, "Choose one:"
+= radio_button :class_items_choices, :class_items_choices_three, "scholar_pack"
+Scholar's pack
+= radio_button :class_items_choices, :class_items_choices_three, "explorer_pack"
+Explorer's pack
+%br

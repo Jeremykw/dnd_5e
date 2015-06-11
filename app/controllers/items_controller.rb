@@ -2,12 +2,14 @@ class ItemsController < ApplicationController
 
 
 	def starting_equipment
-		@character ||= Character.find(id_params)
+		@character = Character.find(id_params)
 	end
 
 	def create
-		character ||= Character.find(id_params)
-		new_items = Item.create_starting_items(character, items_choices_params)
+		character = Character.find(id_params)
+		if new_starting_items(character)
+			new_items = Item.create_starting_items(character, background_items_choices_params, class_items_choices_params)
+		end
 		redirect_to character_path(character)
 	end
 
@@ -29,9 +31,18 @@ class ItemsController < ApplicationController
 
 	private
 
-	def items_choices_params
-		params.require(:items_choices).permit(:items_choices_two, :items_choices_one)
+	def new_starting_items(character)
+		!character.starting_items
 	end
+
+	def background_items_choices_params
+		params.require(:background_items_choices).permit(:background_items_choices_one, :background_items_choices_two)
+	end
+
+	def class_items_choices_params
+		params.require(:class_items_choices).permit(:class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five)
+	end
+
 	def item_params
 		params.require(:item).permit(:catagory, :item, :weight, :properties, :cost, :ac, :str_min, :dex_mod, :dex_mod_max, :stealth_disadvantage, :damage_min, :damage_max, :ranged, :speed)
 	end

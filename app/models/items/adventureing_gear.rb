@@ -7,7 +7,6 @@ module AdventureingGearList
 			{ :id => 52, :name => "Chest", :cost => 5, :weight => 25 }, 
 			{ :id => 53, :name => "Acid (vial)", :cost => 25, :weight => 1 },
 			{ :id => 54, :name => "Alchemist's fire (flask)", :cost => 50, :weight => 1 }, 
-			{ :id => 64, :name => "Wand", :cost => 10, :weight => 1, :category => "Arcane focus" }, 
 			{ :id => 55, :name => "Arrows (20)",:cost => 1, :weight => 1, :category => "Ammunition" }, 
 			{ :id => 56, :name => "Blowgun needles (50)", :cost => 1, :weight => 1, :category => "Ammunition" }, 
 			{ :id => 57, :name => "Crossbow bolts (20)", :cost => 1, :weight => 1.5, :category => "Ammunition" }, 
@@ -17,6 +16,7 @@ module AdventureingGearList
 			{ :id => 61, :name => "Orb", :cost => 20, :weight => 3, :category => "Arcane focus" }, 
 			{ :id => 62, :name => "Rod", :cost => 10, :weight => 2, :category => "Arcane focus" }, 
 			{ :id => 63, :name => "Staff", :cost => 5, :weight => 4, :category => "Arcane focus" },
+			{ :id => 64, :name => "Wand", :cost => 10, :weight => 1, :category => "Arcane focus" }, 
 			{ :id => 65, :name => "Backpack",:cost => 2, :weight => 5 }, 
 			{ :id => 66, :name => "Ball bearings (bag of 1,000)", :cost => 1, :weight => 2 }, 
 			{ :id => 67, :name => "Barrel", :cost => 2, :weight => 70 }, 
@@ -33,8 +33,6 @@ module AdventureingGearList
 			{ :id => 78, :name => "Case, map or scroll", :cost => 1, :weight => 1} ,
 			{ :id => 79, :name => "Climber's kit", :cost => 25, :weight => 12 },
 			{ :id => 80, :name => "Clothes, common", :cost => 0.5, :weight => 3 },
-			{ :id => 88, :name => "Wooden staff", :cost => 5, :weight => 4, :category => "Druidic focus" },
-			{ :id => 89, :name => "Yew wand", :cost => 10, :weight => 1, :category => "Druidic focus" },
 			{ :id => 81, :name => "Clothes, costume", :cost => 5, :weight => 4 },
 			{ :id => 82, :name => "Clothes, fine", :cost => 15, :weight => 6 },
 			{ :id => 83, :name => "Clothes, traveler's", :cost => 2, :weight => 4 },
@@ -42,6 +40,8 @@ module AdventureingGearList
 			{ :id => 85, :name => "Crowbar", :cost => 2, :weight => 5},
 			{ :id => 86, :name => "Sprig of mistletoe", :cost => 1, :weight => 0, :category => "Druidic focus" },
 			{ :id => 87, :name => "Totem", :cost => 1, :weight => 0, :category => "Druidic focus" },
+			{ :id => 88, :name => "Wooden staff", :cost => 5, :weight => 4, :category => "Druidic focus" },
+			{ :id => 89, :name => "Yew wand", :cost => 10, :weight => 1, :category => "Druidic focus" },
 			{ :id => 90, :name => "Fishing tackle", :cost => 1, :weight => 4 },
 			{ :id => 91, :name => "Grappling hook", :cost => 2, :weight => 4 },
 			{ :id => 92, :name => "Hammer", :cost => 1, :weight => 3 },
@@ -97,6 +97,7 @@ module AdventureingGearList
 			{ :id => 142, :name => "Vial", :cost => 1, :weight => 0 },
 			{ :id => 143, :name => "Waterskin", :cost => 0.2, :weight => 5 },
 			{ :id => 144, :name => "Whetstone", :cost => 0.01, :weight => 1 },
+			{ :id => 241, :name => false, :cost => 0, :weight => 0 },			
 		]
 	end
 
