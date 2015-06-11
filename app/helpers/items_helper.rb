@@ -59,5 +59,9 @@ module ItemsHelper
 	def simple_weapons # Creates and array of all simple weapons
 		Item.weapons.find_all{ |hash| hash[:category] == "simple_melee"}
 	end
+
+	def martial_weapon
+		Item.weapons.find_all{ |hash| hash[:category] == "martial_melee"}
+	end
 	
 end

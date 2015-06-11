@@ -1,1 +1,25 @@
-eat my shorts
+%h3 As a Fighter make the following choices:
+
+= label :class_items_choices, :class_items_choices_one, "Choose between:"
+= radio_button :class_items_choices, :class_items_choices_one, "10"
+Chain mail, or
+= radio_button :class_items_choices, :class_items_choices_one, [2, 48, 55]
+Leather, longbow and 20 arrows
+%br
+- martial_weapon.each do |weapon|
+  = check_box_tag "class_items_choices[class_items_choices_four][#{weapon[:name]}]", weapon[:id]
+  = weapon[:name]
+= check_box_tag "class_items_choices[class_items_choices_four][sheild]", 204
+Shield
+
+%br
+= radio_button :class_items_choices, :class_items_choices_two, [57, 14]
+Light crossbow and 20 bolts, or
+= radio_button :class_items_choices, :class_items_choices_two, [19, 19]
+Two handaxes
+%br
+
+= radio_button :class_items_choices, :class_items_choices_three, "dungeoneer_pack"
+Dungeoneer's pack, or
+= radio_button :class_items_choices, :class_items_choices_three, "explorer_pack"
+Explorer's pack
