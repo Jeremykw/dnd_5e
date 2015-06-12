@@ -3,43 +3,43 @@
 	%li Sheild
 
 
-= label :class_items_choices, :class_items_choices_two, "Choose one:"
-= radio_button :class_items_choices, :class_items_choices_two, "cleric_1"
+= label :items_choices, :class_items_choices_two, "Choose one:"
+= radio_button :items_choices, :class_items_choices_two, "330"
 A light crossbow and 20 bolts
 %br
 - simple_weapons.each do |weapon|
-	= radio_button :class_items_choices, :class_items_choices_two, weapon[:id]
+	= radio_button :items_choices, :class_items_choices_two, weapon[:id]
 	= weapon[:name]
 	= weapon[:damage]
 	= weapon[:properties]
 	%br
 %br
 
-= label :class_items_choices, :class_items_choices_four, "Choose between:"
-= radio_button :class_items_choices, :class_items_choices_four, "23"
+= label :items_choices, :class_items_choices_four, "Choose between:"
+= radio_button :items_choices, :class_items_choices_four, "23"
 Mace, or
-= radio_button :class_items_choices, :class_items_choices_four, "43"
+= radio_button :items_choices, :class_items_choices_four, "43"
 Warhammer (if proficient)
 
-= label :class_items_choices, :class_items_choices_five, "Choose between:"
-= radio_button :class_items_choices, :class_items_choices_five, "6"
+= label :items_choices, :class_items_choices_five, "Choose between:"
+= radio_button :items_choices, :class_items_choices_five, "6"
 Scale mail, or
-= radio_button :class_items_choices, :class_items_choices_five, "2"
+= radio_button :items_choices, :class_items_choices_five, "2"
 Leather armour, or
-= radio_button :class_items_choices, :class_items_choices_five, "10"
+= radio_button :items_choices, :class_items_choices_five, "10"
 Chain mail (if progicient)
 
-= label :class_items_choices, :class_items_choices_one, "Pick a holly symbol:"
-= radio_button :class_items_choices, :class_items_choices_one, "95"
+= label :items_choices, :class_items_choices_one, "Pick a holly symbol:"
+= radio_button :items_choices, :class_items_choices_one, "95"
 Amulet
-= radio_button :class_items_choices, :class_items_choices_one, "96"
+= radio_button :items_choices, :class_items_choices_one, "96"
 Emblem
-= radio_button :class_items_choices, :class_items_choices_one, "97"
+= radio_button :items_choices, :class_items_choices_one, "97"
 Reliquary
 
-= label :class_items_choices, :class_items_choices_three, "Choose between:"
-= radio_button :class_items_choices, :class_items_choices_three, "priest_pack"
+= label :items_choices, :class_items_choices_three, "Choose between:"
+= radio_button :items_choices, :class_items_choices_three, "350"
 Priest's pack
-= radio_button :class_items_choices, :class_items_choices_three, "explorer_pack"
+= radio_button :items_choices, :class_items_choices_three, "351"
 Explorers's pack
 

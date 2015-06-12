@@ -26,6 +26,7 @@ module WeaponsList
     { :id => 35, :name => "Morningstar", :category => "martial_melee", :cost => 15, :damage => "1d8 piercing", :weight => 4, :properties => "---", :ranged => false },
     { :id => 36, :name => "Pike", :category => "martial_melee", :cost => 5, :damage => "1d10 piercing", :weight => 18, :properties => "Heavy, reach, two-handed", :ranged => false },
     { :id => 37, :name => "Rapier", :category => "martial_melee", :cost => 25, :damage => "1d8 piercing", :weight => 2, :properties => "Finesse", :ranged => false },
+    { :id => 38, :name => "Net", :category => "martial_ranged", :cost => 1, :damage => "---", :weight => 3, :properties => "Special, thrown (range 5/15), loading", :ranged => true },
     { :id => 39, :name => "Scimitar", :category => "martial_melee", :cost => 25, :damage => "1d6 slashing", :weight => 3, :properties => "Finnesse, light", :ranged => false },
     { :id => 40, :name => "Shortsword", :category => "martial_melee", :cost => 10, :damage => "1d6 piercing", :weight => 2, :properties => "Finnesse, light", :ranged => false },
     { :id => 41, :name => "Trident", :category => "martial_melee", :cost => 5, :damage => "1d6 piercing", :weight => 4, :properties => "Thrown (range 20/60) versatile (1d8 )", :ranged => false },
@@ -36,7 +37,6 @@ module WeaponsList
     { :id => 46, :name => "Crossbow, hand", :category => "martial_ranged", :cost => 75, :damage => "1d6 piercing", :weight => 3, :properties => "Ammunition, (range 30/120), light, loading", :ranged => true },
     { :id => 47, :name => "Crossbow, heavy", :category => "martial_ranged", :cost => 50, :damage => "1d10 piercing", :weight => 18, :properties => "Ammunition, (range 100/400), heavy, loading, two-handed", :ranged => true },
     { :id => 48, :name => "Longbow", :category => "martial_ranged", :cost => 50, :damage => "1d8 piercing", :weight => 2, :properties => "Ammunition, (range 150/600), heavy, two-handed", :ranged => true },
-    { :id => 38, :name => "Net", :category => "martial_ranged", :cost => 1, :damage => "---", :weight => 3, :properties => "Special, thrown (range 5/15), loading", :ranged => true },
 		]
 	end
 end

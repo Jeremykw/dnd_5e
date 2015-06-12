@@ -11,18 +11,11 @@ class Item < ActiveRecord::Base
 	extend MountsList
 	extend TackList
 
-  def self.create_starting_items(character, background_choices, class_choices)
-    background_choices.each do |k, choice|
-      choice = choice.to_i
-      if choice <= 240 && choice > 0
-        Item.create(:character_id => character.id, :item => choice)
-      else
-        add_background_options(character, choice)
-      end
+  def self.create_starting_items(character, item_choices)
+    item_choices.each do |k, choice|
+      create_single_item(character, choice)
     end    
   end
-
-
 
   # Returns list of all items
   def self.items
@@ -40,12 +33,28 @@ class Item < ActiveRecord::Base
   end
 
   private
+
+  def self.create_hash_of_items(character, item_hash)
+    item_hash.each do |k, item|
+      logger.debug("item = #{item}")
+      create_single_item(character, item)
+    end
+  end
+
+  def self.create_single_item(character, item)
+    item = item.to_i
+    if item <= 240 && item > 0
+      Item.create(:character_id => character.id, :item => item)
+    else
+      add_unlisted_item(character, item)
+    end
+  end
   
   def self.list
     Item.armour + Item.weapons + Item.adventuring_gear + Item.tools + Item.boats + Item.tack + Item.mounts
   end
 
-  def self.add_background_options(character, equipment_choice)
+  def self.add_unlisted_item(character, equipment_choice)
     logger.debug"equipment_choice = #{equipment_choice}"
     case equipment_choice
     when 300

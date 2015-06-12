@@ -6,9 +6,11 @@ class ItemsController < ApplicationController
 	end
 
 	def create
+		logger.debug "class_items_choices_four = #{items_choices_params}"
+
 		character = Character.find(id_params)
 		if new_starting_items(character)
-			new_items = Item.create_starting_items(character, background_items_choices_params, class_items_choices_params)
+			new_items = Item.create_starting_items(character, items_choices_params)
 		end
 		redirect_to character_path(character)
 	end
@@ -35,12 +37,16 @@ class ItemsController < ApplicationController
 		!character.starting_items
 	end
 
-	def background_items_choices_params
-		params.require(:background_items_choices).permit(:background_items_choices_one, :background_items_choices_two)
+	def items_choices_params
+		params.require(:items_choices).permit(:background_items_choices_one, :background_items_choices_two, :class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five, array: items_choices_permits.keys)
 	end
 
-	def class_items_choices_params
-		params.require(:class_items_choices).permit(:class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five)
+	def items_choices_permits
+		permits = {}
+		for n in 27..44
+			permits.merge("class_items_choices_#{n}".parameterize.underscore.to_sym => true)
+		end
+		permits
 	end
 
 	def item_params

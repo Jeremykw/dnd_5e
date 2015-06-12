@@ -1,30 +1,30 @@
 %h2 As a Fighter make the following choices:
 
-= label :class_items_choices, :class_items_choices_one, "Choose one:"
-= radio_button :class_items_choices, :class_items_choices_one, "10"
+= label :items_choices, :class_items_choices_one, "Choose one:"
+= radio_button :items_choices, :class_items_choices_one, 10
 Chain mail, or
-= radio_button :class_items_choices, :class_items_choices_one, [2, 48, 55]
+= radio_button :items_choices, :class_items_choices_one, 332
 Leather, longbow and 20 arrows
 %br
 
-= label :class_items_choices, :class_items_choices_four, "Choose two:"
+= label :items_choices, :class_items_choices_four, "Choose two:"
 - martial_weapon.each do |weapon|
-  = check_box_tag "class_items_choices[class_items_choices_four][#{weapon[:name]}]", weapon[:id]
+  = check_box_tag "items_choices[class_items_choices_#{weapon[:id]}]", weapon[:id]
   = weapon[:name]
   %br
-= check_box_tag "class_items_choices[class_items_choices_four][sheild]", 204
+= check_box_tag "items_choices[class_items_choices_204]", 204
 Shield
 
 %br
-= label :class_items_choices, :class_items_choices_two, "Chose one:"
-= radio_button :class_items_choices, :class_items_choices_two, [57, 14]
+= label :items_choices, :class_items_choices_two, "Chose one:"
+= radio_button :items_choices, :class_items_choices_two, 330
 Light crossbow and 20 bolts, or
-= radio_button :class_items_choices, :class_items_choices_two, [19, 19]
+= radio_button :items_choices, :class_items_choices_two, 331
 Two handaxes
 
 %br
-= label :class_items_choices, :class_items_choices_three, "Chose one:"
-= radio_button :class_items_choices, :class_items_choices_three, "dungeoneer_pack"
+= label :items_choices, :class_items_choices_three, "Chose one:"
+= radio_button :items_choices, :class_items_choices_three, 352
 Dungeoneer's pack, or
-= radio_button :class_items_choices, :class_items_choices_three, "explorer_pack"
+= radio_button :items_choices, :class_items_choices_three, 351
 Explorer's pack
