@@ -66,20 +66,23 @@ class Item < ActiveRecord::Base
       Item.create(:character_id => character.id, :item => 48)
       Item.create(:character_id => character.id, :item => 55)
     when 350 # priests pack
-      create_pack(priests_pack)
+      create_pack(character, priests_pack)
     when 351 # explorers pack
-      create_pack(explorers_pack)
+      create_pack(character, explorers_pack)
     when 352 # dungenereers pack
+    end
   end
 
-  def self.create_pack(pack)
+  def self.create_pack(character, pack)
     pack.each do |item, quantity|
       Item.create(:character_id => character.id, :item => item, :quantity => quantity)
     end
   end
 
   def self.burglars_pack
-
+    # TODO #
+    # 10 feet of string
+    [[66, 1], [70, 1], [205, 5], [126, 5], [140, 1], [143, 1]]
   end
   
   def self.diplomats_pack
@@ -90,12 +93,12 @@ class Item < ActiveRecord::Base
 
   end
 
-  def entertainers_pack
+  def self.entertainers_pack
 
   end
 
   def self.explorers_pack
-    [[69, 1], [111, 1], [140, 1], [141, 10], [126, 10], [144, 1]]
+    [[69, 1], [111, 1], [140, 1], [141, 10], [126, 10], [143, 1]]
   end
 
   def self.priests_pack
@@ -104,24 +107,11 @@ class Item < ActiveRecord::Base
     # 2 blocks incencs
     # censer
     # vestment
-    [[71, 1], [205, 10], [140, 1], [126, 2], [143, 1]]
+    [[71, 1], [205, 10], [140, 1], [126, 2], [143, 1], [85, 1], [118, 10], [107, 1], [113, 2]]
   end
 
   def self.scholars_pack
 
-  end
-
-  def self.starting_items(choice)
-    case choice
-    when "acolyte_1"
-      [1,2,3]
-    when "acolyte_2"
-      [4,5,6]
-    when "acolyte_3"
-      [7,8,9]
-    when "acolyte_4"
-      [10, 11, 12]
-    end
   end
 
 end

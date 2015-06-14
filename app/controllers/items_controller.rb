@@ -6,8 +6,6 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		logger.debug "class_items_choices_four = #{items_choices_params}"
-
 		character = Character.find(id_params)
 		if new_starting_items(character)
 			new_items = Item.create_starting_items(character, items_choices_params)
@@ -42,11 +40,11 @@ class ItemsController < ApplicationController
 	end
 
 	def items_choices_permits
-		permits = {}
-		for n in 27..44
-			permits.merge("class_items_choices_#{n}".parameterize.underscore.to_sym => true)
-		end
-		permits
+		# permits = {}
+		# for n in 27..44
+		# 	permits.merge("class_items_choices_#{n}".parameterize.underscore.to_sym => true)
+		# end
+		# permits
 	end
 
 	def item_params
