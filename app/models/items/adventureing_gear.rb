@@ -97,8 +97,8 @@ module AdventureingGearList
 			{ :id => 142, :name => "Vial", :cost => 1, :weight => 0 },
 			{ :id => 143, :name => "Waterskin", :cost => 0.2, :weight => 5 },
 			{ :id => 144, :name => "Whetstone", :cost => 0.01, :weight => 1 },
-			{ :id => 206, :name => "Unlisted", :cost => 0, :weight => 0 },
 			{ :id => 205, :name => "Candle", :cost => 0.05, :weight => 0 },
+			{ :id => 206, :name => "Unlisted", :cost => 0, :weight => 0 },
 		]
 	end
 

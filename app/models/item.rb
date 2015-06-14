@@ -49,7 +49,6 @@ class Item < ActiveRecord::Base
   end
   
   def self.add_unlisted_items(character, equipment_choice)
-    logger.debug"equipment_choice = #{equipment_choice}"
     case equipment_choice
     when 300 # Prayer Book
       item = Item.create(:character_id => character.id, :item => 72, :description => "Prayer book")
@@ -62,14 +61,24 @@ class Item < ActiveRecord::Base
       Item.create(:character_id => character.id, :item => 19)
       Item.create(:character_id => character.id, :item => 19)
     when 332 # Leather longbow 20 arrows
-      Item.create(:character_id => character_id, :item => 2)
+      Item.create(:character_id => character.id, :item => 2)
       Item.create(:character_id => character.id, :item => 48)
+      Item.create(:character_id => character.id, :item => 55)
+    when 333
+      Item.create(:character_id => character.id, :item => 26)
       Item.create(:character_id => character.id, :item => 55)
     when 350 # priests pack
       create_pack(character, priests_pack)
     when 351 # explorers pack
       create_pack(character, explorers_pack)
     when 352 # dungenereers pack
+      create_pack(character, dungenereers_pack)
+    when 353
+      create_pack(character, burglars_pack)
+    when 354
+      create_pack(character, scholars_pack(character))
+    when 355
+      create_pack(character, diplomats_pack)
     end
   end
 
@@ -110,14 +119,14 @@ class Item < ActiveRecord::Base
     [[65, 1], [71, 1], [205, 10], [140, 1], [126, 2], [143, 1]]
   end
 
-  def self.scholars_pack
+  def self.scholars_pack(character)
     # TODO #
     # book of lore 
     # Little bar of sand
     # small knife
+    item = Item.create(:character_id => character.id, :item => 206, :description => "Small knife")
     [[65, 1], [101, 1], [102, 1], [115, 10]]
   end
+    
 
 end
-
-, [126, 5], [140, 1], [143, 1]
