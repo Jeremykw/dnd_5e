@@ -7,6 +7,7 @@
 			%th Damage
 			%th Weight
 			%th Properties
+			%th ID
 	%tbody
 		- @weapons.each do |category, items|
 			- sorted_items = items.sort_by { |hsh| hsh[:name] }
@@ -19,3 +20,4 @@
 					%td= item[:damage]
 					%td= weight(item[:weight])
 					%td= item[:properties]
+					%td= item[:id]

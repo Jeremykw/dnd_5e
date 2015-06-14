@@ -5,5 +5,6 @@
       %th Name
       %th Cost
       %th Weight
+      %th ID
   %tbody
     = render partial: "items/equipment_lists/items_categorized", :locals => { :itemss => categorize_items(@adventuring_gear).sort }

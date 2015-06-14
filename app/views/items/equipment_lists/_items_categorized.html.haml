@@ -9,9 +9,11 @@
           %em= "_#{item[:name]}"
         %td= cost_converter(item[:cost])
         %td= weight(item[:weight])
+        %td= item[:id]
   - else
     - sorted_items.each do |item|
       %tr
         %td= item[:name]
         %td= cost_converter(item[:cost])
         %td= weight(item[:weight])
+        %td= item[:id]

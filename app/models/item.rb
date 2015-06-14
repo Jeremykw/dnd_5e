@@ -11,58 +11,104 @@ class Item < ActiveRecord::Base
 	extend MountsList
 	extend TackList
 
-  def self.create_starting_items(character, item_choices)
-    item_choices.each do |k, choice|
-      create_single_item(character, choice)
-    end    
-  end
 
   # Returns list of all items
   def self.items
-  	item_numbers = []
-  	items = []
-  	list = Item.list
-  	i = self.all
-  	i.each do |e|
-  		item_numbers << e.item
-  	end
-  	item_numbers.each do |n|
-  		items << list.find { |h| h[:id] == n }
-  	end
-  	items
+    item_numbers = []
+    items = []
+    list = Item.list
+    i = self.all
+    i.each do |e|
+      item_numbers << e.item
+    end
+    item_numbers.each do |n|
+      items << list.find { |h| h[:id] == n }
+    end
+    items
+  end
+
+  def self.create_starting_items(character, item_choices)
+    item_choices.each do |k, choice|
+      create_item(character, choice)
+    end    
   end
 
   private
 
-  def self.create_hash_of_items(character, item_hash)
-    item_hash.each do |k, item|
-      logger.debug("item = #{item}")
-      create_single_item(character, item)
-    end
-  end
-
-  def self.create_single_item(character, item)
-    item = item.to_i
-    if item <= 240 && item > 0
-      Item.create(:character_id => character.id, :item => item)
-    else
-      add_unlisted_item(character, item)
-    end
-  end
-  
   def self.list
     Item.armour + Item.weapons + Item.adventuring_gear + Item.tools + Item.boats + Item.tack + Item.mounts
   end
 
-  def self.add_unlisted_item(character, equipment_choice)
+  def self.create_item(character, item)
+    item = item.to_i
+    if item <= 206 && item > 0
+      Item.create(:character_id => character.id, :item => item)
+    else
+      add_unlisted_items(character, item)
+    end
+  end
+  
+  def self.add_unlisted_items(character, equipment_choice)
     logger.debug"equipment_choice = #{equipment_choice}"
     case equipment_choice
-    when 300
+    when 300 # Prayer Book
       item = Item.create(:character_id => character.id, :item => 72, :description => "Prayer book")
-    when 301
-      item = Item.create(:character_id => character.id, :item => 241, :description => "Prayer wheel")
+    when 301 # prayer wheel
+      item = Item.create(:character_id => character.id, :item => 206, :description => "Prayer wheel")
+    when 330 # light crosbow, 20 bolts
+      Item.create(:character_id => character.id, :item => 14)
+      Item.create(:character_id => character.id, :item => 57)
+    when 331 # two handaxe
+      Item.create(:character_id => character.id, :item => 19)
+      Item.create(:character_id => character.id, :item => 19)
+    when 332 # Leather longbow 20 arrows
+      Item.create(:character_id => character_id, :item => 2)
+      Item.create(:character_id => character.id, :item => 48)
+      Item.create(:character_id => character.id, :item => 55)
+    when 350 # priests pack
+      create_pack(priests_pack)
+    when 351 # explorers pack
+      create_pack(explorers_pack)
+    when 352 # dungenereers pack
+  end
+
+  def self.create_pack(pack)
+    pack.each do |item, quantity|
+      Item.create(:character_id => character.id, :item => item, :quantity => quantity)
     end
-      
+  end
+
+  def self.burglars_pack
+
+  end
+  
+  def self.diplomats_pack
+
+  end
+
+  def self.dungenereers_pack
+
+  end
+
+  def entertainers_pack
+
+  end
+
+  def self.explorers_pack
+    [[69, 1], [111, 1], [140, 1], [141, 10], [126, 10], [144, 1]]
+  end
+
+  def self.priests_pack
+    # TODO #
+    # alms box
+    # 2 blocks incencs
+    # censer
+    # vestment
+    [[71, 1], [205, 10], [140, 1], [126, 2], [143, 1]]
+  end
+
+  def self.scholars_pack
+
   end
 
   def self.starting_items(choice)

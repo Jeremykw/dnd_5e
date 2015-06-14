@@ -8,6 +8,7 @@
 			%th Strength
 			%th Stealth
 			%th Weight
+			%th ID
 	%tbody
 		- @armour.each do |category, items|
 			- sorted_items= items.sort_by { |hsh| hsh[:cost] }
@@ -21,3 +22,4 @@
 					%td= if !item[:strength] then "---" else item[:strength] end
 					%td= "Disadvantage" if item[:stealth]
 					%td= weight(item[:weight])
+					%td= item[:id]
