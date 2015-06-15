@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
 	extend BoatsList
 	extend MountsList
 	extend TackList
+  extend ItemsHelper
 
 
   # Returns list of all items
@@ -112,18 +113,17 @@ class Item < ActiveRecord::Base
 
   def self.priests_pack
     # TODO #
-    # alms box
-    # 2 blocks incencs
-    # censer
-    # vestment
+    item = Item.create(:character_id => character.id, :item => 206, :description => "Alms box")
+    item = Item.create(:character_id => character.id, :item => 206, :description => "2 Blocks incense")
+    item = Item.create(:character_id => character.id, :item => 206, :description => "Censer")
+    item = Item.create(:character_id => character.id, :item => 206, :description => "Vestments")
     [[65, 1], [71, 1], [205, 10], [140, 1], [126, 2], [143, 1]]
   end
 
   def self.scholars_pack(character)
     # TODO #
-    # book of lore 
-    # Little bar of sand
-    # small knife
+    item = Item.create(:character_id => character.id, :item => 72, :description => "Book of lore")
+    item = Item.create(:character_id => character.id, :item => 206, :description => "Little bar of sand")
     item = Item.create(:character_id => character.id, :item => 206, :description => "Small knife")
     [[65, 1], [101, 1], [102, 1], [115, 10]]
   end
