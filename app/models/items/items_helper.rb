@@ -1,3 +1,3 @@
-module ItemsHelper
+module ItemHelper
 
 end

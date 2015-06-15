@@ -127,6 +127,5 @@ class Item < ActiveRecord::Base
     item = Item.create(:character_id => character.id, :item => 206, :description => "Small knife")
     [[65, 1], [101, 1], [102, 1], [115, 10]]
   end
-    
 
 end
