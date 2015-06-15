@@ -40,13 +40,13 @@ class ItemsController < ApplicationController
 		params.require(:items_choices).permit!#(:background_items_choices_one, :background_items_choices_two, :class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five, array: items_choices_permits.keys)
 	end
 
-	def items_choices_permits
-		# permits = {}
-		# for n in 27..44
-		# 	permits.merge("class_items_choices_#{n}".parameterize.underscore.to_sym => true)
-		# end
-		# permits
-	end
+	# def items_choices_permits
+	# 	# permits = {}
+	# 	# for n in 27..44
+	# 	# 	permits.merge("class_items_choices_#{n}".parameterize.underscore.to_sym => true)
+	# 	# end
+	# 	# permits
+	# end
 
 	def item_params
 		params.require(:item).permit(:catagory, :item, :weight, :properties, :cost, :ac, :str_min, :dex_mod, :dex_mod_max, :stealth_disadvantage, :damage_min, :damage_max, :ranged, :speed)
