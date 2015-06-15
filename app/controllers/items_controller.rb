@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
 
 	def starting_equipment
 		@character = Character.find(id_params)
@@ -32,12 +33,23 @@ class ItemsController < ApplicationController
 
 	private
 
+	def correct_number_of_martial_weapons_for_fighter
+    character = Character.find(id_params)
+    if character.character_class == "fighter" && new_starting_items(character)
+      count = 0
+      items_choices_params.each do |k, item|
+      	count += 1 if item.to_i <= 28 || item.to_i >= 44 || item.to_i == 15
+      end
+			logger.debug "count = #{count}"
+      if count != 2
+      	flash[:notice] = "You must select 2 Martial weapons"
+      	redirect_to starting_equipment_item_path(character) and return
+      end
+    end
+  end
+
 	def new_starting_items(character)
 		!character.starting_items
-	end
-
-	def items_choices_params
-		params.require(:items_choices).permit!#(:background_items_choices_one, :background_items_choices_two, :class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five, array: items_choices_permits.keys)
 	end
 
 	# def items_choices_permits
@@ -47,6 +59,14 @@ class ItemsController < ApplicationController
 	# 	# end
 	# 	# permits
 	# end
+
+	###
+	# Strong Parameters White List
+	###
+
+	def items_choices_params
+		params.require(:items_choices).permit!#(:background_items_choices_one, :background_items_choices_two, :class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five, array: items_choices_permits.keys)
+	end
 
 	def item_params
 		params.require(:item).permit(:catagory, :item, :weight, :properties, :cost, :ac, :str_min, :dex_mod, :dex_mod_max, :stealth_disadvantage, :damage_min, :damage_max, :ranged, :speed)

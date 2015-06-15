@@ -7,7 +7,9 @@ class Item < ActiveRecord::Base
   validates :character_id, :presence => true, :numericality => { :only_integer => true }
   validates :quantity, :allow_blank => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 100 }
 
-	Dir['app/models/items/*.rb'].each {|file| require_dependency file }
+
+
+  Dir['app/models/items/*.rb'].each {|file| require_dependency file }
 	extend ArmourList
 	extend WeaponsList
 	extend AdventureingGearList
