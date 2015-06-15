@@ -3,9 +3,9 @@ class Item < ActiveRecord::Base
   belongs_to :character
 
   validates :item, :presence => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 206 }
-  validates :description, :length => { :maximum => 250 }
+  validates :description, :allow_blank => true, :length => { :maximum => 250 }
   validates :character_id, :presence => true, :numericality => { :only_integer => true }
-  validates :quantity, :numericality => { :only_integer => true, :greater_then_or_equal_to => 0, :less_than_or_equal_to => 500 }
+  validates :quantity, :allow_blank => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 100 }
 
 	Dir['app/models/items/*.rb'].each {|file| require_dependency file }
 	extend ArmourList

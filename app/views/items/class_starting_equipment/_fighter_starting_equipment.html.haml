@@ -1,7 +1,7 @@
 %h2 As a Fighter make the following choices:
 
 = label :items_choices, :class_items_choices_one, "Choose one:"
-= radio_button :items_choices, :class_items_choices_one, 10
+= radio_button :items_choices, :class_items_choices_one, 10, :checked => true
 Chain mail, or
 = radio_button :items_choices, :class_items_choices_one, 332
 Leather armour, longbow and 20 arrows
@@ -17,14 +17,14 @@ Shield
 
 %br
 = label :items_choices, :class_items_choices_two, "Chose one:"
-= radio_button :items_choices, :class_items_choices_two, 330
+= radio_button :items_choices, :class_items_choices_two, 330, :checked => true
 Light crossbow and 20 bolts, or
 = radio_button :items_choices, :class_items_choices_two, 331
 Two handaxes
 
 %br
 = label :items_choices, :class_items_choices_three, "Chose one:"
-= radio_button :items_choices, :class_items_choices_three, 352
+= radio_button :items_choices, :class_items_choices_three, 352, :checked => true
 Dungeoneer's pack, or
 = radio_button :items_choices, :class_items_choices_three, 351
 Explorer's pack

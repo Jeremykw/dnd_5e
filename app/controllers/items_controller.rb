@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		
+
 		character = Character.find(id_params)
 		if new_starting_items(character)
 			new_items = Item.create_starting_items(character, items_choices_params)

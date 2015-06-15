@@ -3,14 +3,14 @@
 	%li Spellbook
 
 = label :items_choices, :class_items_choices_one, "Choose one:"
-= radio_button :items_choices, :class_items_choices_one, 22
+= radio_button :items_choices, :class_items_choices_one, 22, :checked => true
 Quarterstaff, or
 = radio_button :items_choices, :class_items_choices_one, 17
 Dagger
 %br
 
 = label :items_choices, :class_items_choices_two, "Choose one:"
-= radio_button :items_choices, :class_items_choices_two, 84
+= radio_button :items_choices, :class_items_choices_two, 84, :checked => true
 Component pouch, or an Arcane focus:
 = radio_button :items_choices, :class_items_choices_two, 60
 Crystal
@@ -25,7 +25,7 @@ Wand
 %br
 
 = label :items_choices, :class_items_choices_three, "Choose one:"
-= radio_button :items_choices, :class_items_choices_three, 354
+= radio_button :items_choices, :class_items_choices_three, 354, :checked => true
 Scholar's pack
 = radio_button :items_choices, :class_items_choices_three, 351
 Explorer's pack
