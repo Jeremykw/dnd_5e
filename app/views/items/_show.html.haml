@@ -1,6 +1,11 @@
+%strong Equipment List
+%br
+
 - @character.item.items.each do |item|
   - if item[:quantity]
     = item[:quantity] unless item[:quantity] <= 1
   = item[:name] unless item[:name] == "Unlisted"
   = item[:description]
+  %br
+  = item
   %br

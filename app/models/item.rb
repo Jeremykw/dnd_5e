@@ -32,6 +32,7 @@ class Item < ActiveRecord::Base
       item = list.find { |h| h[:id] == equipment.item }
       item[:quantity] = equipment.quantity if equipment.quantity 
       item[:description] = equipment.description if equipment.description
+      item[:type] = item_type(item)
       items << item
     end
     items
@@ -45,8 +46,6 @@ class Item < ActiveRecord::Base
     item_choices.each do |k, choice|
       create_item(character, choice)
     end  
-      
-    # character.save
   end
 
   private
@@ -65,4 +64,15 @@ class Item < ActiveRecord::Base
     end
   end
   
+  def self.item_type(item)
+    if item[:id] >= 1 && item[:id] <= 12 || item[:id] == 204
+      "armour"
+    elsif item[:id] >= 13 && item[:id] <= 48
+      "weapon"
+    elsif item[:id] >= 49 && item[:id] <= 144 || item[:id] == 205 || item[:id] == 206
+      "gear"
+    elsif item[:id] >= 145 && item[:id] <= 181
+      "tools"
+    end
+  end
 end

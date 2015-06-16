@@ -8,11 +8,15 @@ class ItemsController < ApplicationController
 
 	def create
 
-		character = Character.find(id_params)
-		if new_starting_items(character)
-			new_items = Item.create_starting_items(character, items_choices_params)
-			character.starting_items = true
-			character.save
+		character = Character.find(id_params) 
+		if starting_items_params
+			if new_starting_items(character)
+				Item.create_starting_items(character, items_choices_params)
+				character.update_attributes(:starting_items => true)
+				# character.save
+			else
+				flash[:notice] = "You have saved your starting equipment already."
+			end
 		end
 		redirect_to character_path(character)
 	end
@@ -76,5 +80,9 @@ class ItemsController < ApplicationController
 	def id_params
 		params.require(:id)
 	end	
+
+	def starting_items_params
+		params.require(:starting_items)
+	end
 
 end
