@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
 		character = Character.find(id_params)
 		if new_starting_items(character)
 			new_items = Item.create_starting_items(character, items_choices_params)
+			character.starting_items = true
+			character.save
 		end
 		redirect_to character_path(character)
 	end

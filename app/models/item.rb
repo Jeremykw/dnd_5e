@@ -26,17 +26,13 @@ class Item < ActiveRecord::Base
   def self.items
     item_numbers = []
     items = []
-    # finds all item ids belonging to character and creates an 
-    # array with its item number
-    i = self.all
-    i.each do |e|
-      item_numbers << e.item
-    end
-    # Creates an array with the hash of info related to the item
-    item_numbers.each do |n|
-      # TODO #
-      # add details of non catalog items
-      items << list.find { |h| h[:id] == n }
+    equipment_list = self.all
+    logger.debug "i = #{equipment_list}"
+    equipment_list.each do |equipment|
+      item = list.find { |h| h[:id] == equipment.item }
+      item[:quantity] = equipment.quantity if equipment.quantity 
+      item[:description] = equipment.description if equipment.description
+      items << item
     end
     items
   end
@@ -48,7 +44,9 @@ class Item < ActiveRecord::Base
   def self.create_starting_items(character, item_choices) 
     item_choices.each do |k, choice|
       create_item(character, choice)
-    end    
+    end  
+      
+    # character.save
   end
 
   private

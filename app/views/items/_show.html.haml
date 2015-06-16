@@ -1,4 +1,6 @@
 - @character.item.items.each do |item|
-  = item[:name] if item[:name]
-  = item[:descriptio]
+  - if item[:quantity]
+    = item[:quantity] unless item[:quantity] <= 1
+  = item[:name] unless item[:name] == "Unlisted"
+  = item[:description]
   %br
