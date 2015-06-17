@@ -6,14 +6,15 @@
   %thead
     %tr
       %th Name
-      %th Armour class
+      %th AC modifier
       %th AC
   %tbody
-    %tr
     - @character.item.items_list.each do |item|
       - if item[:type] == "armour"
-        %td= item[:name]
-        %td= display_armour_class(item)
+        %tr
+          %td= item[:name]
+          %td= display_armour_class(item)
+          %td= calculate_ac(@character, item)
 
 %br
 %strong Weapons

@@ -1,5 +1,22 @@
 module ItemsHelper
 
+	def calculate_ac(character, item)
+		dex_modifier = character.ability_modifier(character.ability[:dex])
+		dex_modifier += character.proficency_bonuse if character.saving_throws.include?(:dex)
+		if item[:dex_mod_max] == 2
+			if dex_modifier >= 2
+				ac = item[:ac] + 2
+			else
+				ac = item[:ac] + dex_modifier
+			end
+		elsif item[:dex_mod]
+			ac = item[:ac] + dex_modifier
+		else
+			ac = item[:ac]
+		end
+		ac
+	end
+
 	def display_armour_class(armour) # Formats ac, dex_mod and dex_mod_max into string for display
 		ac = armour[:ac].to_s
 		if armour[:dex_mod]

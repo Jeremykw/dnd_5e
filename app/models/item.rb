@@ -45,7 +45,8 @@ class Item < ActiveRecord::Base
   # Iterates through all items submitted in params and 
   # calls create_item for that item
   ##
-  def self.create_starting_items(character, item_choices) 
+  def self.create_starting_items(character, item_choices)
+    non_option_starting_equipment(character)
     item_choices.each do |k, choice|
       create_item(character, choice)
     end  

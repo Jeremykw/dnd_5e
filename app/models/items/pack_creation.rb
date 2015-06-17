@@ -6,39 +6,26 @@ module PackCreation
   def add_unlisted_items(character, equipment_choice)
     case equipment_choice
     when 300 # Prayer Book
-      item = create(:character_id => character.id, :item => 72, :description => "Prayer book")
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 72, :description => "Prayer book")
     when 301 # prayer wheel
-      item = create(:character_id => character.id, :item => 211, :description => "Prayer wheel")
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 211, :description => "Prayer wheel")
     when 302 # broken blade
-      item = create(:character_id => character.id, :item => 211, :description => "Broken Blade")
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 211, :description => "Broken Blade")
     when 303 # Piece of banner
-      item = create(:character_id => character.id, :item => 211, :description => "Piece of banner")
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 211, :description => "Piece of banner")
     when 330 # light crosbow, 20 bolts
-      item = create(:character_id => character.id, :item => 14)
-      logger.debug "item = #{item}"
-      item = create(:character_id => character.id, :item => 57)
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 14)
+      create(:character_id => character.id, :item => 57)
     when 331 # two handaxe
-      item = create(:character_id => character.id, :item => 19)
-      logger.debug "item = #{item}"
-      item = create(:character_id => character.id, :item => 19)
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 19)
+      create(:character_id => character.id, :item => 19)
     when 332 # Leather longbow 20 arrows
-      item = create(:character_id => character.id, :item => 2)
-      logger.debug "item = #{item}"
-      item = create(:character_id => character.id, :item => 48)
-      logger.debug "item = #{item}"
-      item = create(:character_id => character.id, :item => 55)
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 2)
+      create(:character_id => character.id, :item => 48)
+      create(:character_id => character.id, :item => 55)
     when 333
-      item = create(:character_id => character.id, :item => 26)
-      logger.debug "item = #{item}"
-      item = create(:character_id => character.id, :item => 55)
-      logger.debug "item = #{item}"
+      create(:character_id => character.id, :item => 26)
+      create(:character_id => character.id, :item => 55)
     when 350 # priests pack
       create_pack(character, priests_pack(character))
     when 351 # explorers pack
@@ -51,6 +38,21 @@ module PackCreation
       create_pack(character, scholars_pack(character))
     when 355
       create_pack(character, diplomats_pack(character))
+    end
+  end
+
+  def non_option_starting_equipment(character)
+    case character.character_class
+    when "rouge"
+      create(:character_id => character.id, :item => 2)
+      create(:character_id => character.id, :item => 17, :quantity => 2)
+      create(:character_id => character.id, :item => 211, :description => "Theives tools")
+    when "fighter"
+
+    when "cleric"
+      create(:character_id => character.id, :item => 212)
+    when "wizard"
+
     end
   end
 
