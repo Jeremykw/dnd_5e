@@ -25,7 +25,7 @@
     = link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
   %br
   %br
-  = render partial: "items/show"
+
   -# Render Abilities template if abilities have been saved
   - if @character.ability
     = render partial: "abilities/show"
@@ -38,10 +38,16 @@
 
   %br
 
+  - if @character.starting_items
+    = render partial: "items/show"
+    / TODO
+    / link_to "Edit #{@character.character_name}'s ", edit_character_item_path(@character)
+
   - if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
     = render partial: "backgrounds/show"
     = link_to "Edit #{@character.character_name}'s Background", edit_character_background_path(@character, @character.background)
 
+
+  %br
+  %br
   = continue_character_creation(@character)
-  %br
-  %br

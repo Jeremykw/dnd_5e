@@ -1,11 +1,14 @@
-%h1 Starting Equipment
+.show
+  = render partial: "characters/show" # show saved character states
+.new
+  %h1 Starting Equipment
 
-= form_tag :action => :create, :id => @character.id do
-  = hidden_field_tag :starting_items,  "true"
-  = render :partial => "items/background_starting_equipment/#{@character.past}_starting_equipment"
-  %br
-  %br
-  = render :partial => "items/class_starting_equipment/#{@character.character_class}_starting_equipment"
-  %br
-  %br
-  = submit_tag "Save equipment"
+  = form_tag :action => :create, :id => @character.id do
+    = hidden_field_tag :starting_items,  "true"
+    = render :partial => "items/background_starting_equipment/#{@character.past}_starting_equipment"
+    %br
+    %br
+    = render :partial => "items/class_starting_equipment/#{@character.character_class}_starting_equipment"
+    %br
+    %br
+    = submit_tag "Save equipment"

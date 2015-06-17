@@ -1,4 +1,22 @@
 module ItemsHelper
+	
+	def items(character)
+		@items = @character.item.items_list
+	end
+
+	def best_armour_character_has(character, items)
+		all_armour = items.find_all { |item| item[:type] == "armour" || item[:id] == 212}
+		best_ac = 0
+		best_armour = nil
+		all_armour.each do |armour|
+			ac = calculate_ac(character, armour)
+			if  ac > best_ac
+				best_ac = ac
+				best_armour = armour
+			end
+		end
+		best_armour
+	end
 
 	def calculate_ac(character, item)
 		dex_modifier = character.ability_modifier(character.ability[:dex])
@@ -28,8 +46,8 @@ module ItemsHelper
 		end
 	end
 
-	def character_is_wearing_armour?(character)
-		if number_of_items = character.item.items_list.find { |item| item[:type] == "armour" }
+	def character_is_wearing_armour?(items)
+		if number_of_items = items.find { |item| item[:type] == "armour" }
 			return true
 		else
 			return false

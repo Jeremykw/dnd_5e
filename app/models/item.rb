@@ -62,7 +62,7 @@ class Item < ActiveRecord::Base
   # Creates item or redirects to add_unlisted_item
   def self.create_item(character, item)
     item = item.to_i
-    if item <= 212 && item > 0 # if item is a cataloged numbered item create it 
+    if item <= 210 && item > 0 || item == 212# if item is a cataloged numbered item create it 
       create(:character_id => character.id, :item => item)
     else # else reffer to add_unlisted_items find in /items/pack_creation.rb
       add_unlisted_items(character, item)

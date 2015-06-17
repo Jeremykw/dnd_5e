@@ -9,8 +9,9 @@
       %th AC modifier
       %th AC
   %tbody
-    - if character_is_wearing_armour?(@character)
-      - @character.item.items_list.each do |item|
+    - if character_is_wearing_armour?(items(@character))
+      - best_armour = best_armour_character_has(@character, @items)
+      - @items.each do |item|
         - if item[:type] == "armour"
           %tr
             %td= item[:name]
@@ -18,12 +19,21 @@
               %td +#{display_armour_class(item)}
             - else
               %td= display_armour_class(item)
-            %td= calculate_ac(@character, item)
+            - if item == best_armour
+              %td
+                %strong= calculate_ac(@character, item)
+            - elsif item[:id] == 212
+              %td
+                %strong= calculate_ac(@character, best_armour) + 2
+            - else
+              %td= calculate_ac(@character, item)
     - else
       %tr
         %td ---
         %td ---
         %td= calculate_ac(@character, nil)
+
+
 
 %br
 %strong Weapons
@@ -34,7 +44,7 @@
       %th Damage
       %th Properties
   %tbody
-    - @character.item.items_list.each do |item|
+    - @items.each do |item|
       %tr
         - if item[:type] == "weapon"   
           %td= item[:name]
@@ -50,7 +60,7 @@
       %th Name
       %th Weight
   %tbody
-    - @character.item.items_list.each do |item|
+    - @items.each do |item|
       %tr
         - if item[:type] == "gear"   
           %td= item[:quantity] unless !item[:quantity]
