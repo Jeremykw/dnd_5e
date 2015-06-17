@@ -36,6 +36,7 @@ class Item < ActiveRecord::Base
       if item[:id] == 211
         item[:name] = equipment.description
       end
+      item[:quantity] = 1 unless item[:quantity]
       items << item
     end
     items
