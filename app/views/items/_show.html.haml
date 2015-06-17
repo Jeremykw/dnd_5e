@@ -1,11 +1,46 @@
-%strong Equipment List
-%br
+%h3 Equipment List
 
-- @character.item.items.each do |item|
-  - if item[:quantity]
-    = item[:quantity] unless item[:quantity] <= 1
-  = item[:name] unless item[:name] == "Unlisted"
-  = item[:description]
-  %br
-  = item
-  %br
+%strong Armour
+%br
+%table#characters
+  %thead
+    %tr
+      %th Name
+      %th Armour class
+      %th AC
+  %tbody
+    %tr
+    - @character.item.items_list.each do |item|
+      - if item[:type] == "armour"
+        %td= item[:name]
+        %td= display_armour_class(item)
+
+%br
+%strong Weapons
+%table#characters
+  %thead
+    %tr
+      %th Name
+      %th Damage
+      %th Properties
+  %tbody
+    - @character.item.items_list.each do |item|
+      %tr
+        - if item[:type] == "weapon"   
+          %td= item[:name]
+          %td= item[:damage]
+          %td= item[:properties]
+
+%br
+%strong Adventuring Gear
+%table#characters
+  %thead
+    %tr
+      %th Name
+      %th Weight
+  %tbody
+    - @character.item.items_list.each do |item|
+      %tr
+        - if item[:type] == "gear"   
+          %td= item[:name]
+          %td= item[:weight]

@@ -6,22 +6,39 @@ module PackCreation
   def add_unlisted_items(character, equipment_choice)
     case equipment_choice
     when 300 # Prayer Book
-      create(:character_id => character.id, :item => 72, :description => "Prayer book")
+      item = create(:character_id => character.id, :item => 72, :description => "Prayer book")
+      logger.debug "item = #{item}"
     when 301 # prayer wheel
-      create(:character_id => character.id, :item => 206, :description => "Prayer wheel")
+      item = create(:character_id => character.id, :item => 211, :description => "Prayer wheel")
+      logger.debug "item = #{item}"
+    when 302 # broken blade
+      item = create(:character_id => character.id, :item => 211, :description => "Broken Blade")
+      logger.debug "item = #{item}"
+    when 303 # Piece of banner
+      item = create(:character_id => character.id, :item => 211, :description => "Piece of banner")
+      logger.debug "item = #{item}"
     when 330 # light crosbow, 20 bolts
-      create(:character_id => character.id, :item => 14)
-      create(:character_id => character.id, :item => 57)
+      item = create(:character_id => character.id, :item => 14)
+      logger.debug "item = #{item}"
+      item = create(:character_id => character.id, :item => 57)
+      logger.debug "item = #{item}"
     when 331 # two handaxe
-      create(:character_id => character.id, :item => 19)
-      create(:character_id => character.id, :item => 19)
+      item = create(:character_id => character.id, :item => 19)
+      logger.debug "item = #{item}"
+      item = create(:character_id => character.id, :item => 19)
+      logger.debug "item = #{item}"
     when 332 # Leather longbow 20 arrows
-      create(:character_id => character.id, :item => 2)
-      create(:character_id => character.id, :item => 48)
-      create(:character_id => character.id, :item => 55)
+      item = create(:character_id => character.id, :item => 2)
+      logger.debug "item = #{item}"
+      item = create(:character_id => character.id, :item => 48)
+      logger.debug "item = #{item}"
+      item = create(:character_id => character.id, :item => 55)
+      logger.debug "item = #{item}"
     when 333
-      create(:character_id => character.id, :item => 26)
-      create(:character_id => character.id, :item => 55)
+      item = create(:character_id => character.id, :item => 26)
+      logger.debug "item = #{item}"
+      item = create(:character_id => character.id, :item => 55)
+      logger.debug "item = #{item}"
     when 350 # priests pack
       create_pack(character, priests_pack(character))
     when 351 # explorers pack
@@ -50,7 +67,7 @@ module PackCreation
 	###
 	def burglars_pack(character)
     create(:character_id => character.id, :item => 206, :description => "10 Feet of string")
-    [[65, 1], [66, 1], [70, 1], [205, 5], [85, 1], [92, 1], [118, 10], [107, 1], [113, 2], [126, 5], [140, 1], [143, 1], [129, 1]]
+    [[65, 1], [66, 1], [70, 1], [210, 5], [85, 1], [92, 1], [118, 10], [107, 1], [113, 2], [126, 5], [140, 1], [143, 1], [129, 1]]
   end
   
   def diplomats_pack(character)
@@ -70,17 +87,17 @@ module PackCreation
   end
 
   def priests_pack(character)
-    create(:character_id => character.id, :item => 206, :description => "Alms box")
-    create(:character_id => character.id, :item => 206, :description => "2 Blocks incense")
-    create(:character_id => character.id, :item => 206, :description => "Censer")
-    create(:character_id => character.id, :item => 206, :description => "Vestments")
-    [[65, 1], [71, 1], [205, 10], [140, 1], [126, 2], [143, 1]]
+    create(:character_id => character.id, :item => 211, :description => "Alms box")
+    create(:character_id => character.id, :item => 211, :description => "2 Blocks incense")
+    create(:character_id => character.id, :item => 211, :description => "Censer")
+    create(:character_id => character.id, :item => 211, :description => "Vestments")
+    [[65, 1], [71, 1], [210, 10], [140, 1], [126, 2], [143, 1]]
   end
 
   def scholars_pack(character)
     create(:character_id => character.id, :item => 72, :description => "Book of lore")
-    create(:character_id => character.id, :item => 206, :description => "Little bar of sand")
-    create(:character_id => character.id, :item => 206, :description => "Small knife")
+    create(:character_id => character.id, :item => 211, :description => "Little bar of sand")
+    create(:character_id => character.id, :item => 211, :description => "Small knife")
     [[65, 1], [101, 1], [102, 1], [115, 10]]
   end
 
