@@ -3,10 +3,14 @@
 %table#characters
   %thead
     %tr
-  - @item.each do |head, v|
+  - @item.each do |head, data|
     - unless head == "id" || head == "action" || head == "controller"
       %th= head 
-   
+  %tbody
+    %tr
+  - @item.each do |head, data|
+    - unless head == "id" || head == "action" || head == "controller"
+      %td= data
   / %tbody
   /   - if character_is_wearing_armour?(items(@character))
   /     - best_armour = best_armour_character_has(@character, @items)
