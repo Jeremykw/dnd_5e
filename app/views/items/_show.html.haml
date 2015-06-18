@@ -14,7 +14,7 @@
       - @items.each do |item|
         - if item[:type] == "armour"
           %tr
-            %td= item[:name]
+            %td= item_name_to_link(item)
             - if item[:id] == 212
               %td +#{display_armour_class(item)}
             - else
@@ -47,7 +47,7 @@
     - @items.each do |item|
       %tr
         - if item[:type] == "weapon"   
-          %td= item[:name]
+          %td= item_name_to_link(item)
           %td= item[:damage]
           %td= item[:properties]
 
@@ -64,5 +64,5 @@
       %tr
         - if item[:type] == "gear"   
           %td= item[:quantity] unless !item[:quantity]
-          %td= item[:name]
+          %td= item_name_to_link(item)
           %td= item[:weight]

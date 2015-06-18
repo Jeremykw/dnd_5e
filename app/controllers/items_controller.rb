@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
+		
 		@item = params
 	end
 

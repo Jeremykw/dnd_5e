@@ -1,5 +1,9 @@
 module ItemsHelper
 	
+	def item_name_to_link(item)
+		render_haml(link_to "#{item[:name]}", item_path(item))
+	end
+
 	def items(character)
 		@items = @character.item.items_list
 	end
