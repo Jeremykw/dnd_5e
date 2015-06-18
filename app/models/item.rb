@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
 	extend MountsList
 	extend TackList
   extend PackCreation
+  extend ItemDetails
 
   ###
   # Returns an array of hashes with all items
