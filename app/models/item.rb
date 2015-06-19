@@ -32,6 +32,7 @@ class Item < ActiveRecord::Base
       item = list.find { |h| h[:id] == equipment.item }
       item[:quantity] = equipment.quantity if equipment.quantity 
       item[:description] = equipment.description if equipment.description
+      item[:pack] = equipment.pack
       item[:type] = item_type(item)
       if item[:id] == 211
         item[:name] = equipment.description
@@ -53,12 +54,13 @@ class Item < ActiveRecord::Base
     end  
   end
 
-  private
   # returns a master list of all items
   def self.list
     armour + weapons + adventuring_gear + tools + boats + tack + mounts
   end
 
+  private
+  
   # Creates item or redirects to add_unlisted_item
   def self.create_item(character, item)
     item = item.to_i

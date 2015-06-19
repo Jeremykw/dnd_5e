@@ -59,7 +59,7 @@ module PackCreation
   # Creates each item in the array returned from *_pack methods below
   def create_pack(character, pack)
     pack.each do |item, quantity|
-      create(:character_id => character.id, :item => item, :quantity => quantity)
+      create(:character_id => character.id, :item => item, :quantity => quantity, :pack => true)
     end
   end
 
@@ -68,7 +68,7 @@ module PackCreation
 	# an array of arrays with items and corresponding quantity 
 	###
 	def burglars_pack(character)
-    create(:character_id => character.id, :item => 206, :description => "10 Feet of string")
+    create(:character_id => character.id, :item => 206, :description => "10 Feet of string", :pack => true)
     [[65, 1], [66, 1], [70, 1], [210, 5], [85, 1], [92, 1], [118, 10], [107, 1], [113, 2], [126, 5], [140, 1], [143, 1], [129, 1]]
   end
   
@@ -89,17 +89,17 @@ module PackCreation
   end
 
   def priests_pack(character)
-    create(:character_id => character.id, :item => 211, :description => "Alms box")
-    create(:character_id => character.id, :item => 211, :description => "2 Blocks incense")
-    create(:character_id => character.id, :item => 211, :description => "Censer")
-    create(:character_id => character.id, :item => 211, :description => "Vestments")
+    create(:character_id => character.id, :item => 211, :description => "Alms box", :pack => true)
+    create(:character_id => character.id, :item => 211, :description => "2 Blocks incense", :pack => true)
+    create(:character_id => character.id, :item => 211, :description => "Censer", :pack => true)
+    create(:character_id => character.id, :item => 211, :description => "Vestments", :pack => true)
     [[65, 1], [71, 1], [210, 10], [140, 1], [126, 2], [143, 1]]
   end
 
   def scholars_pack(character)
-    create(:character_id => character.id, :item => 72, :description => "Book of lore")
-    create(:character_id => character.id, :item => 211, :description => "Little bar of sand")
-    create(:character_id => character.id, :item => 211, :description => "Small knife")
+    create(:character_id => character.id, :item => 72, :description => "Book of lore", :pack => true)
+    create(:character_id => character.id, :item => 211, :description => "Little bar of sand", :pack => true)
+    create(:character_id => character.id, :item => 211, :description => "Small knife", :pack => true)
     [[65, 1], [101, 1], [102, 1], [115, 10]]
   end
 

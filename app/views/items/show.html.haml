@@ -9,7 +9,7 @@
   %tbody
   - @item.each do |head, data|
     - unless a_field_not_to_be_show.include? head 
-      %td= data
+      %td= data.humanize.capitalize
 
 - if @item[:type] == "armour"
   %h2 Armour Class
@@ -21,6 +21,9 @@
 - if @item[:details]
   %h2 Details
   - @item[:details].each do |detail|
-    %h3= detail[:title]
-    = detail[:body]
+    %h3= detail["title"]
+    = detail["body"]
+
+- if @item[:pack]
+  Item was obtained as part of a pack
 

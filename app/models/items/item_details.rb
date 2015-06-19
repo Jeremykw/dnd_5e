@@ -59,7 +59,7 @@ module ItemDetails
 
 	end
 	def leather 
-
+		{:body => "eat my shorts"}
 	end 
 	def studded_leather
 
