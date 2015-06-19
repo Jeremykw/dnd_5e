@@ -3,30 +3,15 @@
 %table#characters
   %thead
     %tr
-  - @item.each do |head, data|
-    - unless head == "id" || head == "action" || head == "controller"
+  - @item.each do |head, v|
+    - unless head == "id" || head == "action" || head == "controller" || head == "details"
       %th= head 
   %tbody
-    %tr
   - @item.each do |head, data|
-    - unless head == "id" || head == "action" || head == "controller"
+    - unless head == "id" || head == "action" || head == "controller" || head == "details"
       %td= data
-  / %tbody
-  /   - if character_is_wearing_armour?(items(@character))
-  /     - best_armour = best_armour_character_has(@character, @items)
-  /     - @items.each do |item|
-  /       - if item[:type] == "armour"
-  /         %tr
-  /           %td= item_name_to_link(item)
-  /           - if item[:id] == 212
-  /             %td +#{display_armour_class(item)}
-  /           - else
-  /             %td= display_armour_class(item)
-  /           - if item == best_armour
-  /             %td
-  /               %strong= calculate_ac(@character, item)
-  /           - elsif item[:id] == 212
-  /             %td
-  /               %strong= calculate_ac(@character, best_armour) + 2
-  /           - else
-  /             %td= calculate_ac(@character, item)
+
+%h2 Details
+- @item[:details].each do |detail|
+  %h3= detail[:title]
+  = detail[:body]
