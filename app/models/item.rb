@@ -28,7 +28,6 @@ class Item < ActiveRecord::Base
     item_numbers = []
     items = []
     equipment_list = self.all
-    logger.debug "i = #{equipment_list}"
     equipment_list.each do |equipment|
       item = list.find { |h| h[:id] == equipment.item }
       item[:quantity] = equipment.quantity if equipment.quantity 

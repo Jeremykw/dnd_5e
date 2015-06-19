@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-		
+		@character = Character.find(params[:character_id	])
 		@item = params
 	end
 
