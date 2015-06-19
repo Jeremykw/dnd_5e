@@ -1,7 +1,12 @@
 module ItemsHelper
 
+	# Item fields not to be show in tabel format in show
+	def a_field_not_to_be_show
+		[ "id", "action", "controller", "details", "dex_mod_max", "dex_mod", "character_id", "stealth", "strength", "ac"]
+	end
 	# Generates a link to items/show wtih item name
-	def item_name_to_link(item) 
+	def item_name_to_link(item, character) 
+		item[:character_id] = character.id
 		render_haml(link_to "#{item[:name]}", item_path(item))
 	end
 
@@ -25,6 +30,7 @@ module ItemsHelper
 
 	def calculate_ac(character, item)
 		dex_modifier = character.ability_modifier(character.ability[:dex])
+		logger.debug "dex_modifier = #{dex_modifier}"
 		dex_modifier += character.proficency_bonuse if character.saving_throws.include?(:dex)
 		if item == nil
 			ac = dex_modifier + 10
@@ -37,7 +43,7 @@ module ItemsHelper
 		if armour[:dex_mod_max] == true
 			calculate_ac_with_dex_mod_with_max(dex_modifier)
 		elsif armour[:dex_mod]
-			ac = armour[:ac] + dex_modifier
+			ac = armour[:ac].to_i + dex_modifier
 		else
 			ac = armour[:ac]
 		end
@@ -63,6 +69,10 @@ module ItemsHelper
 		ac = armour[:ac].to_s
 		if armour[:dex_mod]
 			ac += " + Dex modifier"
+		elsif armour[:id] == 212 || armour[:name] == "Shield"
+			ac = "Armour class + 2"
+		else
+			ac += " + no modifier"
 		end
 		if armour[:dex_mod_max]
 			ac += " (max #{armour[:dex_mod_max]})"

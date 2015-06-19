@@ -4,14 +4,23 @@
   %thead
     %tr
   - @item.each do |head, v|
-    - unless head == "id" || head == "action" || head == "controller" || head == "details"
+    - unless a_field_not_to_be_show.include? head 
       %th= head 
   %tbody
   - @item.each do |head, data|
-    - unless head == "id" || head == "action" || head == "controller" || head == "details"
+    - unless a_field_not_to_be_show.include? head 
       %td= data
 
-%h2 Details
-- @item[:details].each do |detail|
-  %h3= detail[:title]
-  = detail[:body]
+- if @item[:type] == "armour"
+  %h2 Armour Class
+  = display_armour_class(@item)
+  - if @item[:name] != "Shield"
+    %strong =
+    = calculate_ac(@character, @item)
+
+- if @item[:details]
+  %h2 Details
+  - @item[:details].each do |detail|
+    %h3= detail[:title]
+    = detail[:body]
+
