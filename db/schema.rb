@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150601235543) do
     t.integer  "character_id"
     t.integer  "quantity"
     t.string   "description"
-    t.boolean  "pack"
+    t.string   "pack"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

@@ -1,4 +1,7 @@
-%h1= @item[:name]
+- if @item[:pack]
+  %h1= @item[:name] + ", " + @item[:pack].humanize.capitalize
+- else
+  %h1= @item[:name]
 
 %table#characters
   %thead
@@ -24,6 +27,5 @@
     %h3= detail["title"]
     = detail["body"]
 
-- if @item[:pack]
-  Item was obtained as part of a pack
+
 

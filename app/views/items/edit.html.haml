@@ -1,4 +1,4 @@
-%h3 Equipment List
+%h1 Edit #{@character.character_name}'s Equipment
 
 %strong Armour
 %br
@@ -66,5 +66,3 @@
           -else
             %td= item_name_to_link(item, @character)
           %td= item[:weight]
-
-= link_to "Edit Equipment", edit_item_path(@character)          

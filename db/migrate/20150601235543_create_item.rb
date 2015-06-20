@@ -5,7 +5,7 @@ class CreateItem < ActiveRecord::Migration
       t.integer :character_id
       t.integer :quantity
       t.string	:description
-      t.boolean :pack
+      t.string :pack
       t.timestamps null: false
     end
   end

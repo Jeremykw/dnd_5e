@@ -2,12 +2,14 @@ class ItemsController < ApplicationController
 
 	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
 
+	def edit
+		@character = Character.find(id_params)
+	end
 	def starting_equipment
 		@character = Character.find(id_params)
 	end
 
-	def create
-		
+	def create		
 		character = Character.find(id_params) 
 		if starting_items_params
 			if new_starting_items(character)
