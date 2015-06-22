@@ -60,14 +60,6 @@ class ItemsController < ApplicationController
 		!character.starting_items
 	end
 
-	# def items_choices_permits
-	# 	# permits = {}
-	# 	# for n in 27..44
-	# 	# 	permits.merge("class_items_choices_#{n}".parameterize.underscore.to_sym => true)
-	# 	# end
-	# 	# permits
-	# end
-
 	###
 	# Strong Parameters White List
 	###

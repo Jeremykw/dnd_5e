@@ -6,7 +6,8 @@
     - sorted_items.each do |item|
       %tr
         %td
-          %em= "_#{item[:name]}"
+          %em= "- "
+          = item_name_to_link(item, nil)
         %td= cost_converter(item[:cost])
         %td= weight(item[:weight])
         %td= item[:id]

@@ -8,11 +8,15 @@
     %tr
   - @item.each do |head, v|
     - unless a_field_not_to_be_show.include? head 
-      %th= head 
+      %th= head.humanize.capitalize 
   %tbody
   - @item.each do |head, data|
     - unless a_field_not_to_be_show.include? head 
-      %td= data.humanize.capitalize
+      - if head == "cost"
+
+        %td= cost_converter(data.to_f)
+      - else
+        %td= data.humanize.capitalize
 
 - if @item[:type] == "armour"
   %h2 Armour Class

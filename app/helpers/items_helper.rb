@@ -10,10 +10,12 @@ module ItemsHelper
 		render_haml(link_to "#{item[:name]}", item_path(item))
 	end
 
-	def items(character)
+	# loads the list of character items into instance veriable
+	def items(character) 
 		@items = @character.item.items_list
 	end
 
+	# If the character has more than one set of armour, determinds what armour gives bes ac
 	def best_armour_character_has(character, items)
 		all_armour = items.find_all { |item| item[:type] == "armour" || item[:id] == 212}
 		best_ac = 0
@@ -28,6 +30,7 @@ module ItemsHelper
 		best_armour
 	end
 
+	# Takes Character and item and Calcultes AC
 	def calculate_ac(character, item)
 		dex_modifier = character.ability_modifier(character.ability[:dex])
 		logger.debug "dex_modifier = #{dex_modifier}"
@@ -65,7 +68,8 @@ module ItemsHelper
 		end
 	end
 
-	def display_armour_class(armour) # Formats ac, dex_mod and dex_mod_max into string for display
+	# Formats ac, dex_mod and dex_mod_max into string for display
+	def display_armour_class(armour) 
 		ac = armour[:ac].to_s
 		if armour[:dex_mod]
 			ac += " + Dex modifier"
@@ -80,12 +84,13 @@ module ItemsHelper
 		ac
 	end
 
-	def cost_converter(gold) # Converts gold decimal into sp and cp
+	# Converts gold decimal into sp and cp
+	def cost_converter(gold) 
 		case
 		when gold.is_a?(String)
 			cost = gold
 		when gold >= 1
-			cost = "#{gold} gp"
+			cost = "#{gold.to_i} gp"
 		when gold < 1 && gold >= 0.1
 			cost = "#{(gold * 10).to_i} sp"
 		when gold < 0.1
