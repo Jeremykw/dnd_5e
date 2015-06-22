@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
 	def index
 		armour = Item.armour.group_by { |t| t[:category] }
-		@armour = {"light" => armour["light"], "medium" => armour["medium"], "heavy" => armour["heavy"]}
+		@armour = {"light" => armour["light_armour"], "medium" => armour["medium_armour"], "heavy" => armour["heavy_armour"]}
 		@weapons = Item.weapons.group_by { |t| t[:category] }
 		@adventuring_gear = Item.adventuring_gear
 		@tools = Item.tools
@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-		@character = Character.find(params[:character_id	])
+		@character = Character.find(params[:character_id]) if params[:character_id]
 		@item = params
 	end
 

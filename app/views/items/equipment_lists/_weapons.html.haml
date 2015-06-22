@@ -15,7 +15,7 @@
 				%strong= category.humanize.capitalize
 			- sorted_items.each do |item|
 				%tr
-					%td= item[:name]
+					%td= item_name_to_link(item, nil)
 					%td= cost_converter(item[:cost])
 					%td= item[:damage]
 					%td= weight(item[:weight])

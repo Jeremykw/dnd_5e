@@ -9,7 +9,7 @@
   %tbody
     - @mounts.each do |mount|
       %tr
-        %td= mount[:name]
+        %td= item_name_to_link(mount, nil)
         %td= cost_converter(mount[:cost])
         %td= mount[:speed].to_s + " ft"
         %td= weight(mount[:weight])
