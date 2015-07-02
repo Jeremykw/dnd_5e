@@ -20,6 +20,7 @@ class Item < ActiveRecord::Base
   extend PackCreation
   extend WeaponDetails
   extend ArmourDetails
+  extend GearDetails
 
   ###
   # Returns an array of hashes with all items
