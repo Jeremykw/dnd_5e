@@ -36,7 +36,7 @@ module GearDetails
 5-foot radius and dim light for an additional 5 feet." }
 	end
 
-	def crowbow_bolt_case
+	def crossbow_bolt_case
 		{ :body => "This wooden case can hold up
 to twenty crossbow bolts" }
 	end
@@ -101,7 +101,7 @@ a creature that has 0 hit points, without needing to make
 a Wisdom (Medicine) check." }
 	end
 
-	def holy_sympol
+	def holy_symbol
 		{ :body => "A holy symbol is a representation of
 a god or pantheon. It might be an amulet depicting a
 symbol representing a deity, the same symbol carefully
@@ -294,7 +294,7 @@ with abundant, exposed fuel—takes an action. Lighting
 any other fire takes 1 minute." }
 	end
 
-	def tourch
+	def torch
 		{ :body => "A torch burns for 1 hour, providing bright light
 in a 20-foot radius and dim light for an additional 20
 feet. If you make a melee attack with a burning torch

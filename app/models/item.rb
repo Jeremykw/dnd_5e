@@ -27,22 +27,8 @@ class Item < ActiveRecord::Base
   # and their details that belong to a character
   ###
   def self.items_list
-    item_numbers = []
-    items = []
     equipment_list = self.all
-    equipment_list.each do |equipment|
-      item = list.find { |h| h[:id] == equipment.item }
-      item[:quantity] = equipment.quantity if equipment.quantity 
-      item[:description] = equipment.description if equipment.description
-      item[:pack] = equipment.pack
-      item[:type] = item_type(item)
-      if item[:id] == 211
-        item[:name] = equipment.description
-      end
-      item[:quantity] = 1 unless item[:quantity]
-      items << item
-    end
-    items
+    add_item_details(equipment_list)
   end
 
   ###
@@ -62,6 +48,24 @@ class Item < ActiveRecord::Base
   end
 
   private
+
+  def self.add_item_details(list_of_equipment)
+
+    items = []
+    list_of_equipment.each do |equipment|
+      item = list.find { |h| h[:id] == equipment.item }
+      item[:quantity] = equipment.quantity if equipment.quantity 
+      item[:description] = equipment.description if equipment.description
+      item[:pack] = equipment.pack
+      item[:type] = item_type(item)
+      if item[:id] == 211
+        item[:name] = equipment.description
+      end
+      item[:quantity] = 1 unless item[:quantity]
+      items << item
+    end
+    items
+  end
   
   # Creates item or redirects to add_unlisted_item
   def self.create_item(character, item)
