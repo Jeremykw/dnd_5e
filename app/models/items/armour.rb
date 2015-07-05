@@ -3,7 +3,7 @@ module ArmourList
 		[
 			{ :id => 1,   :name => "Padded", :details => [padded], :category => "light_armour", :cost => 5, :ac => 11, :dex_mod => true, :dex_mod_max => nil, :stealth => true, :weight => 8 },
 			{ :id => 2,   :name => "Leather", :details => [leather], :category => "light_armour", :cost => 10, :ac => 11, :dex_mod => true, :dex_mod_max => nil, :stealth => false, :weight => 10 },
-			{ :id => 3,   :name => "Studded Leather", :details => [studded_leather], :category => "light_armour", :cost => 12, :ac => 12, :dex_mod => true, :dex_mod_max => nil, :stealth => false, :weight => 13,},
+			{ :id => 3,   :name => "Studded Leather", :details => [studded_leather], :category => "light_armour", :cost => 12, :ac => 12, :dex_mod => true, :dex_mod_max => nil, :stealth => false, :weight => 13 },
 			{ :id => 4,   :name => "Chain Shirt", :details => [chain_shirt], :category => "medium_armour", :cost => 50, :ac => 13, :dex_mod => true, :dex_mod_max => 2, :stealth => false, :weight => 20 },
 			{ :id => 5,   :name => "Hide", :details => [hide], :category => "medium_armour", :cost => 10, :ac => 12, :dex_mod => true, :dex_mod_max => 2, :stealth => false, :weight => 12 },
 			{ :id => 6, 	:name => "Scale Mail", :details => [scale], :category => "medium_armour", :cost => 50, :ac => 14, :dex_mod => true, :dex_mod_max => 2, :stealth => true, :weight => 45 },
