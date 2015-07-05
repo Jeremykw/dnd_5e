@@ -1,16 +1,16 @@
-- if @item[:pack]
-  %h1= @item[:name] + ", " + @item[:pack].humanize.capitalize
+- if @belonging[:pack]
+  %h1= @belonging[:name] + ", " + @belonging[:pack].humanize.capitalize
 - else
-  %h1= @item[:name]
+  %h1= @belonging[:name]
 
 %table#characters
   %thead
     %tr
-  - @item.each do |head, v|
+  - @belonging.each do |head, v|
     - unless a_field_not_to_be_show.include? head 
       %th= head.humanize.capitalize 
   %tbody
-  - @item.each do |head, data|
+  - @belonging.each do |head, data|
     - unless a_field_not_to_be_show.include? head 
       - if head == "cost"
 
@@ -18,16 +18,16 @@
       - else
         %td= data.humanize.capitalize
 
-- if @item[:type] == "armour"
+- if @belonging[:type] == "armour"
   %h2 Armour Class
-  = display_armour_class(@item)
-  - if @item[:name] != "Shield"
+  = display_armour_class(@belonging)
+  - if @belonging[:name] != "Shield"
     %strong =
-    = calculate_ac(@character, @item)
+    = calculate_ac(@character, @belonging)
 
-- if @item[:details]
+- if @belonging[:details]
   %h2 Details
-  - @item[:details].each do |detail|
+  - @belonging[:details].each do |detail|
     %h3= detail["title"]
     = detail["body"]
 

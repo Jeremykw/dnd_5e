@@ -7,12 +7,12 @@ module BelongingsHelper
 	# Generates a link to items/show wtih item name
 	def item_name_to_link(item, character) 
 		item[:character_id] = character.id if character
-		render_haml(link_to "#{item[:name]}", item_path(item))
+		render_haml(link_to "#{item[:name]}", belonging_path(item))
 	end
 
 	# loads the list of character items into instance veriable
 	def items(character) 
-		@items = @character.item.items_list
+		@items = @character.belongings.items_list
 	end
 
 	# If the character has more than one set of armour, determinds what armour gives bes ac

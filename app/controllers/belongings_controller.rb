@@ -38,7 +38,7 @@ class BelongingsController < ApplicationController
 
 	def show
 		@character = Character.find(params[:character_id]) if params[:character_id]
-		@Belonging = params
+		@belonging = params
 	end
 
 	private
