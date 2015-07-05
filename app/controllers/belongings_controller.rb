@@ -1,11 +1,11 @@
-class ItemsController < ApplicationController
+class BelongingsController < ApplicationController
 
 	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
 
 	def edit
 		@character = Character.find(id_params)
 	end
-	
+
 	def starting_equipment
 		@character = Character.find(id_params)
 	end
@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
 		character = Character.find(id_params) 
 		if starting_items_params
 			if new_starting_items(character)
-				Item.create_starting_items(character, items_choices_params)
+				Belonging.create_starting_items(character, items_choices_params)
 				character.update_attributes(:starting_items => true)
 				# character.save
 			else
@@ -26,19 +26,19 @@ class ItemsController < ApplicationController
 
 
 	def index
-		armour = Item.armour.group_by { |t| t[:category] }
+		armour = Belonging.armour.group_by { |t| t[:category] }
 		@armour = {"light" => armour["light_armour"], "medium" => armour["medium_armour"], "heavy" => armour["heavy_armour"]}
-		@weapons = Item.weapons.group_by { |t| t[:category] }
-		@adventuring_gear = Item.adventuring_gear
-		@tools = Item.tools
-		@boats = Item.boats.sort_by { |hsh| hsh[:name] }
-		@tack = Item.tack
-		@mounts = Item.mounts
+		@weapons = Belonging.weapons.group_by { |t| t[:category] }
+		@adventuring_gear = Belonging.adventuring_gear
+		@tools = Belonging.tools
+		@boats = Belonging.boats.sort_by { |hsh| hsh[:name] }
+		@tack = Belonging.tack
+		@mounts = Belonging.mounts
 	end
 
 	def show
 		@character = Character.find(params[:character_id]) if params[:character_id]
-		@item = params
+		@Belonging = params
 	end
 
 	private
@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
       end
       if count != 2
       	flash[:notice] = "You must select 2 Martial weapons"
-      	redirect_to starting_equipment_item_path(character) and return
+      	redirect_to starting_equipment_belonging_path(character) and return
       end
     end
   end

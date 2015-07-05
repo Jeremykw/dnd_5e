@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Belonging < ActiveRecord::Base
 
   belongs_to :character
 

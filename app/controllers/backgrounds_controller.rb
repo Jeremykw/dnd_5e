@@ -12,7 +12,7 @@ class BackgroundsController < ApplicationController
 			flash[:notice] = "Please#{@character.character_name.pluralize} Background"
 			redirect_to new_character_background_path(@character.id) and return
 		end
-		redirect_to starting_equipment_item_path(@character)
+		redirect_to starting_equipment_belonging_path(@character)
 
 	end
 

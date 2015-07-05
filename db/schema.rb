@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 20150601235543) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "belongings", force: :cascade do |t|
+    t.integer  "item"
+    t.integer  "character_id"
+    t.integer  "quantity"
+    t.string   "description"
+    t.string   "pack"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string  "character_name"
     t.string  "character_class"
@@ -51,16 +61,6 @@ ActiveRecord::Schema.define(version: 20150601235543) do
     t.boolean "starting_items"
     t.string  "type"
     t.integer "user_id"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.integer  "item"
-    t.integer  "character_id"
-    t.integer  "quantity"
-    t.string   "description"
-    t.string   "pack"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "skills", force: :cascade do |t|

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	Dnd5e::Application.routes.draw do
-    resources :items do  # Equipment
+    resources :belongings do  # Equipment
       member do
         get :starting_equipment
       end

@@ -1,6 +1,6 @@
-class CreateItem < ActiveRecord::Migration
+class CreateBelonging < ActiveRecord::Migration
   def change
-    create_table :items do |t|
+    create_table :belongings do |t|
       t.integer :item
       t.integer :character_id
       t.integer :quantity

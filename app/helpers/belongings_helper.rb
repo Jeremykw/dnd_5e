@@ -1,4 +1,4 @@
-module ItemsHelper
+module BelongingsHelper
 
 	# Item fields not to be show in tabel format in show
 	def a_field_not_to_be_show
@@ -124,11 +124,11 @@ module ItemsHelper
 	end
 
 	def simple_weapons # Creates and array of all simple weapons
-		Item.weapons.find_all{ |hash| hash[:category] == "simple_melee"}
+		Belonging.weapons.find_all{ |hash| hash[:category] == "simple_melee"}
 	end
 
 	def martial_weapon
-		Item.weapons.find_all{ |hash| hash[:category] == "martial_melee"}
+		Belonging.weapons.find_all{ |hash| hash[:category] == "martial_melee"}
 	end
 	
 end
