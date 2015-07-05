@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 	def edit
 		@character = Character.find(id_params)
 	end
+	
 	def starting_equipment
 		@character = Character.find(id_params)
 	end
