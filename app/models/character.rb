@@ -6,6 +6,7 @@ class Character < ActiveRecord::Base
 	has_one :ability, dependent: :destroy
 	has_one :skill, dependent: :destroy
 	has_one :background, dependent: :destroy
+	has_many :items, through: :belongings
 	has_many :belongings, dependent: :destroy
 	
 	before_validation :race_into_subrace, on: :create
