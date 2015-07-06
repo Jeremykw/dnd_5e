@@ -10,8 +10,9 @@ class CreateItems < ActiveRecord::Migration
       t.boolean :dex_mod
       t.boolean :dex_mod_max
       t.integer :strength
+      t.integer :stealth
       t.integer :speed
-      t.string :damange
+      t.string :damage
       t.string :properties
       t.boolean :ranged
 

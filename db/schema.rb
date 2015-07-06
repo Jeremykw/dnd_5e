@@ -73,8 +73,9 @@ ActiveRecord::Schema.define(version: 20150705150253) do
     t.boolean  "dex_mod"
     t.boolean  "dex_mod_max"
     t.integer  "strength"
+    t.integer  "stealth"
     t.integer  "speed"
-    t.string   "damange"
+    t.string   "damage"
     t.string   "properties"
     t.boolean  "ranged"
     t.datetime "created_at",  null: false

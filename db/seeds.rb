@@ -1,4 +1,33 @@
 Item.adventuring_gear.each do |item|
+	item[:category] = "adventuring_gear" unless item[:category]
+	Item.create(item)
+end
+
+Item.armour.each do |item|
+	Item.create(item)
+end
+
+Item.boats.each do |item|
+	item[:category] = "boats"
+	Item.create(item)
+end
+
+Item.mounts.each do |item|
+	item[:category] = "mount"
+	Item.create(item)
+end
+
+Item.tack.each do |item|
+	item[:category] = "tack" unless item[:category]
+	Item.create(item)
+end
+
+Item.tools.each do |item|
+	item[:category] = "tool" unless item[:category]
+	Item.create(item)
+end
+
+Item.weapons.each do |item|
 	Item.create(item)
 end
 
