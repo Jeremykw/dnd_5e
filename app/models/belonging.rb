@@ -11,17 +11,7 @@ class Belonging < ActiveRecord::Base
 
 
   Dir['app/models/items/*.rb'].each {|file| require_dependency file }
-	extend ArmourList
-	extend WeaponsList
-	extend AdventureingGearList
-	extend ToolsList
-	extend BoatsList
-	extend MountsList
-	extend TackList
   extend PackCreation
-  extend WeaponDetails
-  extend ArmourDetails
-  extend GearDetails
 
   ###
   # Returns an array of hashes with all items
@@ -41,11 +31,6 @@ class Belonging < ActiveRecord::Base
     item_choices.each do |k, choice|
       create_item(character, choice)
     end  
-  end
-
-  # returns a master list of all items
-  def self.list
-    armour + weapons + adventuring_gear + tools + boats + tack + mounts
   end
 
   private

@@ -1,4 +1,6 @@
-
+Item.adventuring_gear.each do |item|
+	Item.create(item)
+end
 
 
 # Character.create!(
