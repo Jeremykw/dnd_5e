@@ -1,33 +1,59 @@
-Item.adventuring_gear.each do |item|
-	item[:category] = "adventuring_gear" unless item[:category]
+Dir['db/equipment_seeds/*.rb'].each {|file| require_dependency file }
+extend ArmourList
+extend WeaponsList
+extend AdventureingGearList
+extend ToolsList
+extend BoatsList
+extend MountsList
+extend TackList
+extend WeaponDetails
+extend ArmourDetails
+extend GearDetails
+
+adventuring_gear.each do |item|
+	if item[:category]
+		item[:category] = "adventuring_gear, #{item[:category]}"
+	else
+		item[:category] = "adventuring_gear"
+	end	
 	Item.create(item)
 end
 
-Item.armour.each do |item|
+armour.each do |item|
+	item[:category] = "armour, #{item[:category]}"
 	Item.create(item)
 end
 
-Item.boats.each do |item|
+boats.each do |item|
 	item[:category] = "boats"
 	Item.create(item)
 end
 
-Item.mounts.each do |item|
+mounts.each do |item|
 	item[:category] = "mount"
 	Item.create(item)
 end
 
-Item.tack.each do |item|
-	item[:category] = "tack" unless item[:category]
+tack.each do |item|
+	if item[:category]
+		item[:category] = "tack, #{item[:category]}"
+	else
+		item[:category] = "tack"
+	end	
 	Item.create(item)
 end
 
-Item.tools.each do |item|
-	item[:category] = "tool" unless item[:category]
+tools.each do |item|
+	if item[:category]
+		item[:category] = "tools, #{item[:category]}"
+	else
+		item[:category] = "adventuring_gear"
+	end	
 	Item.create(item)
 end
 
-Item.weapons.each do |item|
+weapons.each do |item|
+	item[:category] = "weapon, #{item[:category]}"
 	Item.create(item)
 end
 

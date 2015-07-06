@@ -13,7 +13,7 @@ module ArmourList
 			{ :id => 10,  :name => "Chain Mail", :details => [chain_mail], :category => "heavy_armour", :cost => 75, :ac => 16, :dex_mod => nil, :dex_mod_max => nil, :strength => 13, :stealth => true, :weight => 55 },
 			{ :id => 11,  :name => "Splint", :details => [splint], :category => "heavy_armour", :cost => 200, :ac => 17, :dex_mod => nil, :dex_mod_max => nil, :strength => 15, :stealth => true, :weight => 60 },
 			{ :id => 12,  :name => "Plate", :details => [plate], :category => "heavy_armour", :cost => 1500, :ac => 18, :dex_mod => nil, :dex_mod_max => nil, :strength => 15, :stealth => true, :weight => 65 },
-			{ :id => 212, :name => "Shield", :details => [sheild], :category => "shield", :cost => 10, :ac => 2, :dex_mod => nil, :dex_mod_max => nil, :strength => false, :stealth => false, :weight => 6 },
+			{ :id => 13, :name => "Shield", :details => [sheild], :category => "shield", :cost => 10, :ac => 2, :dex_mod => nil, :dex_mod_max => nil, :strength => false, :stealth => false, :weight => 6 },
 		]
 	end
 end

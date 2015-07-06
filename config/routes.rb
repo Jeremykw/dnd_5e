@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 	Dnd5e::Application.routes.draw do
-    resources :belongings do  # Equipment
+    resources :items, :only => [:index]
+
+    resources :belongings, :except => [:index] do  # Equipment
       member do
         get :starting_equipment
       end

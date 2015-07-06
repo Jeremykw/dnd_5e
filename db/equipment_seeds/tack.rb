@@ -1,9 +1,9 @@
 module TackList
 	def tack
 		[
-			{ :id => 190, :name => "Barding", :cost => "*4", :weight => "*2" },
-			{ :id => 191, :name => "Bit and bridle", :cost => 2, :weight => 1 },
-			{ :id => 192, :name => "Charrige", :cost => 100, :weight => 600 },
+			{ :id => 204, :name => "Barding", :cost => "*4", :weight => "*2" },
+			{ :id => 205, :name => "Bit and bridle", :cost => 2, :weight => 1 },
+			{ :id => 206, :name => "Charrige", :cost => 100, :weight => 600 },
 			{ :id => 193, :name => "Cart", :cost => 15, :weight => 200 },
 			{ :id => 194, :name => "Chariot", :cost => 250, :weight => 100 },
 			{ :id => 195, :name => "Feed (per day)", :cost => 0.05, :weight => 10 },

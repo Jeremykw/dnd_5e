@@ -24,18 +24,6 @@ class BelongingsController < ApplicationController
 		redirect_to character_path(character)
 	end
 
-
-	def index
-		armour = Belonging.armour.group_by { |t| t[:category] }
-		@armour = {"light" => armour["light_armour"], "medium" => armour["medium_armour"], "heavy" => armour["heavy_armour"]}
-		@weapons = Belonging.weapons.group_by { |t| t[:category] }
-		@adventuring_gear = Belonging.adventuring_gear
-		@tools = Belonging.tools
-		@boats = Belonging.boats.sort_by { |hsh| hsh[:name] }
-		@tack = Belonging.tack
-		@mounts = Belonging.mounts
-	end
-
 	def show
 		@character = Character.find(params[:character_id]) if params[:character_id]
 		@belonging = params
