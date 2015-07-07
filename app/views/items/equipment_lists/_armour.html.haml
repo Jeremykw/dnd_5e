@@ -10,16 +10,12 @@
 			%th Weight
 			%th ID
 	%tbody
-		- @armour.each do |category, items|
-			- sorted_items= items.sort_by { |hsh| hsh[:cost] }
-			%td
-				%strong= category.to_s.capitalize
-			- sorted_items.each do |item|
-				%tr
-					%td= item_name_to_link(item, nil)
-					%td= cost_converter(item[:cost])
-					%td= display_armour_class(item)
-					%td= if !item[:strength] then "---" else item[:strength] end
-					%td= "Disadvantage" if item[:stealth]
-					%td= weight(item[:weight])
-					%td= item[:id]
+		- @armour.each do |item|
+			%tr
+				%td= item_name_to_link(item, nil)
+				%td= cost_converter(item.cost)
+				%td= display_armour_class(item)
+				%td= if !item.strength then "---" else item.strength end
+				%td= "Disadvantage" if item.stealth
+				%td= weight(item.weight)
+				%td= item.id
