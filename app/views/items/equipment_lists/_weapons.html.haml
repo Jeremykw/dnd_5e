@@ -9,15 +9,11 @@
 			%th Properties
 			%th ID
 	%tbody
-		- @weapons.each do |category, items|
-			- sorted_items = items.sort_by { |hsh| hsh[:name] }
-			%td
-				%strong= category.humanize.capitalize
-			- sorted_items.each do |item|
-				%tr
-					%td= item_name_to_link(item, nil)
-					%td= cost_converter(item[:cost])
-					%td= item[:damage]
-					%td= weight(item[:weight])
-					%td= item[:properties]
-					%td= item[:id]
+		- @weapons.each do |item|
+			%tr
+				%td= item_name_to_link(item, nil)
+				%td= cost_converter(item.cost)
+				%td= item.damage
+				%td= weight(item.weight)
+				%td= item.properties
+				%td= item.id

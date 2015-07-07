@@ -9,5 +9,5 @@
     - @boats.each do |boat|  
       %tr
         %td= item_name_to_link(boat, nil)
-        %td= cost_converter(boat[:cost])
-        %td= boat[:speed].to_s + " mph"
+        %td= cost_converter(boat.cost)
+        %td= boat.speed.to_s + " mph"

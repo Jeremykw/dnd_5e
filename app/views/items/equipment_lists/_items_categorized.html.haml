@@ -1,20 +1,14 @@
-- itemss.each do |category, items|
-  - sorted_items = items.sort_by { |hsh| hsh[:name] } # sorts items withing category
-  - if items.count > 1
+- itemss.each do |item|
+  %tr
     %td
-      %strong= category.humanize.capitalize
-    - sorted_items.each do |item|
-      %tr
-        %td
-          %em= "- "
-          = item_name_to_link(item, nil)
-        %td= cost_converter(item[:cost])
-        %td= weight(item[:weight])
-        %td= item[:id]
-  - else
-    - sorted_items.each do |item|
-      %tr
-        %td= item_name_to_link(item, nil)
-        %td= cost_converter(item[:cost])
-        %td= weight(item[:weight])
-        %td= item[:id]
+      %em= "- "
+      = item_name_to_link(item, nil)
+    %td= cost_converter(item[:cost])
+    %td= weight(item[:weight])
+    %td= item[:id]
+ 
+  / %tr
+  /   %td= item_name_to_link(item, nil)
+  /   %td= cost_converter(item[:cost])
+  /   %td= weight(item[:weight])
+  /   %td= item[:id]
