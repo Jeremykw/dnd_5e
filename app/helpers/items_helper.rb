@@ -1,13 +1,60 @@
 module ItemsHelper
+	###
+	# compares previous and next from sorted list of items 
+	# and returns true of false depending if category name 
+	# needs to be printed to screen
+	###
+	def category_needs_lable(items, category_name, index)
+		unless items[index + 1] == nil
+			next_index = index + 1 
+		else
+			next_index = index
+		end
+		unless items[index - 1] == nil
+			last_index = index - 1 
+		else
+			last_index = index
+		end
+		if !items[index + 1] 
+			return false 
+		elsif category_name == items[next_index][:name] && category_name != items[last_index][:name]
+			return true
+		else
+			false
+		end
+	end
+
+	###
+	# compares previous and next from sorted list of items 
+	# and returns true of false if item belongs to a category 
+	###
+	def item_is_part_of_category(items, category_name, index)
+		unless items[index + 1] == nil
+			next_index = index + 1 
+		else
+			next_index = index
+		end
+		unless items[index - 1] == nil
+			last_index = index - 1 
+		else
+			last_index = index
+		end
+		if !items[index + 1] 
+			return false 
+		elsif category_name == items[next_index][:name] || category_name == items[last_index][:name]
+			return true
+		else
+			false
+		end
+	end
 
 	def items_with_categories(items)
 		categories = []
-		# item_list = items.sort_by { |i| i.name || i.category}
 		items.each do |item|
 			if item.category != "adventuring_gear"
-				categories << {:id => item.id, :name => "#{item.category.split(/ /)[1]}" }
+				categories << {:item => item, :name => "#{item.category.split(/ /)[1]}" }
 			else
-				categories << {:id => item.id, :name => "#{item.name.downcase}"}
+				categories << {:item => item, :name => "#{item.name.downcase}"}
 			end
 		end
 		categories.sort_by! {|item| item[:name]}

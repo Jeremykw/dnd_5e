@@ -1,8 +1,20 @@
-- items_with_categories(items).each do |i|
-  - item = items.find(i[:id])
-  %br
-  %tr
-    %td= item
-    / %td= cost_converter(item[:cost])
-    / %td= weight(item[:weight])
-    / %td= item[:id]
+- items_with_categories(items).each_with_index do |i, index|
+  - item = i[:item]
+  - if category_needs_lable(items_with_categories(items), i[:name], index)
+    %tr
+      %td
+        %strong= i[:name].humanize.capitalize
+  - if item_is_part_of_category(items_with_categories(items), i[:name], index)
+    %tr
+      %td
+        %strong -
+        %em= item_name_to_link(item, @character) 
+      %td= cost_converter(item.cost)
+      %td= weight(item.weight)
+      %td= item.id
+  -else
+    %tr
+      %td= item_name_to_link(item, @character) 
+      %td= cost_converter(item.cost)
+      %td= weight(item.weight)
+      %td= item.id
