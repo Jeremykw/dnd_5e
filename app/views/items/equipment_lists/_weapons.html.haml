@@ -9,7 +9,13 @@
 			%th Properties
 			%th ID
 	%tbody
-		- @weapons.each do |item|
+		- sort = nil
+		- weapon_categories(@weapons).each do |item|
+			- if sort != item.category
+				%tr
+					%td
+						%strong= item.category.scan(/weapon,\s(.*)/)[0][0].humanize.capitalize	
+			- sort = item.category
 			%tr
 				%td= item_name_to_link(item, nil)
 				%td= cost_converter(item.cost)

@@ -10,7 +10,13 @@
 			%th Weight
 			%th ID
 	%tbody
-		- @armour.each do |item|
+		- sort = nil
+		- armour_categories(@armour).each do |item|
+			- if sort != item.category
+				%tr
+					%td
+						%strong= item.category.scan(/armour,\s(.*)_armour/)[0][0].capitalize	
+			- sort = item.category
 			%tr
 				%td= item_name_to_link(item, nil)
 				%td= cost_converter(item.cost)

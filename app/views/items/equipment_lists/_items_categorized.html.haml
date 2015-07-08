@@ -1,14 +1,8 @@
-- itemss.each do |item|
+- items_with_categories(items).each do |i|
+  - item = items.find(i[:id])
+  %br
   %tr
-    %td
-      %em= "- "
-      = item_name_to_link(item, nil)
-    %td= cost_converter(item[:cost])
-    %td= weight(item[:weight])
-    %td= item[:id]
- 
-  / %tr
-  /   %td= item_name_to_link(item, nil)
-  /   %td= cost_converter(item[:cost])
-  /   %td= weight(item[:weight])
-  /   %td= item[:id]
+    %td= item
+    / %td= cost_converter(item[:cost])
+    / %td= weight(item[:weight])
+    / %td= item[:id]
