@@ -1,0 +1,26 @@
+%h1= @item[:name]
+= @item.inspect
+%table#characters
+  %thead
+    %tr
+  - @item.attributes.each do |head, data|
+    - unless a_field_not_to_be_show.include?(head) || data == nil
+      %th= head.humanize.capitalize 
+  %tbody
+  - @item.attributes.each do |head, data|
+    - unless a_field_not_to_be_show.include?(head) || data == nil
+      - if head == "cost"
+        %td= cost_converter(data.to_f)
+      - elsif head == "category"
+        %td= data.humanize.capitalize
+      - else
+        %td= data
+
+- if @item[:details] != nil
+  %h2 Details
+  - @item.details.each do |detail|
+    %h3= detail["title"]
+  /   = detail["body"]
+
+
+

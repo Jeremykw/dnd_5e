@@ -10,4 +10,14 @@ class ItemsController < ApplicationController
 		@mounts = Item.where("category like ?", 'mount%')
 	end
 
+	def show
+		@item = Item.find(id_params	)
+	end
+
+	private
+
+	def id_params
+		params.require(:id)
+	end
+
 end

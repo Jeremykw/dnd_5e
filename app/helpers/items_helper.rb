@@ -1,23 +1,24 @@
 module ItemsHelper
+	# Item fields not to be show in tabel format in show
+	def a_field_not_to_be_show
+		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "character_id"]
+	end
+	
+	# Generates a link to items/show wtih item name
+	def item_name_to_link(item, character) 
+		item[:character_id] = character.id if character
+		render_haml(link_to "#{item[:name]}", item_path(item))
+	end
+
 	###
-	# compares previous and next from sorted list of items 
+	# Compares previous and next from sorted list of items 
 	# and returns true of false depending if category name 
 	# needs to be printed to screen
 	###
-	def category_needs_lable(items, category_name, index)
-		unless items[index + 1] == nil
-			next_index = index + 1 
-		else
-			next_index = index
-		end
-		unless items[index - 1] == nil
-			last_index = index - 1 
-		else
-			last_index = index
-		end
-		if !items[index + 1] 
+	def category_needs_lable(cat_items, category_name, index)
+		if !cat_items[index + 1] 
 			return false 
-		elsif category_name == items[next_index][:name] && category_name != items[last_index][:name]
+		elsif category_name == cat_items[next_index(cat_items, index)][:name] && category_name != cat_items[last_index(cat_items, index)][:name]
 			return true
 		else
 			false
@@ -25,34 +26,49 @@ module ItemsHelper
 	end
 
 	###
-	# compares previous and next from sorted list of items 
+	# Compares previous and next from sorted list of items 
 	# and returns true of false if item belongs to a category 
 	###
-	def item_is_part_of_category(items, category_name, index)
-		unless items[index + 1] == nil
-			next_index = index + 1 
-		else
-			next_index = index
-		end
-		unless items[index - 1] == nil
-			last_index = index - 1 
-		else
-			last_index = index
-		end
-		if !items[index + 1] 
-			return false 
-		elsif category_name == items[next_index][:name] || category_name == items[last_index][:name]
+	def item_is_part_of_category(cat_items, category_name, index)
+		if !cat_items[index + 1] 
+			return false unless category_name == cat_items[last_index(cat_items, index)][:name]
+		elsif category_name == cat_items[next_index(cat_items, index)][:name] || category_name == cat_items[last_index(cat_items, index)][:name]
 			return true
 		else
-			false
+			return false
 		end
+		true
 	end
 
+
+	def last_index(cat_items, index)
+		lindex = nil
+		unless cat_items[index - 1] == nil
+			lindex = index - 1 
+		else
+			lindex = index
+		end
+		lindex
+	end
+	
+	def next_index(cat_items, index)
+		nindex = nil
+		unless cat_items[index + 1] == nil
+			nindex = index + 1 
+		else
+			nindex = index
+		end
+		nindex
+	end
+
+	###
+	# Returns a hash of objects sorted with their categories
+	###
 	def items_with_categories(items)
 		categories = []
 		items.each do |item|
-			if item.category != "adventuring_gear"
-				categories << {:item => item, :name => "#{item.category.split(/ /)[1]}" }
+			if item.category != "adventuring_gear" && item.category != "tack" && item.category != "tool"
+				categories << {:item => item, :name => "#{item.category.split(/ /)[1].downcase}" }
 			else
 				categories << {:item => item, :name => "#{item.name.downcase}"}
 			end
