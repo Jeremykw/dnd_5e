@@ -124,11 +124,11 @@ module BelongingsHelper
 	end
 
 	def simple_weapons # Creates and array of all simple weapons
-		Belonging.weapons.find_all{ |hash| hash[:category] == "simple_melee"}
+		Item.find_all.("category like ?", "%simple_melee")
 	end
 
 	def martial_weapon
-		Belonging.weapons.find_all{ |hash| hash[:category] == "martial_melee"}
+		Item.where("category like ?", "%martial_melee")
 	end
 	
 end

@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150705150253) do
   create_table "belongings", force: :cascade do |t|
     t.integer  "item"
     t.integer  "character_id"
+    t.integer  "item_id"
     t.integer  "quantity"
     t.string   "description"
     t.string   "pack"

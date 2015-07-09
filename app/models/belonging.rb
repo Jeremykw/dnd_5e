@@ -1,6 +1,6 @@
 class Belonging < ActiveRecord::Base
 
-  has_one :item
+  belongs_to :item
   belongs_to :character
 
   validates :item, :presence => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 212 }
@@ -10,7 +10,7 @@ class Belonging < ActiveRecord::Base
 
 
 
-  Dir['app/models/items/*.rb'].each {|file| require_dependency file }
+  Dir['app/models/belongings/*.rb'].each {|file| require_dependency file }
   extend PackCreation
 
   ###
@@ -56,8 +56,8 @@ class Belonging < ActiveRecord::Base
   # Creates item or redirects to add_unlisted_item
   def self.create_item(character, item)
     item = item.to_i
-    if item <= 210 && item > 0 || item == 212# if item is a cataloged numbered item create it 
-      create(:character_id => character.id, :item => item)
+    if item <= 212 && item >= 1 # if item is a cataloged numbered item create it 
+      create(:character_id => character.id, :item => Item.find(item))
     else # else reffer to add_unlisted_items find in /items/pack_creation.rb
       add_unlisted_items(character, item)
     end
