@@ -1,4 +1,18 @@
 module ItemsHelper
+	
+	def details(item)
+		a = []
+		
+		item.details.split("\"}, {").each do |d|
+			hsh = Hash.new
+			title = d.gsub(/(.*)title=>"/, "").gsub(/", :body(.*)/, "")
+			body = d.gsub(/(.*)body=>"/, "").gsub(/[\"]}]/, "")
+			hsh[:title] = title
+			hsh[:body] = body
+			a << hsh
+		end 
+		a
+	end
 	# Item fields not to be show in tabel format in show
 	def a_field_not_to_be_show
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "character_id"]

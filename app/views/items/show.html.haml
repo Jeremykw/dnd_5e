@@ -1,5 +1,4 @@
 %h1= @item[:name]
-= @item.inspect
 %table#characters
   %thead
     %tr
@@ -13,14 +12,13 @@
         %td= cost_converter(data.to_f)
       - elsif head == "category"
         %td= data.humanize.capitalize
+      - elsif head == "weight"
+        %td= weight(data)
       - else
         %td= data
 
 - if @item[:details] != nil
   %h2 Details
-  - @item.details.each do |detail|
-    %h3= detail["title"]
-  /   = detail["body"]
-
-
-
+  - details(@item).each do |item|
+    %h3= item[:title] if details(@item).count > 1
+    = item[:body]
