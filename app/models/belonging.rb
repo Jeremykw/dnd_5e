@@ -3,7 +3,7 @@ class Belonging < ActiveRecord::Base
   belongs_to :item
   belongs_to :character
 
-  validates :item, :presence => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 212 }
+  validates :item_id, :presence => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 212 }
   validates :description, :allow_blank => true, :length => { :maximum => 250 }
   validates :character_id, :presence => true, :numericality => { :only_integer => true }
   validates :quantity, :allow_blank => true, :numericality => { :only_integer => true, :greater_then_or_equal_to => 1, :less_than_or_equal_to => 100 }

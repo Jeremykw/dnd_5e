@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
-  belongs_to :belonging
+  has_many :characters
+  has_many :belongings
 
   serialize :details
 

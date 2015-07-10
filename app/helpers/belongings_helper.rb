@@ -11,8 +11,9 @@ module BelongingsHelper
 	end
 
 	# loads the list of character items into instance veriable
-	def items(character) 
-		@items = @character.belongings.items_list
+	def items(character)
+		# logger.debug "character = #{character.belongings.all}"
+		@items = character.belongings.all
 	end
 
 	# If the character has more than one set of armour, determinds what armour gives bes ac

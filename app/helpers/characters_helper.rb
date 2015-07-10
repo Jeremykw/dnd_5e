@@ -39,7 +39,7 @@ module CharactersHelper
   	elsif !character.skill
   		render_haml(link_to "Create #{@character.character_name}'s Skills", new_character_skill_path(@character) )
   	elsif !character.starting_items
-  		render_haml(link_to "Select #{@character.character_name}'s Starting Equipment", starting_equipment_item_path(@character) )
+  		render_haml(link_to "Select #{@character.character_name}'s Starting Equipment", starting_equipment_belonging_path(@character) )
 		elsif !character.background.personality && !character.background.ideal && !character.background.flaw && !character.background.back_story
 			render_haml(link_to "Create #{@character.character_name}'s Background", new_character_background_path(@character) )
 		end
