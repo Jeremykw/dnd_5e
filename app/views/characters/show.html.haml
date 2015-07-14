@@ -37,7 +37,7 @@
     = link_to "Edit #{@character.character_name}'s Skills", edit_character_skill_path(@character, @character.skill)
 
   %br
-
+  
   - if @character.starting_items
     = render partial: "belongings/show"
     / TODO

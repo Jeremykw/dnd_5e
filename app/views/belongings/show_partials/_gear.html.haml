@@ -7,9 +7,10 @@
       %th Name
       %th Weight
   %tbody
+    
     - @items.each do |item|
       %tr
-        - if item[:type] == "gear"   
+        - if item.category.match("^adventuring_gear")
           %td= item[:quantity] unless !item[:quantity]
           - if item[:pack]
             %td= item_name_to_link(item, @character) + item[:pack].humanize.capitalize

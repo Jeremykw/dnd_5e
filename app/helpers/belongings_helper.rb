@@ -12,8 +12,31 @@ module BelongingsHelper
 
 	# loads the list of character items into instance veriable
 	def items(character)
-		# logger.debug "character = #{character.belongings.all}"
-		@items = character.belongings.all
+		@items= []
+		belongings = character.belongings.all
+		belongings.each do |belonging|
+			belonging.attributes.each do |b_key, b_value|
+				Item.find(belonging.item_id).attributes.each do |k, v|
+					item << (k => V)
+				end
+			end
+
+		end
+		logger.debug "@items = #{@items.inspect}, xxxxxxxxxxxxxxxxxxxxx"
+
+		# belongings.each do |belonging|
+		# 	item = Item.find(belonging.item_id)
+		# 	belonging_hash = Hash.new
+		# 	item.attributes.each do |attribute|
+		# 		belonging_hash.merge("#{attribute[0]}" => attribute[1])
+		# 	end
+		# 	belonging.attributes.each do |attribute|
+		# 		belonging_hash.merge("#{attribute[0]}" => attribute[1])
+		# 	end
+		# 	@items << belonging_hash
+		# end
+		# logger.debug "@items = #{@items.inspect}"
+		# @items
 	end
 
 	# If the character has more than one set of armour, determinds what armour gives bes ac
@@ -62,7 +85,8 @@ module BelongingsHelper
 	end
 
 	def character_is_wearing_armour?(items)
-		if number_of_items = items.find { |item| item[:type] == "armour" }
+		logger.debug "items = #{items} - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+		if items.find { |item| item[:type] == "armour" }
 			return true
 		else
 			return false
