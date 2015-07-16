@@ -18,11 +18,6 @@ module ItemsHelper
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "character_id"]
 	end
 	
-	# Generates a link to items/show wtih item name
-	def item_name_to_link(item, character) 
-		item[:character_id] = character.id if character
-		render_haml(link_to "#{item[:name]}", item_path(item))
-	end
 
 	###
 	# Compares previous and next from sorted list of items 

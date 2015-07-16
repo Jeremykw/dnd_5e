@@ -9,7 +9,7 @@
   %tbody
     - @items.each do |item|
       %tr
-        - if item[:type] == "weapon"   
+        - if item.category.match "weapon"   
           %td= item_name_to_link(item, @character)
           %td= item[:damage]
           %td= item[:properties]

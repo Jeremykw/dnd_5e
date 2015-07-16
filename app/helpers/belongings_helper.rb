@@ -4,42 +4,25 @@ module BelongingsHelper
 	def a_field_not_to_be_show
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "dex_mod_max", "dex_mod", "character_id", "stealth", "strength", "ac"]
 	end
-	# Generates a link to items/show wtih item name
-	def item_name_to_link(item, character) 
-		item[:character_id] = character.id if character
-		render_haml(link_to "#{item[:name]}", belonging_path(item))
+
+	def belongings(character, item)
+		@belongings = character.belongings.where("item_id like ?", "#{item.id}")
 	end
 
 	# loads the list of character items into instance veriable
 	def items(character)
-		@items= []
-		belongings = character.belongings.all
-		belongings.each do |belonging|
-			belonging.attributes.each do |b_key, b_value|
-				Item.find(belonging.item_id).attributes.each do |k, v|
-					item << (k => V)
-				end
-			end
-
-		end
-		logger.debug "@items = #{@items.inspect}, xxxxxxxxxxxxxxxxxxxxx"
-
-		# belongings.each do |belonging|
-		# 	item = Item.find(belonging.item_id)
-		# 	belonging_hash = Hash.new
-		# 	item.attributes.each do |attribute|
-		# 		belonging_hash.merge("#{attribute[0]}" => attribute[1])
-		# 	end
-		# 	belonging.attributes.each do |attribute|
-		# 		belonging_hash.merge("#{attribute[0]}" => attribute[1])
-		# 	end
-		# 	@items << belonging_hash
-		# end
-		# logger.debug "@items = #{@items.inspect}"
-		# @items
+		@items = character.items
 	end
 
 	# If the character has more than one set of armour, determinds what armour gives bes ac
+	def character_is_wearing_armour?(items)
+		if items.find { |item| item[:type] == "armour" }
+			return true
+		else
+			return false
+		end
+	end
+
 	def best_armour_character_has(character, items)
 		all_armour = items.find_all { |item| item[:type] == "armour" || item[:id] == 212}
 		best_ac = 0
@@ -84,14 +67,6 @@ module BelongingsHelper
 		end
 	end
 
-	def character_is_wearing_armour?(items)
-		logger.debug "items = #{items} - xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-		if items.find { |item| item[:type] == "armour" }
-			return true
-		else
-			return false
-		end
-	end
 
 	# Formats ac, dex_mod and dex_mod_max into string for display
 	def display_armour_class(armour) 
