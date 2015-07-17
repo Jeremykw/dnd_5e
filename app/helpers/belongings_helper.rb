@@ -1,5 +1,12 @@
 module BelongingsHelper
 
+	
+  # Generates a link to items/show wtih item name
+  def item_name_to_link(item, character) 
+    # item[:character_id] = character.id if character
+    render_haml(link_to "#{item[:name]}", belonging_path(item))
+  end
+  
 	# Item fields not to be show in tabel format in show
 	def a_field_not_to_be_show
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "dex_mod_max", "dex_mod", "character_id", "stealth", "strength", "ac"]

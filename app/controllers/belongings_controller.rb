@@ -25,6 +25,7 @@ class BelongingsController < ApplicationController
 	end
 
 	def show
+    er
 		@character = Character.find(params[:character_id]) if params[:character_id]
 		@belonging = params
 	end

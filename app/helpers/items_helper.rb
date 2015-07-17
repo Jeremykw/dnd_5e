@@ -1,8 +1,14 @@
 module ItemsHelper
+
+
+  # Generates a link to items/show wtih item name
+  def item_name_to_link(item, character) 
+    # item[:character_id] = character.id if character
+    render_haml(link_to "#{item[:name]}", item_path(item))
+  end
 	
 	def details(item)
-		a = []
-		
+		a = []		
 		item.details.split("\"}, {").each do |d|
 			hsh = Hash.new
 			title = d.gsub(/(.*)title=>"/, "").gsub(/", :body(.*)/, "")
@@ -13,12 +19,12 @@ module ItemsHelper
 		end 
 		a
 	end
+
 	# Item fields not to be show in tabel format in show
 	def a_field_not_to_be_show
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "character_id"]
 	end
 	
-
 	###
 	# Compares previous and next from sorted list of items 
 	# and returns true of false depending if category name 
