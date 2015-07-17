@@ -19,6 +19,8 @@
 
 - if @item[:details] != nil
   %h2 Details
-  - details(@item).each do |item|
-    %h3= item[:title] if details(@item).count > 1
+  - @item[:details].each do |item|
+    %h3= item[:title]
     = item[:body]
+  / #   %h3= item[:title] if details(@item).count > 1
+  / #   = item[:body]

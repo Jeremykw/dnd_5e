@@ -7,18 +7,6 @@ module ItemsHelper
     render_haml(link_to "#{item[:name]}", item_path(item))
   end
 	
-	def details(item)
-		a = []		
-		item.details.split("\"}, {").each do |d|
-			hsh = Hash.new
-			title = d.gsub(/(.*)title=>"/, "").gsub(/", :body(.*)/, "")
-			body = d.gsub(/(.*)body=>"/, "").gsub(/[\"]}]/, "")
-			hsh[:title] = title
-			hsh[:body] = body
-			a << hsh
-		end 
-		a
-	end
 
 	# Item fields not to be show in tabel format in show
 	def a_field_not_to_be_show
@@ -136,4 +124,17 @@ module ItemsHelper
 	end
 
 
+	# def details(item)
+	# 	a = []		
+	# 	item.details.split("\"}, {").flatten.each do |d|
+	# 		hsh = Hash.new
+	# 		logger.debug "d = #{d.inspect}"
+	# 		title = d.gsub(/(.*)title=>"/, "").gsub(/", :body(.*)/, "")
+	# 		body = d.gsub(/(.*)body=>"/, "").gsub(/[\"]}]/, "")
+	# 		hsh[:title] = title
+	# 		hsh[:body] = body
+	# 		a << hsh
+	# 	end 
+	# 	a
+	# end
 end
