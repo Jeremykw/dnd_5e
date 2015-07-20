@@ -9,13 +9,12 @@
       %th AC modifier
       %th AC
   %tbody
-    - if character_is_wearing_armour?(items(@character))
-      - belongings(@character) # creates @belongings
+    - if character_is_wearing_armour?(@items)
       - best_armour = best_armour_character_has(@character, @items)
       - @items.each do |item|
         - if item.category.match("^armour")
           %tr
-            %td= check_box_tag "remove_item[#{item}]"
+            %td= check_box_tag "remove_item[#{belonging(item, @belongings).id}]"
             %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
             %td= display_armour_class(item)
             - if item == best_armour

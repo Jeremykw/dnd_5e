@@ -11,7 +11,7 @@
     - @items.each do |item|
       %tr
         - if item.category.match "weapon"
-          %td= check_box_tag "remove_item[#{item}]"   
+          %td= check_box_tag "remove_item[#{belonging(item, @belongings).id}]"   
           %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
           %td= item[:damage]
           %td= item[:properties]

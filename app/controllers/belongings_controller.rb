@@ -3,7 +3,8 @@ class BelongingsController < ApplicationController
 	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
 
 	def destroy
-
+		@character = Character.find(character_id_params)
+		Belonging.remove_belonings(remove_item_params, @character)
 		redirect_to edit_character_belonging_path(character_id_params, 1)
 	end
 
@@ -58,6 +59,10 @@ class BelongingsController < ApplicationController
 	###
 	# Strong Parameters White List
 	###
+
+	def remove_item_params
+		params.require(:remove_item).permit!
+	end
 
 	def items_choices_params
 		params.require(:items_choices).permit!#(:background_items_choices_one, :background_items_choices_two, :class_items_choices_one, :class_items_choices_two, :class_items_choices_three, :class_items_choices_four, :class_items_choices_five, array: items_choices_permits.keys)

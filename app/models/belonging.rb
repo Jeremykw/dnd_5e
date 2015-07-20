@@ -33,25 +33,13 @@ class Belonging < ActiveRecord::Base
     end  
   end
 
+  def self.remove_belonings(items, character)
+    items.each do |item_id, v|
+      self.find(item_id).destroy
+    end
+  end
   private
 
-  # def self.add_item_details(list_of_equipment)
-
-  #   items = []
-  #   list_of_equipment.each do |equipment|
-  #     item = list.find { |h| h[:id] == equipment.item }
-  #     item[:quantity] = equipment.quantity if equipment.quantity 
-  #     item[:description] = equipment.description if equipment.description
-  #     item[:pack] = equipment.pack
-  #     item[:type] = item_type(item)
-  #     if item[:id] == 211
-  #       item[:name] = equipment.description
-  #     end
-  #     item[:quantity] = 1 unless item[:quantity]
-  #     items << item
-  #   end
-  #   items
-  # end
   
   # Creates item or redirects to add_unlisted_item
   def self.create_item(character, item)
