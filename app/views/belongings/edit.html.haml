@@ -1,0 +1,8 @@
+%h1 Edit #{@character.character_name}'s Equipment
+= link_to "Add New Equipment", new_character_belonging_path
+
+= form_tag character_belonging_path, method: :delete do
+	= render partial: "belongings/edit_partials/armour"
+	= render partial: "belongings/edit_partials/weapons"
+	= render partial: "belongings/edit_partials/gear"
+	= submit_tag "Remove Selected Equipment"

@@ -1,0 +1,33 @@
+%strong Armour
+- items(@character)
+%br
+%table#characters
+  %thead
+    %tr
+      %th Remove
+      %th Name
+      %th AC modifier
+      %th AC
+  %tbody
+    - if character_is_wearing_armour?(items(@character))
+      - belongings(@character) # creates @belongings
+      - best_armour = best_armour_character_has(@character, @items)
+      - @items.each do |item|
+        - if item.category.match("^armour")
+          %tr
+            %td= check_box_tag "remove_item[#{item}]"
+            %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
+            %td= display_armour_class(item)
+            - if item == best_armour
+              %td
+                %strong= calculate_ac(@character, item)
+            - elsif item.id == 13
+              %td
+                %strong= calculate_ac(@character, best_armour) + 2
+            - else
+              %td= calculate_ac(@character, item)
+    - else
+      %tr
+        %td ---
+        %td ---
+        %td= calculate_ac(@character, nil)

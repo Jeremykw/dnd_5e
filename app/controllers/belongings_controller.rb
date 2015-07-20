@@ -2,6 +2,11 @@ class BelongingsController < ApplicationController
 
 	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
 
+	def destroy
+
+		redirect_to edit_character_belonging_path(character_id_params, 1)
+	end
+
 	def edit
 		@character = Character.find(id_params)
 	end
@@ -37,7 +42,7 @@ class BelongingsController < ApplicationController
     if character.character_class == "fighter" && new_starting_items(character)
       count = 0
       items_choices_params.each do |k, item|
-      	count += 1 if item.to_i >= 28 && item.to_i <= 44 || item.to_i == 15
+      	count += 1 if item.to_i >= 13 && item.to_i <= 49
       end
       if count != 2
       	flash[:notice] = "You must select 2 Martial weapons"

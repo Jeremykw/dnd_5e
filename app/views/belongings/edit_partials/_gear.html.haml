@@ -1,0 +1,23 @@
+%br
+%strong Adventuring Gear
+%table#characters
+  %thead
+    %tr
+      %th Remove
+      %th Quantity
+      %th Name
+      %th Weight
+  %tbody
+    - @items.each do |item|
+      %tr
+        - if item.category.match("^adventuring_gear")
+          %td= check_box_tag "remove_item[#{item}]"
+          - if !belonging(item, @belongings).quantity
+            %td 1
+          - else
+            %td= belonging(item, @belongings).quantity
+          - if belonging(item, @belongings).pack
+            %td= belonging_name_to_link(item, belonging(item, @belongings), @character) + belonging(item, @belongings).pack.humanize.capitalize
+          -else
+            %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
+          %td= item[:weight]

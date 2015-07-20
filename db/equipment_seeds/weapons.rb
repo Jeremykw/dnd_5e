@@ -1,9 +1,8 @@
 module WeaponsList
 	def weapons
 	[
-  	{ :id => 49, :name => "Club", :details => [light], :category => "simple_melee", :cost => 0.1, :damage => "1d4 bludgeoning", :weight => 2, :properties => "Light"},
+    { :id => 14, :name => "Crossbow, light", :details => [ammunition, loading, two_handed], :category => "simple_ranged", :cost => 25, :damage => "1d8 piercing", :weight => 5, :properties => "Ammunition (range 80/320), loading, two-handed", :ranged => true },
     { :id => 15, :name => "Longsword", :details => [versatile], :category => "martial_melee", :cost => 15, :damage => "1d8 slashing", :weight => 3, :properties => "Versatile (1d10)"},
-  	{ :id => 14, :name => "Crossbow, light", :details => [ammunition, loading, two_handed], :category => "simple_ranged", :cost => 25, :damage => "1d8 piercing", :weight => 5, :properties => "Ammunition (range 80/320), loading, two-handed", :ranged => true },
     { :id => 16, :name => "Dart", :details => [finesse, light, thrown], :category => "simple_ranged", :cost => 0.05, :damage => "1d4 piercing", :weight => 0.25, :properties => "Finesse, thrown (range 20/60)", :ranged => true },
     { :id => 17, :name => "Dagger", :details => [finesse, light, thrown], :category => "simple_melee", :cost => 2, :damage => "1d4 piercing", :weight => 1, :properties => "Finesse, light, thrown (range 20/60)", :ranged => false },
     { :id => 18, :name => "Greatclub", :details => [two_handed], :category => "simple_melee", :cost => 0.2, :damage => "1d8 bludgeoning", :weight => 10, :properties => "Two-handed", :ranged => false },
@@ -37,6 +36,7 @@ module WeaponsList
     { :id => 46, :name => "Crossbow, hand", :details => [ammunition, light, loading], :category => "martial_ranged", :cost => 75, :damage => "1d6 piercing", :weight => 3, :properties => "Ammunition, (range 30/120), light, loading", :ranged => true },
     { :id => 47, :name => "Crossbow, heavy", :details => [ammunition, heavy, loading, two_handed], :category => "martial_ranged", :cost => 50, :damage => "1d10 piercing", :weight => 18, :properties => "Ammunition, (range 100/400), heavy, loading, two-handed", :ranged => true },
     { :id => 48, :name => "Longbow", :details => [ammunition, heavy, two_handed], :category => "martial_ranged", :cost => 50, :damage => "1d8 piercing", :weight => 2, :properties => "Ammunition, (range 150/600), heavy, two-handed", :ranged => true },
+  	{ :id => 49, :name => "Club", :details => [light], :category => "simple_melee", :cost => 0.1, :damage => "1d4 bludgeoning", :weight => 2, :properties => "Light"},
 		]
 	end
 end

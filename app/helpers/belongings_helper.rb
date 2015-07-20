@@ -11,9 +11,9 @@ module BelongingsHelper
   # Generates a link to belongings#show wtih item name
   def belonging_name_to_link(item, belonging, character) 
     if belonging.name
-    	render_haml(link_to "#{belonging.name}", belonging_path(:id => item, :character_id => character.id))
+    	render_haml(link_to "#{belonging.name}", character_belonging_path(:id => item, :character_id => character.id))
     else
-    	render_haml(link_to "#{item[:name]}", belonging_path(:id => item, :character_id => character.id))
+    	render_haml(link_to "#{item[:name]}", character_belonging_path(:id => item, :character_id => character.id))
     end
   end
   

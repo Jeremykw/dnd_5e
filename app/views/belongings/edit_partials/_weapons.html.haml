@@ -1,0 +1,17 @@
+%br
+%strong Weapons
+%table#characters
+  %thead
+    %tr
+      %th Remove
+      %th Name
+      %th Damage
+      %th Properties
+  %tbody
+    - @items.each do |item|
+      %tr
+        - if item.category.match "weapon"
+          %td= check_box_tag "remove_item[#{item}]"   
+          %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
+          %td= item[:damage]
+          %td= item[:properties]
