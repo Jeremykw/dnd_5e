@@ -35,23 +35,23 @@ class Belonging < ActiveRecord::Base
 
   private
 
-  def self.add_item_details(list_of_equipment)
+  # def self.add_item_details(list_of_equipment)
 
-    items = []
-    list_of_equipment.each do |equipment|
-      item = list.find { |h| h[:id] == equipment.item }
-      item[:quantity] = equipment.quantity if equipment.quantity 
-      item[:description] = equipment.description if equipment.description
-      item[:pack] = equipment.pack
-      item[:type] = item_type(item)
-      if item[:id] == 211
-        item[:name] = equipment.description
-      end
-      item[:quantity] = 1 unless item[:quantity]
-      items << item
-    end
-    items
-  end
+  #   items = []
+  #   list_of_equipment.each do |equipment|
+  #     item = list.find { |h| h[:id] == equipment.item }
+  #     item[:quantity] = equipment.quantity if equipment.quantity 
+  #     item[:description] = equipment.description if equipment.description
+  #     item[:pack] = equipment.pack
+  #     item[:type] = item_type(item)
+  #     if item[:id] == 211
+  #       item[:name] = equipment.description
+  #     end
+  #     item[:quantity] = 1 unless item[:quantity]
+  #     items << item
+  #   end
+  #   items
+  # end
   
   # Creates item or redirects to add_unlisted_item
   def self.create_item(character, item)
@@ -65,19 +65,19 @@ class Belonging < ActiveRecord::Base
   
   # Returns item type based on :id number
   def self.item_type(item)
-    if item[:id] >= 1 && item[:id] <= 12 || item[:id] == 212
+    if item[:id] >= 1 && item[:id] <= 13
       "armour"
-    elsif item[:id] >= 13 && item[:id] <= 48
+    elsif item[:id] >= 14 && item[:id] <= 49
       "weapon"
-    elsif item[:id] >= 49 && item[:id] <= 144 || item[:id] == 210 || item[:id] == 211
+    elsif item[:id] >= 50 && item[:id] <= 147
       "gear"
-    elsif item[:id] >= 145 && item[:id] <= 181
+    elsif item[:id] >= 148 && item[:id] <= 184
       "tool"
-    elsif item[:id] >= 182 && item[:id] <= 189
+    elsif item[:id] >= 185 && item[:id] <= 192
       "mount"
-    elsif item[:id] >= 190 && item[:id] <= 203
+    elsif item[:id] >= 193 && item[:id] <= 206
       "tack"
-    elsif item[:id] >= 205 && item[:id] <= 209
+    elsif item[:id] >= 207 && item[:id] <= 212
       "boat"
     end
   end

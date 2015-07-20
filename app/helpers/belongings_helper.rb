@@ -131,7 +131,7 @@ module BelongingsHelper
 	end
 
 	def simple_weapons # Creates and array of all simple weapons
-		Item.find_all.("category like ?", "%simple_melee")
+		Item.where("category like ?", "%simple_melee")
 	end
 
 	def martial_weapon
