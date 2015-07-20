@@ -7,13 +7,16 @@
       %th Name
       %th Weight
   %tbody
-    
+    - belongings(@character)
     - @items.each do |item|
       %tr
         - if item.category.match("^adventuring_gear")
-          %td= belongings(@character, item)[0].quantity
-          - if item[:pack]
-            %td= item_name_to_link(item, @character) + item[:pack].humanize.capitalize
+          - if !belonging_quantity(item, @belongings)
+            %td 1
+          - else
+            %td= belonging_quantity(item, @belongings)
+          - if pack(item, @belongings)
+            %td= item_name_to_link(item, @character) + pack(item, @belongings).humanize.capitalize
           -else
             %td= item_name_to_link(item, @character)
           %td= item[:weight]

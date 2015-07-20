@@ -12,8 +12,18 @@ module BelongingsHelper
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "dex_mod_max", "dex_mod", "character_id", "stealth", "strength", "ac"]
 	end
 
-	def belongings(character, item)
-		@belongings = character.belongings.where("item_id like ?", "#{item.id}")
+	def belongings(character)
+		@belongings = character.belongings.where("character_id like ?", "#{character.id}")
+	end
+
+	def belonging_quantity(item, belongings)
+		belonging = belongings.where("item_id like ?", "#{item.id}")
+		belonging[0].quantity
+	end
+
+	def pack(item, belongings)
+		belonging = belongings.where("item_id like ?", "#{item.id}")
+		belonging[0].pack
 	end
 
 	# loads the list of character items into instance veriable
@@ -23,7 +33,8 @@ module BelongingsHelper
 
 	# If the character has more than one set of armour, determinds what armour gives bes ac
 	def character_is_wearing_armour?(items)
-		if items.find { |item| item[:type] == "armour" }
+		armour = items.where("category like ?", "%armour")
+		if armour.count > 0
 			return true
 		else
 			return false
@@ -31,7 +42,7 @@ module BelongingsHelper
 	end
 
 	def best_armour_character_has(character, items)
-		all_armour = items.find_all { |item| item[:type] == "armour" || item[:id] == 212}
+		all_armour = items.where("category like ?", "%armour")
 		best_ac = 0
 		best_armour = nil
 		all_armour.each do |armour|

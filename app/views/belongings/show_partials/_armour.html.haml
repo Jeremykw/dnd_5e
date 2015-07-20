@@ -1,4 +1,5 @@
 %strong Armour
+- items(@character)
 %br
 %table#characters
   %thead
@@ -8,17 +9,16 @@
       %th AC
   %tbody
     - if character_is_wearing_armour?(items(@character))
-      / = logger.debug "@characterxxxxxxxxxxxxxxxxxxxxxxxx = #{@character.belongings.inspect}"
       - best_armour = best_armour_character_has(@character, @items)
       - @items.each do |item|
-        - if item[:type] == "armour"
+        - if item.category.match("^armour")
           %tr
             %td= item_name_to_link(item, @character)
             %td= display_armour_class(item)
             - if item == best_armour
               %td
                 %strong= calculate_ac(@character, item)
-            - elsif item[:id] == 212
+            - elsif item.id == 13
               %td
                 %strong= calculate_ac(@character, best_armour) + 2
             - else
