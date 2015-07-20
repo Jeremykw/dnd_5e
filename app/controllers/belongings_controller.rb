@@ -25,9 +25,9 @@ class BelongingsController < ApplicationController
 	end
 
 	def show
-    er
-		@character = Character.find(params[:character_id]) if params[:character_id]
-		@belonging = params
+		@character = Character.find(character_id_params)
+		@belonging = @character.belongings.where("item_id like ?", id_params)[0]
+		@item = Item.find(id_params)
 	end
 
 	private
@@ -68,6 +68,10 @@ class BelongingsController < ApplicationController
 
 	def starting_items_params
 		params.require(:starting_items)
+	end
+
+	def character_id_params
+		params.require(:character_id)
 	end
 
 end

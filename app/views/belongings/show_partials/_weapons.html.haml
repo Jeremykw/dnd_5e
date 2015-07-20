@@ -10,6 +10,6 @@
     - @items.each do |item|
       %tr
         - if item.category.match "weapon"   
-          %td= item_name_to_link(item, @character)
+          %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
           %td= item[:damage]
           %td= item[:properties]

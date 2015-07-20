@@ -6,13 +6,13 @@ module PackCreation
   def add_unlisted_items(character, equipment_choice)
     case equipment_choice
     when 300 # Prayer Book
-      character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Prayer book")
+      character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Prayer book")
     when 301 # prayer wheel
-      character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Prayer wheel")
+      character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Prayer wheel")
     when 302 # broken blade
-      character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Broken Blade")
+      character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Broken Blade")
     when 303 # Piece of banner
-      character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Piece of banner")
+      character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Piece of banner")
     when 330 # light crosbow, 20 bolts
       character.belongings.create(:character_id => character.id, :item_id => 14)
       character.belongings.create(:character_id => character.id, :item_id => 57)
@@ -46,7 +46,7 @@ module PackCreation
     when "rouge"
       character.belongings.create(:character_id => character.id, :item_id => 2)
       character.belongings.create(:character_id => character.id, :item_id => 17, :quantity => 2)
-      character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Theives tools")
+      character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Theives tools")
     when "fighter"
 
     when "cleric"
@@ -68,7 +68,7 @@ module PackCreation
 	# an array of arrays with items and corresponding quantity 
 	###
 	def burglars_pack(character)
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "10 Feet of string", :pack => "burglars_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "10 Feet of string", :pack => "burglars_pack")
     [[65, 1], [66, 1], [70, 1], [146, 5], [85, 1], [92, 1], [118, 10], [107, 1], [113, 2], [126, 5], [140, 1], [143, 1], [128, 1]]
   end
   
@@ -89,17 +89,17 @@ module PackCreation
   end
 
   def priests_pack(character)
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Alms box", :pack => "priests_pack")
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "2 Blocks incense", :pack => "priests_pack")
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Censer", :pack => "priests_pack")
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Vestments", :pack => "priests_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Alms box", :pack => "priests_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "2 Blocks incense", :pack => "priests_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Censer", :pack => "priests_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Vestments", :pack => "priests_pack")
     [[65, 1], [71, 1], [146, 10], [140, 1], [126, 2], [143, 1]]
   end
 
   def scholars_pack(character)
     character.belongings.create(:character_id => character.id, :item_id => 72, :description => "Book of lore", :pack => "scholars_pack")
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Little bag of sand", :pack => "scholars_pack")
-    character.belongings.create(:character_id => character.id, :item_id => 147, :description => "Small knife", :pack => "scholars_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Little bag of sand", :pack => "scholars_pack")
+    character.belongings.create(:character_id => character.id, :item_id => 147, :name => "Small knife", :pack => "scholars_pack")
     [[65, 1], [101, 1], [102, 1], [115, 10]]
   end
 

@@ -1,10 +1,20 @@
 module BelongingsHelper
 
-	
-  # Generates a link to items/show wtih item name
-  def item_name_to_link(item, character) 
-    # item[:character_id] = character.id if character
-    render_haml(link_to "#{item[:name]}", belonging_path(item))
+	def show_belonging_name(belonging, item)
+		name = ""
+		if belonging.name
+			name = belonging.name
+		else
+			name = item.name
+		end
+	end
+  # Generates a link to belongings#show wtih item name
+  def belonging_name_to_link(item, belonging, character) 
+    if belonging.name
+    	render_haml(link_to "#{belonging.name}", belonging_path(:id => item, :character_id => character.id))
+    else
+    	render_haml(link_to "#{item[:name]}", belonging_path(:id => item, :character_id => character.id))
+    end
   end
   
 	# Item fields not to be show in tabel format in show
@@ -16,9 +26,9 @@ module BelongingsHelper
 		@belongings = character.belongings.where("character_id like ?", "#{character.id}")
 	end
 
-	def belonging_quantity(item, belongings)
+	def belonging(item, belongings)
 		belonging = belongings.where("item_id like ?", "#{item.id}")
-		belonging[0].quantity
+		belonging[0]
 	end
 
 	def pack(item, belongings)

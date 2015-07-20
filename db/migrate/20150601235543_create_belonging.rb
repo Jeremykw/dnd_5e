@@ -6,6 +6,7 @@ class CreateBelonging < ActiveRecord::Migration
       t.integer :item_id
       t.integer :quantity
       t.string	:description
+      t.string :name
       t.string :pack
       t.timestamps null: false
     end

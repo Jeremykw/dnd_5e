@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150705150253) do
     t.integer  "item_id"
     t.integer  "quantity"
     t.string   "description"
+    t.string   "name"
     t.string   "pack"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
