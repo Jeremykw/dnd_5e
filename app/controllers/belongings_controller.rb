@@ -3,17 +3,19 @@ class BelongingsController < ApplicationController
 	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
 
 	def destroy
-		@character = Character.find(character_id_params)
-		Belonging.remove_belonings(remove_item_params, @character)
+		if remove_item_params
+			@character = Character.find(character_id_params)
+			Belonging.remove_belonings(remove_item_params, @character)
+		end
 		redirect_to edit_character_belonging_path(character_id_params, 1)
 	end
 
 	def edit
-		@character = Character.find(id_params)
+		@character = Character.find(character_id_params)
 	end
 
 	def starting_equipment
-		@character = Character.find(id_params)
+		@character = Character.find(character_id_params)
 	end
 
 	def create		

@@ -22,24 +22,11 @@ module BelongingsHelper
 		[ "updated_at", "created_at", "pack", "id", "action", "controller", "details", "dex_mod_max", "dex_mod", "character_id", "stealth", "strength", "ac"]
 	end
 
-	def belongings(character)
-		@belongings = character.belongings.where("character_id like ?", "#{character.id}")
-	end
-
-	def belonging(item, belongings)
-		belonging = belongings.where("item_id like ?", "#{item.id}")
-		belonging[0]
-	end
-
 	def pack(item, belongings)
 		belonging = belongings.where("item_id like ?", "#{item.id}")
 		belonging[0].pack
 	end
 
-	# loads the list of character items into instance veriable
-	def items(character)
-		@items = character.items
-	end
 
 	# If the character has more than one set of armour, determinds what armour gives bes ac
 	def character_is_wearing_armour?(items)

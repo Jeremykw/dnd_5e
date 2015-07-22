@@ -35,7 +35,7 @@ class Belonging < ActiveRecord::Base
 
   def self.remove_belonings(items, character)
     items.each do |item_id, v|
-      self.find(item_id).destroy
+      find(item_id).destroy
     end
   end
   private

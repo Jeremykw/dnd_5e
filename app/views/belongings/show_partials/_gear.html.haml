@@ -7,15 +7,15 @@
       %th Name
       %th Weight
   %tbody
-    - @items.each do |item|
+    - @belongings.each do |belonging|
       %tr
-        - if item.category.match("^adventuring_gear")
-          - if !belonging(item, @belongings).quantity
+        - if single_item(belonging, @items).category.match("^adventuring_gear")
+          - if !belonging.quantity
             %td 1
           - else
-            %td= belonging(item, @belongings).quantity
-          - if belonging(item, @belongings).pack
-            %td= belonging_name_to_link(item, belonging(item, @belongings), @character) + belonging(item, @belongings).pack.humanize.capitalize
+            %td= belonging.quantity
+          - if belonging.pack
+            %td= belonging_name_to_link(single_item(belonging, @items), belonging, @character) + belonging.pack.humanize.capitalize
           -else
-            %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
-          %td= item[:weight]
+            %td= belonging_name_to_link(single_item(belonging, @items), belonging, @character)
+          %td= single_item(belonging, @items).weight

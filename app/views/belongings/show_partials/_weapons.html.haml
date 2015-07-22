@@ -7,9 +7,9 @@
       %th Damage
       %th Properties
   %tbody
-    - @items.each do |item|
+    - @belongings.each do |belonging|
       %tr
-        - if item.category.match "weapon"   
-          %td= belonging_name_to_link(item, belonging(item, @belongings), @character)
-          %td= item[:damage]
-          %td= item[:properties]
+        - if single_item(belonging, @items).category.match "weapon"   
+          %td= belonging_name_to_link(single_item(belonging, @items), belonging, @character)
+          %td= single_item(belonging, @items).damage
+          %td= single_item(belonging, @items).properties
