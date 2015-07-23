@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 		  resources :belongings, :except => [:index] do  # Equipment
         member do
           get :starting_equipment
+          post :create_starting_equipment
         end
       end
     end

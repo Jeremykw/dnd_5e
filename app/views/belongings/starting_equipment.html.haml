@@ -3,7 +3,7 @@
 .new
   %h1 Starting Equipment
 
-  = form_tag :action => :create, :id => @character.id do
+  = form_tag :action => :create_starting_equipment, :id => @character.id do
     = hidden_field_tag :starting_items,  "true"
     = render :partial => "belongings/background_starting_equipment/#{@character.past}_starting_equipment"
     %br

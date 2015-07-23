@@ -1,30 +1,44 @@
 class BelongingsController < ApplicationController
 
-	before_action :correct_number_of_martial_weapons_for_fighter, only: :create
+	before_action :correct_number_of_martial_weapons_for_fighter, only: :create_starting_equipment
+
+	def create
+		@character ||= Character.find(character_id_params)
+		@character.belongings.create(belonging_params)
+		redirect_to edit_character_belonging_path(:id => 1)
+	end
+
+	def new
+		if !@character ||= Character.find(character_id_params)
+			flash[:notice] = "Charcter record does not exits"
+			redirect_to edit_character_belonging_path
+		end
+		@belonging = Belonging.new
+	end
 
 	def destroy
 		if remove_item_params
-			@character = Character.find(character_id_params)
-			Belonging.remove_belonings(remove_item_params, @character)
+			if @character = Character.find(character_id_params)
+				Belonging.remove_belonings(remove_item_params, @character)
+			end
 		end
 		redirect_to edit_character_belonging_path(character_id_params, 1)
 	end
 
 	def edit
-		@character = Character.find(character_id_params)
+		redirect_to character_path unless @character = Character.find(character_id_params)
 	end
 
 	def starting_equipment
 		@character = Character.find(character_id_params)
 	end
 
-	def create		
+	def create_starting_equipment	
 		character = Character.find(id_params) 
 		if starting_items_params
 			if new_starting_items(character)
 				Belonging.create_starting_items(character, items_choices_params)
 				character.update_attributes(:starting_items => true)
-				# character.save
 			else
 				flash[:notice] = "You have saved your starting equipment already."
 			end
@@ -33,9 +47,10 @@ class BelongingsController < ApplicationController
 	end
 
 	def show
-		@character = Character.find(character_id_params)
-		@belonging = @character.belongings.where("item_id like ?", id_params)[0]
-		@item = Item.find(id_params)
+		if @character = Character.find(character_id_params)
+			@belonging = @character.belongings.where("item_id like ?", id_params)[0]
+			@item = Item.find(id_params)
+		end
 	end
 
 	private
@@ -61,6 +76,13 @@ class BelongingsController < ApplicationController
 	###
 	# Strong Parameters White List
 	###
+	def new_params
+		params.require(:new)
+	end
+
+	def belonging_params
+		params.require(:belonging).permit(:name, :description, :quantity)
+	end
 
 	def remove_item_params
 		params.require(:remove_item).permit!
