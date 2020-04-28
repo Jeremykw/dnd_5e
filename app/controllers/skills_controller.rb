@@ -15,9 +15,9 @@ class SkillsController < ApplicationController
 			flash[:notice] = "You must chose #{@character.number_of_skill} Skills!"
 			@character.skill.set_all_skills_to_nil
 			redirect_to new_character_skill_path(@character) and return
-		end
-			redirect_to new_character_background_path(@character)
 		else
+			redirect_to new_character_background_path(@character)
+		end
 	end
 
 	def edit

@@ -1,28 +1,33 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+This is a simple Rails app origially built as a ;earning exercise. It is a simple character builder for the 5th addition of Dungeons and Dragons. 
 
-* System dependencies
+* originally buil on rails 4.2 and ruby 2.2 but has been upgraded to rails 6.0.2 and ruby 2.7. At the this point in time simple intergration testing shows it is running fine.
 
-* Configuration
+* Rails version 6.0.2
+* Ruby version = 2.7
 
 * Database creation
+	- due to legacy code base the original rails version had to be specifyed in the migrations(ie. class CreateUsers < ActiveRecord::Migration[4.2])
+	- run 'bin/rails db:migrate' to install data base
 
-* Database initialization
+* getting started
+	- brew install ruby 2.7
+		- optinally us rvm or rbenv to control ruby versions
+	- gem install bundle
+	- cd... into prodject dir.
+	- bundle install
+	- bin/rails db:migrate
+		- initialize database
+	- rails serve
+		- Runs the app in the development mode. 
+		- [http://localhost:3000] to view it in the browser. 
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
-* ...
 
-
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

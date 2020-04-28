@@ -1,4 +1,4 @@
-class CreateAbilities < ActiveRecord::Migration
+class CreateAbilities < ActiveRecord::Migration[4.2]
   def up
   	create_table 'abilities' do |a|
   		a.integer "str"
