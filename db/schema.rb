@@ -2,17 +2,20 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2015_05_30_160333) do
 
-  create_table "abilities", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "abilities", id: :serial, force: :cascade do |t|
     t.integer "str"
     t.integer "dex"
     t.integer "con"
@@ -21,10 +24,9 @@ ActiveRecord::Schema.define(version: 2015_05_30_160333) do
     t.integer "char"
     t.integer "character_id"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  create_table "backgrounds", force: :cascade do |t|
+  create_table "backgrounds", id: :serial, force: :cascade do |t|
     t.text "personality"
     t.text "ideal"
     t.text "bond"
@@ -36,7 +38,7 @@ ActiveRecord::Schema.define(version: 2015_05_30_160333) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "characters", force: :cascade do |t|
+  create_table "characters", id: :serial, force: :cascade do |t|
     t.string "character_name"
     t.string "character_class"
     t.integer "level"
@@ -49,9 +51,10 @@ ActiveRecord::Schema.define(version: 2015_05_30_160333) do
     t.integer "xp"
     t.string "type"
     t.integer "user_id"
+    t.datetime "created_at"
   end
 
-  create_table "skills", force: :cascade do |t|
+  create_table "skills", id: :serial, force: :cascade do |t|
     t.boolean "acrobatics"
     t.boolean "animal_handling"
     t.boolean "arcana"
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 2015_05_30_160333) do
     t.integer "character_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"

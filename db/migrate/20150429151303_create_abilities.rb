@@ -8,7 +8,7 @@ class CreateAbilities < ActiveRecord::Migration[4.2]
   		a.integer "wis"
   		a.integer "char"
   		a.integer "character_id"
-  		a.timestamps
+  		a.timestamp 'created_at'
   	end
   end
 

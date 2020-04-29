@@ -13,7 +13,7 @@ class CreateCharacters < ActiveRecord::Migration[4.2]
   		c.integer 'xp'
   		c.string 'type' # For single table inheratance of Character_class
       c.integer 'user_id'
-  		c.timestamp
+  		c.timestamp 'created_at'
     end
   end
   def down
