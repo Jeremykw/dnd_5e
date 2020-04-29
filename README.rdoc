@@ -1,6 +1,8 @@
 == README
 
-
+*** you can see a current live version of the app at:
+https://salty-inlet-98879.herokuapp.com/
+***
 
 This is a simple Rails app origially built as a learning exercise. It is a simple character builder for the 5th addition of Dungeons and Dragons(D&D). The content used is based on wizards of the coast System Referance Documents(SRD) free content of the basic addition of D&D, 5th addition.
 
@@ -28,6 +30,24 @@ This is a simple Rails app origially built as a learning exercise. It is a simpl
 
 
 * Deployment instructions
+	- install
+		- 'brew tap heroku/brew && brew install heroku'
+	- create/login 
+		- 'heroku login'
+	- update master branch of git
+	 - 'git add .''
+	 - 'git ci -m "last commit before heroku deployment"'
+	 - 'git push'
+	- 'heroku create'
+	- deploy
+	 - 'git push heroku master'
+	- migrate db on heroku server
+	 - 'heroku run rake db:migrate'
+	- ensure their is at least on dyno running
+	 - 'heroku ps:scale web=1'
+	 - 'heroku ps' - list running dynos
+	- run application
+	 - 'heroku open'
 
 
 <tt>rake doc:app</tt>.
