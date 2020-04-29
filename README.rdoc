@@ -29,7 +29,8 @@ This is a simple Rails app origially built as a learning exercise. It is a simpl
 
 
 
-* Deployment instructions
+* New Deployment instructions
+
 	- install
 		- 'brew tap heroku/brew && brew install heroku'
 	- create/login 
@@ -49,5 +50,18 @@ This is a simple Rails app origially built as a learning exercise. It is a simpl
 	- run application
 	 - 'heroku open'
 
+* Update existing live app: https://salty-inlet-98879.herokuapp.com/
+	- create/login 
+		- 'heroku login'
+	- update master branch of git
+	 - 'git add .''
+	 - 'git ci -m "last commit before heroku deployment"'
+	 - 'git push'
+	- deploy
+	 - 'git push heroku master'
+	- migrate db on heroku server
+	 - 'heroku run rake db:migrate'
+	- run application
+	 - 'heroku open'
 
 <tt>rake doc:app</tt>.
