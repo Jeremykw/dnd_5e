@@ -29,7 +29,7 @@ New Deployment instructions
 
 * install - 'brew tap heroku/brew && brew install heroku'
 * create/login - 'heroku login'
-* update master branch of git - 'git add .'' - 'git ci *m "last commit before heroku deployment" - 'git push'
+* update master branch of git - 'git add .' - 'git ci *m "last commit before heroku deployment" - 'git push'
 * 'heroku create'
 * deploy - 'git push heroku master'
 * migrate db on heroku server - 'heroku run rake db:migrate'
