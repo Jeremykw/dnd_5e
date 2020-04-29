@@ -16,52 +16,31 @@ Database creation
 * run 'bin/rails db:migrate' to install data base
 
 getting started
-* brew install ruby 2.7
-	* optinally us rvm or rbenv to control ruby versions
+* brew install ruby 2.7 - optinally us rvm or rbenv to control ruby versions
 * gem install bundle
 * cd... into prodject dir.
 * bundle install
-* bin/rails db:migrate
-	* initialize database
-* rails serve
-	* Runs the app in the development mode. 
-	* [http://localhost:3000] to view it in the browser. 
+* bin/rails db:migrate - initialize database
+* rails serve - Runs the app in the development mode. - [http://localhost:3000] to view it in the browser. 
 
 
 
 New Deployment instructions
 
-* install
-	* 'brew tap heroku/brew && brew install heroku'
-* create/login 
-	* 'heroku login'
-* update master branch of git
- * 'git add .''
- * 'git ci *m "last commit before heroku deployment"'
- * 'git push'
+* install - 'brew tap heroku/brew && brew install heroku'
+* create/login - 'heroku login'
+* update master branch of git - 'git add .'' - 'git ci *m "last commit before heroku deployment" - 'git push'
 * 'heroku create'
-* deploy
- * 'git push heroku master'
-* migrate db on heroku server
- * 'heroku run rake db:migrate'
-* ensure their is at least on dyno running
- * 'heroku ps:scale web=1'
- * 'heroku ps' - list running dynos
-* run application
- * 'heroku open'
+* deploy - 'git push heroku master'
+* migrate db on heroku server - 'heroku run rake db:migrate'
+* ensure their is at least on dyno running - 'heroku ps:scale web=1' - 'heroku ps' - list running dynos
+* run application - 'heroku open'
 
 Update existing live app: https://salty-inlet-98879.herokuapp.com/
-* create/login 
- * 'heroku login'
-* update master branch of git
- * 'git add .''
- * 'git ci -m "last commit before heroku deployment"'
- * 'git push'
-* deploy
- * 'git push heroku master'
-* migrate db on heroku server
- * 'heroku run rake db:migrate'
-* run application
- * 'heroku open'
+* create/login - 'heroku login'
+* update master branch of git - 'git add .'' - 'git ci -m "last commit before heroku deployment"' - 'git push'
+* deploy - 'git push heroku master'
+* migrate db on heroku server - 'heroku run rake db:migrate'
+* run application - 'heroku open'
 
 <tt>rake doc:app</tt>.
