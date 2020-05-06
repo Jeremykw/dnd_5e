@@ -1,10 +1,18 @@
+%div.hide
 %h1 Login
+%div.hide
+
+%div.hide
 = form_tag login_path do
   = label :user, :email, "Email"
   = email_field :user, :email, :placeholder => 'Email Address'
+  %br
   = label :user, :password, "Password"
   = password_field :user, :password, :placeholder => 'Password'
   %br
   = submit_tag "Login"
-%br
+%div.hide
+
+%div.hide
 = link_to 'Create user account', new_user_path
+%div.hide
