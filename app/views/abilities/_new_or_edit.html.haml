@@ -1,20 +1,20 @@
 = label :ability, :str, "Strength:"
-= text_field :ability, :str, :value => "#{@recomended_ability[0]}"
+= text_field :ability, :str, :value => "#{@recomended_ability[0]}", :class => "input"
 
 = label :ability, :dex, "Dexterity:"
-= text_field :ability, :dex, :value => "#{@recomended_ability[1]}"
+= text_field :ability, :dex, :value => "#{@recomended_ability[1]}", :class => "input"
 
 = label :ability, :con, "Constitution:"
-= text_field :ability, :con, :value => "#{@recomended_ability[2]}"
+= text_field :ability, :con, :value => "#{@recomended_ability[2]}", :class => "input"
 
 = label :ability, :int, "Intelligence:"
-= text_field :ability, :int, :value => "#{@recomended_ability[3]}"
+= text_field :ability, :int, :value => "#{@recomended_ability[3]}", :class => "input"
 
 = label :ability, :wis, "wisdom:"
-= text_field :ability, :wis, :value => "#{@recomended_ability[4]}"
+= text_field :ability, :wis, :value => "#{@recomended_ability[4]}", :class => "input"
 
 = label :ability, :char, "Charisma:"
-= text_field :ability, :char, :value => "#{@recomended_ability[5]}"
+= text_field :ability, :char, :value => "#{@recomended_ability[5]}", :class => "input"
 
 %br
 - if params[:edit]
@@ -22,5 +22,5 @@
 	= submit_tag "Save #{@character.character_name}"
 	= link_to "Cancel", character_path(@character)
 - else
-	= submit_tag "Save"
-	and continue to Skills
+	= button_tag "Contune", :class => "btn"
+

@@ -1,4 +1,6 @@
-%h1 Edit #{@user.first_name}'s User Account
+.hide
+%h4 User Account
+.hide
 = render partial: "new_or_edit"
 %br
-= link_to "Delete #{@user.first_name}'s user account", :action => :delete
+= link_to "Delete #{@user.first_name}'s account", :action => :delete

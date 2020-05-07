@@ -1,9 +1,12 @@
 :root {
-  --yellow: #ffc600;
-  --font: #30416b;
-  --black: #272727;
-  --bg-color: #ebe4e4;
-  --notice: #bd1313;
+  --input-bg:   #b8b0b0;
+  --font:       #FEFFF8;
+  --black:      #272727;
+  --bg-color:   #696969;
+  --notice:     #0087ff;
+  --btn-color:  #1785EA;
+  --btn-text:   #FFFFFF;
+  --white:      #f0f1f5;
 }
 
 html {
@@ -12,9 +15,10 @@ html {
   /* A system font stack so things load nice and quick! */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: 900;
+  font-weight: 200;
+  letter-spacing: 2px;
   font-size: 10px;
-  color: var(--black);
+  color: var(--font);
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
 
@@ -30,10 +34,10 @@ html {
 }
 
 body {
-  background: white;
-  background-size: 340px, auto;
+  background: var(--white);
+  background-size: 500px, auto;
   min-height: calc(100vh - 100px);
-  margin: 50px;
+
   background-attachment: fixed;
   letter-spacing: -1px;
   text-shadow: 0 3px 0 rgba(0, 0, 0, 0.07 );
@@ -48,24 +52,41 @@ h6 {
   margin: 0 0 5px 0;
 }
 /* Each item in our grid will contain numbers */
-.item {
-  /* We center the contents of these items. You can also do this with flexbox too! */
 
- 
-}
-
-.item p {
-  margin: 0 0 5px 0;
-}
 
 .container {
   display: grid;
-  color: var(--black);
+  color: var(--font);
   font-size: 10pt;
   grid-gap: 20px;
   grid-template-columns: 1fr 600px 1fr;
-  grid-template-rows: 5fr auto 1fr;
+  grid-template-rows: 1fr 10fr auto 1fr;
+  color: var(--font);
+}
 
+#title {
+
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 50px;
+  background-color: var(--bg-color);
+  text-align: center;
+}
+
+#title a{
+  color: var(--font);
+  text-decoration: none;
+}
+#title a:hover{
+  font-size: 52px;
+}
+
+#title p{
+  color: var(--black);
+  margin: 0 0 0 0;
+  font-size: 22.5px;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .content-container{
@@ -76,30 +97,17 @@ h6 {
   align-items: center;
   font-size: 35px;
   background-color: var(--bg-color); /* best colour */
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: auto auto 2fr;
-  color: var(--font);
-  
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto 4fr; 
 }
 
-#title {
-  padding: 20px 20px 20px 20px;
-  border: 5px solid rgba(0, 0, 0, 0.03);
-  border-radius: 3px;
-  font-size: 30px;
-  background-color: var(--bg-color);
-  text-align: center;
-}
-
-#title a{
-  text-decoration: none;
-}
 
 #notice {
-  align-items: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 0;
+  text-align: center;
   font-size: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.03);
-  border-radius: 3px;
+
   color:var(--notice);
 }
 
@@ -107,16 +115,114 @@ h6 {
   background: none;
 }
 
-input {
+select {
   border: 2px solid rgba(0, 0, 0, 0.03);
   border-radius: 3px;
   font-size: 15px;
   padding: 5px;
-  margin: 0 0 10px 0;
-  background: #b8b0b0
-  
+  background: var(--input-bg);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+  min-width: 150px;
+}
+select::-ms-expand {
+    display: none;
+}
+
+.input {
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 10px;
+  background: var(--input-bg);
+  width: 200px;
+}
+
+.input:hover{
+  background: var(--white);
+}
+.input:focus{
+  background: var(--white);
+}
+.content-container label{
+  font-size: 17px;
+  margin: 0px;
+}
+
+.content-container a{
+  font-size: 15px;
+  margin: 10px;
+  color: var(--font);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.content-container a:hover{
+  font-size: 17px;  
 }
 
 
+.btn {
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  color: var(--white);
+  background-color: var(--btn-color);
+  font-size: 20px;
+  padding: 4px 5px 4px 5px;
+  margin: 10px 10px 10px 0;
+  letter-spacing: 1px;
+  font-weight: 100;
+  text-shadow: 0 0 0;
+}
+
+.btn:hover{
+  font-size: 22px;
+}
+
+.skill {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+/*  background: red;*/
+  font-size: 15px;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 3fr 2fr 2fr;
+  grid-template-rows: auto auto 1fr;
+}
+
+.skill .update {
+  font-size: 20px;
+
+}
+
+.character {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+/*  background: red;*/
+  font-size: 30px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto 1fr;
+}
+.character .input{
+  width: auto;
+}
+
+.abilities {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 15px;
+}
 
 
+strong{
+  font-size: 20px;
+}

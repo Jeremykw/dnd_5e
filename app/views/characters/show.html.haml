@@ -1,46 +1,46 @@
-.show
-  %h1= character_title(@character)
-  %strong Race:
-  = race(@character)
-  %br
-  %strong Class:
-  =@character.character_class.capitalize
-  %br
-  %strong Level:
-  =@character.level
-  %br
-  %strong Background:
-  =@character.past.humanize.capitalize
-  %br
-  %strong Experience Points:
-  =@character.xp
-  %br
-  %strong Alignmet:
-  = show_alignment(@character.alignment) # decodes alingment for display
-  %br
-  %strong Player Name:
-  = @character.player_name
-  %br
-  - if params[:show] # Show link to edit character only while showing pregenerated/saved character
-    = link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
-  %br
-  %br
-  -# Render Abilities template if abilities have been saved
-  - if @character.ability
-    = render partial: "abilities/show"
-    = link_to "Edit #{@character.character_name}'s Abilities", edit_character_ability_path(@character, @character.ability)
 
-  %br
-  - if @character.skill
-    = render partial: "skills/show"
-    = link_to "Edit #{@character.character_name}'s Skills", edit_character_skill_path(@character, @character.skill)
+= character_title(@character)
+%strong Race:
+= race(@character)
+%br
+%strong Class:
+=@character.character_class.capitalize
+%br
+%strong Level:
+=@character.level
+%br
+%strong Background:
+=@character.past.humanize.capitalize
+%br
+%strong Experience Points:
+=@character.xp
+%br
+%strong Alignmet:
+= show_alignment(@character.alignment) # decodes alingment for display
+%br
+%strong Player Name:
+= @character.player_name
+%br
+- if params[:show] # Show link to edit character only while showing pregenerated/saved character
+  = link_to "Edit #{@character.character_name}'s Character Details", edit_character_path(@character)
+%br
+%br
+-# Render Abilities template if abilities have been saved
+- if @character.ability
+  = render partial: "abilities/show"
+  = link_to "Edit #{@character.character_name}'s Abilities", edit_character_ability_path(@character, @character.ability)
 
-  %br
+%br
+- if @character.skill
+  = render partial: "skills/show"
+  = link_to "Edit #{@character.character_name}'s Skills", edit_character_skill_path(@character, @character.skill)
 
-  - if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
-    = render partial: "backgrounds/show"
-    = link_to "Edit #{@character.character_name}'s Background", edit_character_background_path(@character, @character.background)
+%br
 
-  = continue_character_creation(@character)
-  %br
-  %br
+- if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
+  = render partial: "backgrounds/show"
+  = link_to "Edit #{@character.character_name}'s Background", edit_character_background_path(@character, @character.background)
+
+= continue_character_creation(@character)
+%br
+%br

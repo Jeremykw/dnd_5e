@@ -8,6 +8,10 @@
     = csrf_meta_tags
 
 .container
+  .hide
+  .hide
+  .hide
+  
   .hide 
   #title
     = link_to "Character Builder", characters_path
@@ -19,6 +23,7 @@
     .hide
     #login_logout 
       - if session[:authorized_user_id]
+        .hide
         = link_to "#{session[:name]}, edit", edit_user_path(session[:authorized_user_id])
         = link_to "logout", logout_path 
 

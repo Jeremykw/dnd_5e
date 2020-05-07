@@ -1,61 +1,62 @@
-= label :character, :character_name, "Name:"
+
+- # Charecter Player Name
 - if params[:new]
-	= text_field :character, :character_name, :value => "Sally Waffles"
+	= text_field :character, :player_name, :placeholder => "Player Name", :class => "input", :value => "Jeremy"
+- else
+	= text_field :character, :player_name
+- # Charecter Name
+- if params[:new]
+	= text_field :character, :character_name, :placeholder => "Name", :class => "input", :value => "Maziey"
 - else
 	= text_field :character, :character_name
-
-= label :character, :level, "Level:"
+- # Charecter Level
 - if params[:new]
-	= text_field :character, :level, :value => 2
+	= text_field :character, :level, :placeholder => "Level", :class => "input", :value => 20
 -else
 	= text_field :character, :level	
-
+- # Charecter Experience Points
 - if params[:new]
-	= label :character, :character_class, "Class:"
-	= select :character, :character_class, CharactersHelper::CLASS_CHOICE_LIST
+	= text_field :character, :xp, :placeholder => "Experience Points", :class => "input", :value => 355000
 - else
-	%br
+	= text_field :character, :xp	
+%br
+
+- # Charecter Class
+- if params[:new]
+	= select :character, :character_class, CharactersHelper::CLASS_CHOICE_LIST, :placeholder => "Class"
+	= label :character, :character_class, "Class"
+- else
 	%strong Class:
 	#{@character.character_class.capitalize}
-
+%br
+- # Charecter Race
 - # If new show racial options other wise display race
 - if params[:new]
-	= label :character, :race_subrace, "Race:"
 	= select :character, :race_subrace, CharactersHelper::RACE_CHOICE_LIST
+	= label :character, :race_subrace, "Race"
 - else
 	%br
 	%strong Race:
 	= race(@character)
+%br
 
+- # Charecter Background
 - if params[:new]
-	= label :character, :past, "Background:"
 	= select :character, :past, CharactersHelper::BACKGROUND_CHOICE_LIST
+	= label :character, :past, "Background"
 - else
-	%br
 	%strong Background
 	#{@character.past.capitalize}
 %br
-
-= label :character, :alignment, "Alignment:"
+- # Charecter Alignment
 = select :character, :alignment, CharactersHelper::ALIGNMENT_CHOICE_LIST
-
-= label :character, :xp, "Experience Points:"
-- if params[:new]
-	= text_field :character, :xp, :value => 500
-- else
-	= text_field :character, :xp	
-
-= label :character, :player_name, "Player Name:"
-- if params[:new]
-	= text_field :character, :player_name, :value => "Jeremy"
-- else
-	= text_field :character, :player_name
-
+= label :character, :alignment, "Alignment"
+- # Save
 - if params[:new]
 	%br
-	= submit_tag "Continue to Abilities"
+	= button_tag "Continue", :class => "btn"
 	= link_to "Cancel", characters_path
 - if params[:edit]
 	%br
-	= submit_tag "Save #{@character.character_name}"
+	= button_tag "Save #{@character.character_name}", :class => "btn"
 	= link_to "Cancel", character_path(@character)

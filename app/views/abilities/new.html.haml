@@ -1,10 +1,14 @@
-.show
-  = render partial: "characters/show" # show saved character states
-.new
-  -# Show new Character abilities form
-  %h1 Abillities
-  = new_ability_suggestions(@character.character_class)
-  %br
-  = racial_ability_notice(@character)
-  = form_tag :action => :create do	
-    = render :partial => "new_or_edit"
+.abilities
+	.abilities1
+		= render partial: "characters/show" # show saved character states
+	.abilities2
+		%strong Suggestions
+		%br
+		%br
+		= new_ability_suggestions(@character.character_class)
+		%br
+		%br
+		= racial_ability_notice(@character)
+	.abilities3
+		= form_tag :action => :create do	
+			= render :partial => "new_or_edit"
