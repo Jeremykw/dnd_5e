@@ -1,21 +1,30 @@
 = label :background, :personality, "Personality Trait:"
-= text_area :background, :personality, :value => background_suggestion(@character)[0]
-
+%br
+= text_area :background, :personality, :value => background_suggestion(@character)[0], :class => "input"
+%br
 = label :background, :ideal, "Ideal:"
-= text_area :background, :ideal, :value => background_suggestion(@character)[1]
+%br
+= text_area :background, :ideal, :value => background_suggestion(@character)[1], :class => "input"
+%br
 
 = label :background, :bond, "Bond:"
-= text_area :background, :bond, :value => background_suggestion(@character)[2]
+%br
+= text_area :background, :bond, :value => background_suggestion(@character)[2], :class => "input"
+%br
 
 = label :background, :flaw, "Flaw:"
-= text_area :background, :flaw, :value => background_suggestion(@character)[3]
+%br
+= text_area :background, :flaw, :value => background_suggestion(@character)[3], :class => "input"
+%br
 
 = label :background, :back_story, "Back Story:"
+%br
 - if params[:new] || background_suggestion(@character)[4].blank?
-  = text_area :background, :back_story, :placeholder => "Fill in Backstory here"
+  = text_area :background, :back_story, :placeholder => "Fill in Backstory here", :class => "input"
 - else
-  = text_area :background, :back_story, :value => background_suggestion(@character)[4]
+  = text_area :background, :back_story, :value => background_suggestion(@character)[4], :class => "input", :class => "input"
+%br
 
-= submit_tag "Save background"
-and continue
+= button_tag "Save", :class => "btn"
+
 

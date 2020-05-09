@@ -1,8 +1,6 @@
-.show
-  = render partial: "characters/show" # show saved character states
-
-.new
-  -# Show Edit Character Skills form
-  %h1 Skills
-  = form_tag character_background_path(@character, @character.skill), :method => :put do
-    = render partial: "new_or_edit"  # Show edit character form
+.edit
+	= render partial: "characters/show" # show saved character states
+	.edit-back-ground
+		-# Show Edit Character Skills form
+		= form_tag character_background_path(@character, @character.skill), :method => :put do
+			= render partial: "new_or_edit"  # Show edit character form

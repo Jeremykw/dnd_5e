@@ -2,7 +2,7 @@
   --input-bg:   #b8b0b0;
   --font:       #FEFFF8;
   --black:      #272727;
-  --bg-color:   #696969;
+  --bg-color:   #69696970;
   --notice:     #0087ff;
   --btn-color:  #1785EA;
   --btn-text:   #FFFFFF;
@@ -20,6 +20,8 @@ html {
   font-size: 10px;
   color: var(--font);
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+background-color: #b3ba97;
+background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
 }
 
 /*
@@ -34,7 +36,8 @@ html {
 }
 
 body {
-  background: var(--white);
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
   background-size: 500px, auto;
   min-height: calc(100vh - 100px);
 
@@ -59,7 +62,7 @@ h6 {
   color: var(--font);
   font-size: 10pt;
   grid-gap: 20px;
-  grid-template-columns: 1fr 600px 1fr;
+  grid-template-columns: 1fr 6fr 1fr;
   grid-template-rows: 1fr 10fr auto 1fr;
   color: var(--font);
 }
@@ -133,6 +136,14 @@ select::-ms-expand {
     display: none;
 }
 
+input[type=text]{
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 10px;
+  background: var(--input-bg);
+  width: 200px;
+}
 .input {
   border: 2px solid rgba(0, 0, 0, 0.03);
   border-radius: 3px;
@@ -209,6 +220,7 @@ select::-ms-expand {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto 1fr;
 }
+
 .character .input{
   width: auto;
 }
@@ -222,6 +234,81 @@ select::-ms-expand {
   font-size: 15px;
 }
 
+.background {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto auto 1fr;
+}
+
+.background .new {
+  /*padding: 0 0 0 20px;*/
+
+}
+
+.background textarea{
+  min-width: 300px;
+}
+
+.show-character{
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+
+}
+.edit {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr;
+  grid-template-rows: auto;
+}
+
+.edit .new .input {
+  max-width: 90px
+}
+
+.edit-back-ground {
+
+  width: 300px;
+}
+
+.characters {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: 2fr 2fr 1.5fr 2fr 4fr 2fr;
+  grid-template-rows: auto;
+}
+
+.characters h4 {
+  grid-column: 3 / 5;
+
+}
+
+.characters .index {
+  font-size: 15px
+}
+.characters .index a:hover{
+  font-size: 15px;
+  color: var(--notice);
+}
+
+
+.show {
+  font-size: 15px;
+}
 
 strong{
   font-size: 20px;

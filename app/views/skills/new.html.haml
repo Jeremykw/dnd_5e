@@ -9,10 +9,12 @@
 		#{@character.background.background_skills[1].to_s.humanize.capitalize}
 		%br
 		%br
-		As a #{@character.character_class.to_s.humanize.capitalize}, you can pick #{@character.number_of_skill} more skills
 	.show
-		%strong Select
+		%strong Select Skills
+		%br
+		%br
+		As a #{@character.character_class.to_s.humanize.capitalize}, you can pick #{@character.number_of_skill} more skills
 		= form_tag :action => :create do	
 			= render :partial => "new_or_edit"
-	.div
+	.show
 		= render partial: "characters/show" # show saved character states
