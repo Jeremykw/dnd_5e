@@ -1,0 +1,345 @@
+:root {
+  --input-bg:   #b8b0b0;
+  --font:       #FEFFF8;
+  --black:      #4f4031;
+  --bg-color:   #69696990;
+  --notice:     #0087ff;
+  --btn-color:  #696969;
+  --btn-text:   #FFFFFF;
+  --white:      #f0f1f5;
+}
+
+html {
+  /* border-box box model allows us to add padding and border to our elements without increasing their size */
+  box-sizing: border-box;
+  /* A system font stack so things load nice and quick! */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-size: 10px;
+  color: var(--font);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+  background-color: #c8e04150;
+  background-image: url("background.jpg");
+  background-size: auto 150%;
+  /*background-image: url("/assets/20200509_104700.jpg");*/
+
+}
+
+/*
+  WAT IS THIS?!
+  We inherit box-sizing: border-box; from our <html> selector
+  Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+textarea { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: var(--black);
+}
+body {
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+  background-size: 500px, auto;
+  min-height: calc(100vh - 100px);
+
+  background-attachment: fixed;
+  letter-spacing: -1px;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.07 );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0;
+}
+/* Each item in our grid will contain numbers */
+
+
+.container {
+  display: grid;
+  color: var(--font);
+  font-size: 10pt;
+  grid-gap: 20px;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 10fr auto 1fr;
+  color: var(--font);
+}
+
+#title {
+
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 50px;
+  text-align: center;
+}
+
+#title a{
+  color: var(--font);
+  text-decoration: none;
+}
+#title a:hover{
+  color: var(--notice);
+}
+
+#title p{
+  color: var(--black);
+  margin: 0 0 0 0;
+  font-size: 22.5px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.content-container{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto 4fr; 
+  align-items: end;
+}
+
+
+#notice {
+  letter-spacing: 2px;
+  text-shadow: 0 0 0;
+  text-align: center;
+  font-size: 20px;
+
+  color:var(--notice);
+}
+
+.hide {
+  background: none;
+}
+
+select {
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 5px;
+  background: var(--input-bg);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+  min-width: 150px;
+  margin: 5px 0 5px 0;
+}
+select::-ms-expand {
+    display: none;
+}
+
+input[type=text]{
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 10px;
+  background: var(--input-bg);
+  width: 200px;
+  margin: 5px 0 5px 0;
+}
+.input {
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  font-size: 15px;
+  font:;
+  padding: 10px;
+  background: var(--input-bg);
+  width: 200px;
+}
+
+.input:hover{
+  background: var(--white);
+}
+.input:focus{
+  background: var(--white);
+}
+.content-container label{
+  font-size: 17px;
+  margin: 0px;
+}
+
+.content-container a{
+  font-size: 15px;
+  margin: 10px;
+  color: var(--font);
+  letter-spacing: 2px;
+  float: right;
+}
+
+.content-container a:hover{
+  color: var(--notice); 
+}
+
+
+.btn {
+  border: 2px solid rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+  color: var(--white);
+  background-color: var(--btn-color);
+  font-size: 20px;
+  padding: 4px 5px 4px 5px;
+  margin: 10px 10px 10px 0;
+  letter-spacing: 1px;
+  font-weight: 100;
+  text-shadow: 0 0 0;
+}
+
+.btn:hover{
+  background-color: var(--notice);
+    box-shadow: 3px 3px var(--bg-color);
+}
+
+.character {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.character .input{
+  width: auto;
+}
+
+.abilities {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  font-size: 15px;
+}
+.abilities input{
+  width: auto;
+}
+
+.skill {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+/*  background: red;*/
+  display: grid;
+  font-size: 15px;
+  grid-gap: 15px;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+}
+
+.update {
+  font-size: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+}
+.background {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto 1fr;
+}
+/*
+.new {
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+  grid-column: 4 / -1;
+}
+*/
+.background textarea{
+  min-width: 300px;
+}
+
+.show-character{
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+
+}
+.edit {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr;
+  grid-template-rows: auto;
+
+}
+
+.edit .new .input {
+  max-width: 90px
+}
+
+.edit-background {
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+
+
+  width: 300px;
+}
+
+.edit-background .input{
+  min-width: 290px;
+}
+
+.characters {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  font-size: 30px;
+  grid-gap: 10px;
+  grid-template-columns: 2fr 2fr 1.5fr 2fr 4fr 2fr;
+  grid-template-rows: auto;
+    border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+}
+
+.characters h4 {
+  grid-column: 3 / 5;
+
+}
+
+.characters .index {
+  font-size: 15px
+}
+.characters .index a:hover{
+  font-size: 15px;
+  color: var(--notice);
+}
+
+
+.show {
+  font-size: 15px;
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+}
+
+.show .notice{
+  justify-content: right;
+}
+
+strong{
+  font-size: 20px;
+}
