@@ -45,3 +45,5 @@ Update existing live app: https://salty-inlet-98879.herokuapp.com/
 * run application - 'heroku open'
 
 <tt>rake doc:app</tt>.
+
+NODE_ENV=production bundle exec rails assets:precompile
