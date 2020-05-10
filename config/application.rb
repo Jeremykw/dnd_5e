@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.assets.initialize_on_precompile = false
+
 module Dnd5e
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -24,7 +26,6 @@ module Dnd5e
     
     
     # config.active_record.raise_in_transactional_callbacks = true
-    config.assets.initialize_on_precompile = false
- 
+
   end
 end
