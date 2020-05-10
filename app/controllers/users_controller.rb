@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         authorized_user = found_user.authenticate(user_params[:password])
       end
     end
-    if authorized_user
+    if authorized_user != nil
       set_user_session(authorized_user)
       flash[:notice] = "Welcome #{found_user.first_name}, you are now logged in"
       redirect_to characters_path and return
