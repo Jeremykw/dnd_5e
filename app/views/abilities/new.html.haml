@@ -1,7 +1,6 @@
 .abilities
+	= render partial: "characters/show" # show saved character states
 	.show
-		= render partial: "characters/show" # show saved character states
-	.abilities2
 		%strong Suggestions
 		%br
 		%br
@@ -9,6 +8,6 @@
 		%br
 		%br
 		= racial_ability_notice(@character)
-	.abilities3
+	.show
 		= form_tag :action => :create do	
 			= render :partial => "new_or_edit"

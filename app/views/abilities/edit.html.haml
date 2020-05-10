@@ -1,7 +1,8 @@
 .edit
-	= render partial: "characters/show" # show saved character states
-	.new
+	.show
 		-# Show Edit Character abilities form
 		%h4 Abillities
 		= form_tag character_ability_path(@character, @character.ability), :method => :put do
 			= render partial: "new_or_edit"  # Show edit character form
+	.show
+		= render partial: "characters/show" # show saved character states

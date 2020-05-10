@@ -1,6 +1,6 @@
 .background
 	= render partial: "characters/show" # show saved character states
-	.new
+	.show
 		%strong Background
 		= form_tag :action => :create do  
 			= render :partial => "new_or_edit"

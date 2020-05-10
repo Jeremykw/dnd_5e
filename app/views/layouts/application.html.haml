@@ -9,29 +9,35 @@
 
 .container
   .hide
+  - if flash[:notice]
+    .show.notice= flash[:notice]
+  - elsif flash[:warning]
+    .show.notice= flash[:warning]
+  - else
+    .hide
   .hide
-  .hide
-  
+  / Title
   .hide 
   #title
     = link_to "Character Builder", characters_path
     %p For 5th addition Dungeons and Dragons
   .hide
-  
   .hide
+  / Character Name, Notice, log out
   .content-container
-    .hide
+    .index= link_to "Create New Character", new_character_path
+    - if @character
+      #title
+        = @character.character_name
+    - else
+      .hide
     #login_logout 
       - if session[:authorized_user_id]
         .hide
         = link_to "#{session[:name]}, edit", edit_user_path(session[:authorized_user_id])
         = link_to "logout", logout_path 
 
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - if flash[:warning]
-        #warning.message= flash[:warning]
-    .hide
+
 
     = yield
     

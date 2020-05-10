@@ -1,10 +1,5 @@
 .show-character
 	.show
-		%strong= character_title(@character)
-		%br
-		%strong Player:
-		= @character.player_name
-		%br
 		%strong Class:
 		=@character.character_class.capitalize
 		%br
@@ -24,20 +19,24 @@
 		= show_alignment(@character.alignment) # decodes alingment for display
 		%br
 		- if params[:show] # Show link to edit character only while showing pregenerated/saved character
-			= link_to "Edit #{@character.character_name}'s Details", edit_character_path(@character)
+			%br
+			= link_to "Edit Details", edit_character_path(@character)
 
 	.show
 		-# Render Abilities template if abilities have been saved
 		- if @character.ability
 			= render partial: "abilities/show"
-			= link_to "Edit #{@character.character_name}'s Abilities", edit_character_ability_path(@character, @character.ability)
+			%br
+			= link_to "Edit Abilities", edit_character_ability_path(@character, @character.ability)
 	.show
 		- if @character.skill
 			= render partial: "skills/show"
-			= link_to "Edit #{@character.character_name}'s Skills", edit_character_skill_path(@character, @character.skill)
+			%br
+			= link_to "Edit Skills", edit_character_skill_path(@character, @character.skill)
 	.show
 		- if @character.background.personality || @character.background.ideal || @character.background.flaw || @character.background.back_story
 			= render partial: "backgrounds/show"
-			= link_to "Edit #{@character.character_name}'s Background", edit_character_background_path(@character, @character.background)
+			%br
+			= link_to "Edit Background", edit_character_background_path(@character, @character.background)
 
 		= continue_character_creation(@character)

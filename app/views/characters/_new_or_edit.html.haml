@@ -1,22 +1,26 @@
 
 - # Charecter Player Name
 - if params[:new]
-	= text_field :character, :player_name, :placeholder => "Player Name", :value => "Jeremy", :class => "input"
+	= text_field :character, :player_name, :placeholder => "Player Name", :class => "input"
 - else
 	= text_field :character, :player_name
+%br
+
 - # Charecter Name
 - if params[:new]
-	= text_field :character, :character_name, :placeholder => "Name", :class => "input", :value => "Maziey"
+	= text_field :character, :character_name, :placeholder => "Name", :class => "input"
 - else
 	= text_field :character, :character_name
+%br
 - # Charecter Level
 - if params[:new]
-	= text_field :character, :level, :placeholder => "Level", :class => "input", :value => 20
+	= text_field :character, :level, :placeholder => "Level", :class => "input"
 -else
 	= text_field :character, :level	
+%br
 - # Charecter Experience Points
 - if params[:new]
-	= text_field :character, :xp, :placeholder => "Experience Points", :class => "input", :value => 355000
+	= text_field :character, :xp, :placeholder => "Experience Points", :class => "input"
 - else
 	= text_field :character, :xp	
 %br
@@ -54,8 +58,8 @@
 - # Save
 - if params[:new]
 	%br
-	= button_tag "Continue", :class => "btn"
 	= link_to "Cancel", characters_path
+	= button_tag "Continue", :class => "btn"
 - if params[:edit]
 	%br
 	= button_tag "Save #{@character.character_name}", :class => "btn"

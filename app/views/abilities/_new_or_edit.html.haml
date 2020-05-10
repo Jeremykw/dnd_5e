@@ -1,21 +1,30 @@
 = label :ability, :str, "Strength:"
+%br
 = text_field :ability, :str, :value => "#{@recomended_ability[0]}", :class => "input"
-
+%br
 = label :ability, :dex, "Dexterity:"
+%br
 = text_field :ability, :dex, :value => "#{@recomended_ability[1]}", :class => "input"
+%br
 
 = label :ability, :con, "Constitution:"
+%br
 = text_field :ability, :con, :value => "#{@recomended_ability[2]}", :class => "input"
+%br
 
 = label :ability, :int, "Intelligence:"
+%br
 = text_field :ability, :int, :value => "#{@recomended_ability[3]}", :class => "input"
+%br
 
 = label :ability, :wis, "Wisdom:"
+%br
 = text_field :ability, :wis, :value => "#{@recomended_ability[4]}", :class => "input"
+%br
 
 = label :ability, :char, "Charisma:"
+%br
 = text_field :ability, :char, :value => "#{@recomended_ability[5]}", :class => "input"
-
 %br
 - if params[:edit]
 	%br
@@ -23,4 +32,3 @@
 	= link_to "Cancel", character_path(@character)
 - else
 	= button_tag "Contune", :class => "btn"
-

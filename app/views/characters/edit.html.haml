@@ -1,9 +1,9 @@
 .edit
-	= render partial: "characters/show" # show saved character states
-	.new
+	.show
 		%h4 Details
 		-# Show edit Character form
 		= form_tag character_path(@character), :method => :put do 
 			= render partial: "new_or_edit"  # Show edit character form
+	= render partial: "characters/show" # show saved character states
 
 

@@ -1,10 +1,10 @@
 :root {
   --input-bg:   #b8b0b0;
   --font:       #FEFFF8;
-  --black:      #272727;
-  --bg-color:   #69696970;
+  --black:      #4f4031;
+  --bg-color:   #69696990;
   --notice:     #0087ff;
-  --btn-color:  #1785EA;
+  --btn-color:  #696969;
   --btn-text:   #FFFFFF;
   --white:      #f0f1f5;
 }
@@ -20,8 +20,11 @@ html {
   font-size: 10px;
   color: var(--font);
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
-background-color: #b3ba97;
-background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  background-color: #c8e04150;
+  background-image: url("/assets/background.jpg");
+  background-size: auto 150%;
+  /*background-image: url("/assets/20200509_104700.jpg");*/
+
 }
 
 /*
@@ -34,7 +37,11 @@ background-image: url("https://www.transparenttextures.com/patterns/textured-pap
 *:after {
   box-sizing: inherit;
 }
-
+textarea { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: var(--black);
+}
 body {
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
@@ -62,8 +69,8 @@ h6 {
   color: var(--font);
   font-size: 10pt;
   grid-gap: 20px;
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 1fr 10fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 10fr auto 1fr;
   color: var(--font);
 }
 
@@ -72,7 +79,6 @@ h6 {
   border: 5px solid rgba(0, 0, 0, 0.03);
   border-radius: 3px;
   font-size: 50px;
-  background-color: var(--bg-color);
   text-align: center;
 }
 
@@ -81,7 +87,7 @@ h6 {
   text-decoration: none;
 }
 #title a:hover{
-  font-size: 52px;
+  color: var(--notice);
 }
 
 #title p{
@@ -94,14 +100,12 @@ h6 {
 
 .content-container{
   display: grid;
-  border: 5px solid rgba(0, 0, 0, 0.03);
-  border-radius: 3px;
   justify-content: center;
   align-items: center;
   font-size: 35px;
-  background-color: var(--bg-color); /* best colour */
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto 4fr; 
+  align-items: end;
 }
 
 
@@ -131,6 +135,7 @@ select {
   background-position-x: 100%;
   background-position-y: 5px;
   min-width: 150px;
+  margin: 5px 0 5px 0;
 }
 select::-ms-expand {
     display: none;
@@ -143,11 +148,13 @@ input[type=text]{
   padding: 10px;
   background: var(--input-bg);
   width: 200px;
+  margin: 5px 0 5px 0;
 }
 .input {
   border: 2px solid rgba(0, 0, 0, 0.03);
   border-radius: 3px;
   font-size: 15px;
+  font:;
   padding: 10px;
   background: var(--input-bg);
   width: 200px;
@@ -168,12 +175,12 @@ input[type=text]{
   font-size: 15px;
   margin: 10px;
   color: var(--font);
-  text-decoration: none;
   letter-spacing: 2px;
+  float: right;
 }
 
 .content-container a:hover{
-  font-size: 17px;  
+  color: var(--notice); 
 }
 
 
@@ -191,34 +198,16 @@ input[type=text]{
 }
 
 .btn:hover{
-  font-size: 22px;
-}
-
-.skill {
-  grid-column: 1 / -1;
-  grid-row: 2 / -1;
-/*  background: red;*/
-  font-size: 15px;
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: 3fr 2fr 2fr;
-  grid-template-rows: auto auto 1fr;
-}
-
-.skill .update {
-  font-size: 20px;
-
+  background-color: var(--notice);
+    box-shadow: 3px 3px var(--bg-color);
 }
 
 .character {
   grid-column: 1 / -1;
   grid-row: 2 / -1;
-/*  background: red;*/
-  font-size: 30px;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .character .input{
@@ -231,24 +220,46 @@ input[type=text]{
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr;
+
   font-size: 15px;
 }
+.abilities input{
+  width: auto;
+}
 
+.skill {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+/*  background: red;*/
+  display: grid;
+  font-size: 15px;
+  grid-gap: 15px;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+}
+
+.update {
+  font-size: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+}
 .background {
   grid-column: 1 / -1;
   grid-row: 2 / -1;
   display: grid;
   font-size: 30px;
   grid-gap: 10px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto 1fr;
 }
-
-.background .new {
-  /*padding: 0 0 0 20px;*/
-
+/*
+.new {
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+  grid-column: 4 / -1;
 }
-
+*/
 .background textarea{
   min-width: 300px;
 }
@@ -271,15 +282,24 @@ input[type=text]{
   grid-gap: 10px;
   grid-template-columns: 1fr 1.5fr 1fr 1.5fr 1fr;
   grid-template-rows: auto;
+
 }
 
 .edit .new .input {
   max-width: 90px
 }
 
-.edit-back-ground {
+.edit-background {
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+
 
   width: 300px;
+}
+
+.edit-background .input{
+  min-width: 290px;
 }
 
 .characters {
@@ -290,6 +310,9 @@ input[type=text]{
   grid-gap: 10px;
   grid-template-columns: 2fr 2fr 1.5fr 2fr 4fr 2fr;
   grid-template-rows: auto;
+    border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
 }
 
 .characters h4 {
@@ -308,6 +331,13 @@ input[type=text]{
 
 .show {
   font-size: 15px;
+  border: 5px solid rgba(0, 0, 0, 0.03);
+  border-radius: 1px;
+  background-color: var(--bg-color); 
+}
+
+.show .notice{
+  justify-content: right;
 }
 
 strong{

@@ -59,7 +59,7 @@ class SkillsController < ApplicationController
 			skill.set_all_skills_to_nil
 			if !skill.update_attributes(skill_params)
 				# flash[:notice] = @character.errors[:skill]
-				flash[:notice] = "You mush chose #{skill.character.number_of_skill} skills!"
+				flash[:notice] = "You must chose #{skill.character.number_of_skill} skills!"
 				redirect_to edit_character_skill_path(skill.character, skill) and return
 			else
 				flash[:notice] = "#{@skill.character.character_name} has been updated."

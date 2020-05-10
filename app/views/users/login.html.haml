@@ -5,6 +5,7 @@
 .hide
 = form_tag login_path do
   = email_field :user, :email, :placeholder => 'Email Address', :class => "input"
+  %br
   = password_field :user, :password, :placeholder => 'Password', :class => "input"
   %br
   = button_tag "Login", :class => "btn"

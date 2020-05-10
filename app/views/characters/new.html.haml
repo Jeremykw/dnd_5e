@@ -1,8 +1,7 @@
 .character
-	.hide
-	Character Details
-	.hide
-	.hide
-	= form_tag :action => :create do	
-		= render partial: "new_or_edit"
-	.hide
+	.show
+	.show
+		%h4 Character Details
+		= form_tag :action => :create do	
+			= render partial: "new_or_edit"
+	.show

@@ -8,3 +8,10 @@
 	= b[0]
 	= b[1]
 	%br
+%br
+	As a #{@character.past.humanize.capitalize}, you start with the Skills:
+	%br
+	#{@character.background.background_skills[0].to_s.humanize.capitalize}, 
+	#{@character.background.background_skills[1].to_s.humanize.capitalize}
+	%br
+	%br
