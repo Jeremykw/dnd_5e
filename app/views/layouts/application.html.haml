@@ -25,7 +25,10 @@
   .hide
   / Character Name, Notice, log out
   .content-container
-    .index= link_to "Create New Character", new_character_path
+    - if session[:authorized_user_id]
+      .index= link_to "Create New Character", new_character_path
+    - else
+      .hide
     - if @character
       #title
         = @character.character_name

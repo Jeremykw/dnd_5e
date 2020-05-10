@@ -44,6 +44,7 @@ Update existing live app: https://salty-inlet-98879.herokuapp.com/
 * migrate db on heroku server - 'heroku run rake db:migrate' - if their were any db changesh
 * run application - 'heroku open'
 
+*** in config/enviroments/production.rb config.assets.compile = was set to true to allow static background image to be served in production. This will have preformance issues and another solution needs to be found if app is to be up-scaled ***
+
 <tt>rake doc:app</tt>.
 
-NODE_ENV=production bundle exec rails assets:precompile
