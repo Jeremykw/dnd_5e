@@ -1,3 +1,6 @@
+// Objets created to stub out the Api when a only a list is requested
+//for preformance issues
+
 var referenceCategories = referenceCategories || {};
 
 referenceCategories.index = 
@@ -23,12 +26,12 @@ referenceCategories.index =
 	]
 
 referenceCategories.ability_scores = [
-		{ "index":"cha","name":"CHA","url":"/api/ability-scores/cha" },
-		{ "index":"con","name":"CON","url":"/api/ability-scores/con" },
-		{ "index":"dex","name":"DEX","url":"/api/ability-scores/dex" },
-		{ "index":"int","name":"INT","url":"/api/ability-scores/int" },
-		{ "index":"str","name":"STR","url":"/api/ability-scores/str" },
-		{ "index":"wis","name":"WIS","url":"/api/ability-scores/wis "}
+		{ "index":"cha","name":"Charisma","url":"/api/ability-scores/cha" },
+		{ "index":"con","name":"Constitution","url":"/api/ability-scores/con" },
+		{ "index":"dex","name":"Dexterity","url":"/api/ability-scores/dex" },
+		{ "index":"int","name":"Intelligence","url":"/api/ability-scores/int" },
+		{ "index":"str","name":"Strength","url":"/api/ability-scores/str" },
+		{ "index":"wis","name":"Wisdom","url":"/api/ability-scores/wis "}
 	]
 
 referenceCategories.classes = [
