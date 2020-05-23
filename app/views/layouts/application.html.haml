@@ -26,7 +26,9 @@
   / Character Name, Notice, log out
   .content-container
     - if session[:authorized_user_id]
-      .index= link_to "Create New Character", new_character_path
+      .index
+        = link_to "Create New Character", new_character_path
+        = link_to "referances", reference_show_path
     - else
       .hide
     - if @character

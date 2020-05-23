@@ -23,6 +23,7 @@ html {
   background-color: #c8e04150;
   background-image: url("background.jpg");
   background-size: auto 150%;
+  background-size: cover;
   /*background-image: url("/assets/20200509_104700.jpg");*/
 
 }
@@ -343,3 +344,22 @@ input[type=text]{
 strong{
   font-size: 20px;
 }
+
+.reference {
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 15px;
+
+
+ }
+
+ .reference .show {
+  display: grid;
+  border-radius: 15px;
+  font-size: 30px;
+  align-content: center;
+  justify-content: center;
+  height: 150px;
+ }

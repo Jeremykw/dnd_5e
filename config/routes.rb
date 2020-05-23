@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  get 'reference/show'
 	Dnd5e::Application.routes.draw do
+  get 'reference/show'
     resources :users do
     	member do
     		get :delete
