@@ -7,37 +7,77 @@ referenceView.draw = (currentState) => {
 	element.innerHTML = ''; // clear div
 	// add elements to parent div based on state.pageType
 	switch (state.pageType) {
-		case 'ability_scores':
-			referenceView.drawAbility_scores(state, element);
+		case 'ability-scores':
+			console.log('ability_scores')
+			referenceView.drawAbilityAndSkills(state, element);
 			break;
-		case 'list':
+		case 'skills':
+			console.log('skills')
+			referenceView.drawAbilityAndSkills(state, element);
+			break;
+		case 'classes':
+			referenceView.drawClasses(state, element);
+			break;
+		default:
 			referenceView.drawList(state, element);
-			break;
 	}
 
 }
 
-referenceView.drawAbility_scores = function (currentState, element) {
+referenceView.drawClasses = function (currentState, element) {
+	console.log('class_data = ', currentState.data)
+	const state = currentState;
+	const data = currentState.data;
+	const div = document.createElement('div');
+	div.classList.add('ability_score');
+	div.id = data.index;
+	div.innerHTML = `<h2>${ data.full_name || data.name }</h2>`;
+}
+
+referenceView.drawAbilityAndSkills = function (currentState, element) {
+	const state = currentState;
 	const data = currentState.data;
 	console.log(data)
 	const div = document.createElement('div');
-	div.classList.add('show');
-	div.id = data[1].index;
-	element.innerHTML = data[4].desc;
-
+	div.classList.add('ability_score');
+	div.id = data.index;
+	div.innerHTML = `
+		<h2>${ data.full_name || data.name }</h2>
+		<p>${ data.desc }</p>
+		`;
+	data.skills ? div.appendChild(referenceView.listSkills(data.skills, state)) : 1;
+	element.appendChild(div);
 
 }
 
+referenceView.listSkills = function (skills, state) {
+	const skillsDiv = document.createElement('div');
+	skillsDiv.innerHTML = '<h4>Related Skills</h2>'
+	const regex = new RegExp('([^\/]+$)', 'gi')
+	if (skills){
+		skills.forEach(skill => {
+			const skillLink = document.createElement('span');
+			skillLink.innerHTML = `${skill.name}, `;
+			skillLink.id = skill.url.match(regex, '');
+			skillLink.classList.add('hover');
+			skillLink.addEventListener('click', (e) => referenceController.update(e, state));
+			skillsDiv.appendChild(skillLink);
+		})}
+	return skillsDiv;
+}
+
+
+
 referenceView.drawList = function (currentState, element) {
 	const data = currentState.data;
-	data.forEach(item => {
-		const div = document.createElement('div');
-		div.innerHTML = item.name;
-		div.classList.add('show');
-		div.id = `${item.index}`;
-		div.addEventListener('click', (e) => {
-			referenceController.update(e, currentState);
-		} )
-		element.appendChild(div);
-	})
+	if (Array.isArray(data)) {
+		data.forEach(item => {
+			const div = document.createElement('div');
+			div.innerHTML = item.name || item;
+			div.classList.add('show');
+			div.id = `${ item.index || item }`;
+			div.addEventListener('click', (e) => referenceController.update(e, currentState))
+			element.appendChild(div);
+		})
+	}
 }

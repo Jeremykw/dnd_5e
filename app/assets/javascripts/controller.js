@@ -16,9 +16,7 @@ referenceController.show = function (currentState) {
 		fetch(state.url)
 			.then( response => response.json())
 			.then( data => {
-				// console.log(data)
 				state.data = state.dataFactory(data); // assign data to results
-				// console.log(state)
 				referenceView.draw(state); // pass state to viewDraw
 			})
 			.catch( err => console.log( `their was an error with with the network conection: ${err}` ) );

@@ -527,7 +527,47 @@ referenceCategories.starting_equipment = [
 
 
 
+referenceCategories.showAbilitiesScores = [
+	'cha', 
+	'con', 
+	'dex', 
+	'int', 
+	'str', 
+	'wis', 
+]
+referenceCategories.showSkills = [ 
+	'acrobatics',
+	'acrobatics',
+	'animal-handling',
+	'arcana',
+	'athletics',
+	'deception',
+	'history',
+	'insight',
+	'intimidation',
+	'investigation',
+	'medicine',
+	'nature',
+	'perception',
+	'performance',
+	'persuasion',
+	'religion',
+	'sleight-of-hand',
+	'stealth',
+	'survival',
+]
 
-
-
-
+// referenceCategories.classes = [
+// 	"barbarian",
+// 	"bard",
+// 	"cleric",
+// 	"druid",
+// 	"fighter",
+// 	"monk",
+// 	"paladin",
+// 	"ranger",
+// 	"rogue",
+// 	"sorcerer",
+// 	"warlock",
+// 	"wizard",
+// ]
