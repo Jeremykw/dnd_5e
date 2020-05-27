@@ -27,8 +27,8 @@
   .content-container
     - if session[:authorized_user_id]
       .index
-        = link_to "Create New Character", new_character_path
-        = link_to "referances", reference_show_path
+        = link_to "New Character", new_character_path
+        = link_to "References", reference_show_path, :"data-turbolinks" => false
     - else
       .hide
     - if @character
@@ -49,8 +49,6 @@
     .hide
     .hide
     .hide
-
-
 
   .hide
   .hide

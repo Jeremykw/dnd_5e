@@ -3,6 +3,8 @@ var referenceState = referenceState || {};
 referenceState.baseState = function () {
 	this.currentPage = 'index';
 	this.lastPage = '';
+	this.pageHistory = [];
+	this.pageForward = [];
 	this.pageType = 'list';
 	this.url = '';
 	this.data = referenceCategories['index'];
@@ -12,8 +14,9 @@ referenceState.baseState.prototype.buildUrl = function(targetId) {
 	const api = 'https://cors-anywhere.herokuapp.com/http://dnd5eapi.co';
 	const pageURL = ( () => {
 		if (referenceCategories[this.currentPage]){
-			const target = this.data.filter( target => target.index === targetId)
-			return api + target[0].url;
+			// const target = this.data.filter( target => target.index === targetId)
+			// return api + target[0].url;
+			return '';
 		}else{
 			return `${api}/api/${this.pageType}/${targetId}`;
 		}

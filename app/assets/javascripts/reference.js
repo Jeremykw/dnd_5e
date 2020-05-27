@@ -3,11 +3,14 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 window.onload = () =>  {
-	referenceController.init()
+	if (document.querySelector('.reference')) {
+		referenceController.init();
+	}
 }
 
+// window.addEventListener('load', () => referenceController.init() )
 
-
+// $(document).ready(referenceController.init())
 
 
 
