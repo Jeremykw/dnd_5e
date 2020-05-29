@@ -4,13 +4,6 @@ var referenceView = referenceView || {};
 referenceView.draw = (currentState) => {
 	const state = currentState;
 	const element = document.querySelector('.reference');
-
-	// TODO
-	// display and hide nav buttons based on length of forward and history Array
-	// elseware - controle forward array
-
-
-	const backButton = document.querySelector('#') 
 	element.innerHTML = ''; // clear div
 	// add elements to parent div based on state.pageType
 	switch (state.pageType) {
@@ -72,8 +65,6 @@ referenceView.listSkills = function (skills, state) {
 }
 
 
-
-
 referenceView.drawList = function (currentState, element) {
 	// Draws page with listed items onlye
 	const data = currentState.data;
@@ -89,11 +80,3 @@ referenceView.drawList = function (currentState, element) {
 	}
 }
 
-referenceView.initNav = function (currentState) {
-	// add event listeners to nav Buttons
-	const state = currentState;
-	const navBack = document.querySelector('#reference_nav_back');
-	const navForward = document.querySelector('#reference_nav_forward');
-	navBack.addEventListener('click', (e) => referenceController.handleNav(e, state))
-	navForward.addEventListener('click', (e) => referenceController.handleNav(e, state));
-}
