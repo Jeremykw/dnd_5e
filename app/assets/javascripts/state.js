@@ -5,15 +5,13 @@ referenceState.baseState = function () {
 	this.lastPage = '';
 	this.pageHistory = [];
 	this.pageForward = [];
-	this.backButtonListener = false;
-	this.forwardButtonListener = false;
 	this.pageType = 'list';
 	this.url = '';
 	this.data = referenceCategories['index'];
 }
 
 referenceState.baseState.prototype.buildUrl = function(targetId) {
-	const api = 'https://cors-anywhere.herokuapp.com/http://dnd5eapi.co';
+	const api = 'https://secure-ravine-36293.herokuapp.com/http://dnd5eapi.co';
 	const pageURL = ( () => {
 		if (referenceCategories[this.currentPage]){
 			// const target = this.data.filter( target => target.index === targetId)

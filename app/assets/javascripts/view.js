@@ -16,8 +16,10 @@ referenceView.draw = (currentState) => {
 		case 'classes':
 			referenceView.drawClasses(state, element);
 			break;
-		default:
-			referenceView.drawList(state, element);
+		case 'list':
+			if (true){
+				referenceView.drawList(state, element);
+			}
 	}
 
 }
@@ -67,7 +69,9 @@ referenceView.listSkills = function (skills, state) {
 
 referenceView.drawList = function (currentState, element) {
 	// Draws page with listed items onlye
+	console.log('tried to draw list')
 	const data = currentState.data;
+
 	if (Array.isArray(data)) {
 		data.forEach(item => {
 			const div = document.createElement('div');
@@ -79,4 +83,47 @@ referenceView.drawList = function (currentState, element) {
 		})
 	}
 }
+
+referenceView.addEvents = function(currentState) {
+	const backButton = document.querySelector('#reference_nav_back');
+	const forwardButton = document.querySelector('#reference_nav_forward');
+	backButton.addEventListener('click', 
+		(e) => referenceController.handleNav(e, currentState));
+	forwardButton.addEventListener('click', 
+		(e) => referenceController.handleNav(e, currentState));
+}
+
+
+referenceView.toggleNavButtons = function (currentState) {
+	/* toggle buttonInactive class and button envent Listener based on 
+	length of Forward and History Array */
+	const state = currentState;
+	const backButton = document.querySelector('#reference_nav_back');
+	const forwardButton = document.querySelector('#reference_nav_forward');
+	// toggle back button
+	if ( state.pageHistory.length === 0 ) {
+		backButton.classList.add('buttonInactive');
+	}else {
+		backButton.classList.remove('buttonInactive');
+	}
+	// toggle forward button
+	if ( state.pageForward.length === 0 ) {
+		forwardButton.classList.add('buttonInactive');
+	}else {
+		forwardButton.classList.remove('buttonInactive');
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
