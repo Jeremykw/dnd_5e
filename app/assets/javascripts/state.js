@@ -11,14 +11,15 @@ referenceState.baseState = function () {
 }
 
 referenceState.baseState.prototype.buildUrl = function(targetId) {
-	const api = 'https://secure-ravine-36293.herokuapp.com/http://dnd5eapi.co';
+	const proxy = 'https://secure-ravine-36293.herokuapp.com/'
+	const api = 'http://dnd5eapi.co';
 	const pageURL = ( () => {
 		if (referenceCategories[this.currentPage]){
 			// const target = this.data.filter( target => target.index === targetId)
 			// return api + target[0].url;
 			return '';
 		}else{
-			return `${api}/api/${this.pageType}/${targetId}`;
+			return `${proxy}${api}/api/${this.pageType}/${targetId}`;
 		}
 	})();
 	return pageURL;

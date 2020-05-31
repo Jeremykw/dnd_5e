@@ -31,9 +31,10 @@ referenceController.update = function (e, currentState) {
 	const state = currentState;
 	const id = e.target.id;
 	state.pageHistory.push(state.currentPage)
+	state.pageForward = [];
 	state.currentPage = id;
 	state.pageType = state.typeOfPage(state.currentPage);
-	state.url = state.buildUrl(id); 
+	state.url = state.buildUrl(state.currentPage); 
 	console.log(`hist = ${state.pageHistory}, cur = ${state.currentPage}, for = ${state.pageForward}`)
 	referenceController.show(state);
 }
