@@ -8,10 +8,6 @@ window.onload = () =>  {
 	}
 }
 
-// window.addEventListener('load', () => referenceController.init() )
-
-// $(document).ready(referenceController.init())
-
 
 
 

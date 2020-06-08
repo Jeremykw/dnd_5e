@@ -5,27 +5,27 @@ var referenceCategories = referenceCategories || {};
 
 referenceCategories.index = 
 	[
-		{ index: "ability_scores", name: "Ability Scores", url: "/api/ability-scores"},
+		{ index: "ability-scores", name: "Ability Scores", url: "/api/ability-scores"},
 		{ index: "classes", name: "Classes", url: "/api/classes"},
 		{ index: "conditions", name: "Conditions", url: "/api/conditions"},
-		{ index: "damage_types", name: "Damage Types", url: "/api/damage-types"},
-		{ index: "equipment_categories", name: "Equipment", url: "/api/equipment-categories"},
+		{ index: "damage-types", name: "Damage Types", url: "/api/damage-types"},
+		{ index: "equipment-categories", name: "Equipment", url: "/api/equipment-categories"},
 		// { index: "features", name: "Features", url: "/api/features"},
 		{ index: "languages", name: "Languages", url: "/api/languages"},
-		{ index: "schools_of_magic", name: "Schools Of Magic", url: "/api/magic-schools"},
+		{ index: "schools-of-magic", name: "Schools Of Magic", url: "/api/magic-schools"},
 		{ index: "monsters", name: "Monsters", url: "/api/monsters"},
 		// { index: "proficiencies", name: "Proficiencies", url: "/api/proficiencies"},
 		{ index: "races", name: "Races", url: "/api/races"},
 		{ index: "skills", name: "Skills", url: "/api/skills"},
 		{ index: "spellcasting", name: "Spellcasting", url: "/api/spellcasting"},
 		{ index: "spells", name: "Spells", url: "/api/spells"},
-		{ index: "starting_equipment", name: "Starting Equipment", url: "/api/starting-equipment"},
+		{ index: "starting-equipment", name: "Starting Equipment", url: "/api/starting-equipment"},
 		// { index: "subclasses", name: "Subclasses", url: "/api/subclasses"},
 		// { index: "subraces", name: "Subraces", url: "/api/subraces"},
 		// { index: "traits", name: "Traits", url: "/api/traits"},
 	]
 
-referenceCategories.ability_scores = [
+referenceCategories['ability-scores'] = [
 		{ "index":"cha","name":"Charisma","url":"/api/ability-scores/cha" },
 		{ "index":"con","name":"Constitution","url":"/api/ability-scores/con" },
 		{ "index":"dex","name":"Dexterity","url":"/api/ability-scores/dex" },
@@ -68,7 +68,7 @@ referenceCategories.conditions = [
 	]
 
 
-referenceCategories.damage_types = [
+referenceCategories['damage-types'] = [
 	{ "index":"acid","name":"Acid","url":"/api/damage-types/acid" },
 	{ "index":"bludgeoning","name":"Bludgeoning","url":"/api/damage-types/bludgeoning" },
 	{ "index":"cold","name":"Cold","url":"/api/damage-types/cold" },
@@ -84,7 +84,7 @@ referenceCategories.damage_types = [
 	{ "index":"thunder","name":"Thunder","url":"/api/damage-types/thunder "}
 ]
 
-referenceCategories.equipment_categories = [
+referenceCategories['equipment-categories'] = [
 	{ "index":"adventuring-gear","name":"Adventuring Gear","url":"/api/equipment-categories/adventuring-gear" },
 	{ "index":"armor","name":"Armor","url":"/api/equipment-categories/armor" },
 	{ "index":"artisans-tools","name":"Artisan's Tools","url":"/api/equipment-categories/artisans-tools" },
@@ -130,7 +130,7 @@ referenceCategories.languages = [
 	{ "index":"undercommon","name":"Undercommon","url":"/api/languages/undercommon" }
 ]
 
-referenceCategories.schools_of_magic = [
+referenceCategories['schools-of-magic'] = [
 	{ "index":"abjuration","name":"Abjuration","url":"/api/magic-schools/abjuration" },
 	{ "index":"conjuration","name":"Conjuration","url":"/api/magic-schools/conjuration" },
 	{ "index":"divination","name":"Divination","url":"/api/magic-schools/divination" },
@@ -508,7 +508,7 @@ referenceCategories.spells = [
 ]
 
 
-referenceCategories.starting_equipment = [
+referenceCategories['starting-equipment'] = [
 	{ "index":1,"class":"Barbarian","name":"Barbarian","url":"/api/starting-equipment/1" },
 	{ "index":2,"class":"Bard","name":"Bard","url":"/api/starting-equipment/2" },
 	{ "index":3,"class":"Cleric","name":"Cleric","url":"/api/starting-equipment/3" },
@@ -524,50 +524,3 @@ referenceCategories.starting_equipment = [
 ]
 
 
-
-
-
-referenceCategories.showAbilitiesScores = [
-	'cha', 
-	'con', 
-	'dex', 
-	'int', 
-	'str', 
-	'wis', 
-]
-referenceCategories.showSkills = [ 
-	'acrobatics',
-	'acrobatics',
-	'animal-handling',
-	'arcana',
-	'athletics',
-	'deception',
-	'history',
-	'insight',
-	'intimidation',
-	'investigation',
-	'medicine',
-	'nature',
-	'perception',
-	'performance',
-	'persuasion',
-	'religion',
-	'sleight-of-hand',
-	'stealth',
-	'survival',
-]
-
-// referenceCategories.classes = [
-// 	"barbarian",
-// 	"bard",
-// 	"cleric",
-// 	"druid",
-// 	"fighter",
-// 	"monk",
-// 	"paladin",
-// 	"ranger",
-// 	"rogue",
-// 	"sorcerer",
-// 	"warlock",
-// 	"wizard",
-// ]

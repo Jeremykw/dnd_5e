@@ -28,7 +28,7 @@
     - if session[:authorized_user_id]
       .index
         = link_to "New Character", new_character_path
-        = link_to "References", reference_show_path, :"data-turbolinks" => false
+        = link_to "SRC Content", reference_show_path, :"data-turbolinks" => false
     - else
       .hide
     - if @character
