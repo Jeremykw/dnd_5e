@@ -10,13 +10,13 @@ referenceState.baseState = function() {
 
 referenceState.baseState.prototype.updateState = function() {
     // build URL and set pageType
-	const proxy = 'https://secure-ravine-36293.herokuapp.com/'
-    const api = 'http://dnd5eapi.co';
+    const api = 'https://dnd5eapi.co';
+    const proxy = 'https://secure-ravine-36293.herokuapp.com/';
     this.pageType = this.typeOfPage(this.currentPage.index, this) || '';
     if (referenceCategories[this.currentPage.index]) {
         this.url = '';
     } else {
-        this.url = ` ${proxy}${api}${this.currentPage.url}`;
+        this.url = `${proxy}${api}${this.currentPage.url}`;
     }
 }
 
@@ -30,7 +30,7 @@ referenceState.baseState.prototype.dataFactory = function(data) {
 }
 
 referenceState.baseState.prototype.typeOfPage = function(page) {
-	// Sets page type for use in referenceView
+    // Sets page type for use in referenceView
     const list = ['index', 'ability-scores', 'classes', 'conditions', 'damage-types', 'equipment-categories', 'languages', 'schools-of-magic', 'races', 'skills', 'spellcasting', 'spells'];
     const equipmentCategories = referenceCategories['equipment-categories'].map(category => category.index);
 

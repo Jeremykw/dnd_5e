@@ -3,6 +3,8 @@ var referenceView = referenceView || {};
 
 referenceView.draw = (currentState) => {
     const state = currentState;
+    const mediumLink = document.querySelector('.medium_link');
+    mediumLink.classList.add('remove');
     const element = document.querySelector('.reference');
     element.innerHTML = ''; // clear div
     // add elements to parent div based on state.pageType
@@ -31,17 +33,9 @@ referenceView.draw = (currentState) => {
             referenceView.drawList(state, state.data, element);
             break;
         default:
-            referenceView.drawNotice(state, element)
+            mediumLink.classList.remove('remove');
 
     }
-}
-
-referenceView.drawNotice = function(currentState, element) {
-	const state = currentState;
-    const data = state.data;
-    const noticeDiv = document.createElement('div');
-    noticeDiv.innerHTML = `<h2>This app is a work in progress. If you're reading this, the information you're looking for is not available yet. I have deployed the content reference feature in an unfinished state so that I can demonstrate the work I have completed while I spend time getting familiar with a new technology. I have been curious about the React framework for a while now and I believe it will help me going forward with this project. I will use the React framework to finish this feature and deploy it soon.</h2>`;
-    element.appendChild(noticeDiv);
 }
 
 referenceView.drawWeapon = function(currentState, element) {
@@ -50,7 +44,6 @@ referenceView.drawWeapon = function(currentState, element) {
     const weaponDiv = document.createElement('div');
     weaponDiv.innerHTML = `<h2>${data.index}</h2>`;
     element.appendChild(weaponDiv);
-
 }
 referenceView.drawAdventuringGear = function(currentState, element) {
     const state = currentState;
@@ -145,7 +138,7 @@ referenceView.drawSimpleList = function(currentState, element) {
     div.id = data.index;
     div.innerHTML = `
 		<h2>${ data.full_name || data.name }</h2>
-		<p>${ data.desc }</p>
+		<p>${ data.desc ? data.desc : ''}</p>
 		`;
     data.skills ? div.appendChild(referenceView.listSkills(data.skills, state)) : 1;
     element.appendChild(div);
