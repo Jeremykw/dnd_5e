@@ -1,33 +1,36 @@
 var referenceController = referenceController || {};
 
 referenceController.init = function() {
-    // initiates starting state
+    // initiates state
     const state = new referenceState.baseState;
-    referenceView.addEvents(state);
+    referenceView.addEvents(state); // to nav buttons
     referenceController.show(state);
 }
 
 referenceController.show = function(currentState) {
     const state = currentState;
     referenceView.toggleNavButtons(state);
-    if (referenceCategories[state.currentPage.index]) { // if their is a stub in referenceCategories
+    // if their is a stub in referenceCategories
+    if (referenceCategories[state.currentPage.index]) { 
         state.data = referenceCategories[state.currentPage.index];
         referenceView.draw(state);
-    } else {
-        fetch(state.url)
-            .then(response => response.json())
-            .then(data => {
-                state.data = state.dataFactory(data); // assign data to results
-                if (state.data.equipment_category) {
-                    state.pageType = state.data.equipment_category
-                    	.toLowerCase()
-                    	.split(' ')
-                    	.join('_');
-                }
-                referenceView.draw(state); // pass state to viewDraw
-            })
-            .catch(err => console.log(`their was an error with with the network conection: ${err}`));
+        return;
     }
+
+    fetch(state.url)
+        .then(response => response.json())
+        .then(data => {
+            state.data = state.dataFactory(data); // assign data to results
+            if (state.data.equipment_category) {
+                state.pageType = state.data.equipment_category // 
+                    .toLowerCase()
+                    .split(' ')
+                    .join('_');
+            }
+            referenceView.draw(state); // pass state to referanceView.draw
+        })
+        .catch(err => console.log(`their was an error with with the network conection: ${err}`));
+
 }
 
 referenceController.update = function(e, currentState) {
@@ -45,6 +48,7 @@ referenceController.update = function(e, currentState) {
 
 
 referenceController.loadPage = function(currentState) {
+    // shared function between update and handle nav
     const state = currentState
     state.updateState();
     referenceController.show(state);
@@ -71,9 +75,9 @@ referenceController.navBack = function(currentState) {
 
 referenceController.navForward = function(currentState) {
     const state = currentState;
-    state.pageHistory.push(state.currentPage);
-    state.currentPage = state.pageForward[state.pageForward.length - 1];
-    state.pageForward.pop();
+    state.pageHistory.push(state.currentPage); // add current page to history
+    state.currentPage = state.pageForward[state.pageForward.length - 1]; //add last item in forward to currentPage
+    state.pageForward.pop(); //remove last item for forward
     state.pageType = state.typeOfPage(state.currentPage);
     return state;
 }

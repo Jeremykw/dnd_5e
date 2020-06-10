@@ -6,7 +6,7 @@ referenceView.draw = (currentState) => {
     const mediumLink = document.querySelector('.medium_link');
     mediumLink.classList.add('remove');
     const element = document.querySelector('.reference');
-    element.innerHTML = ''; // clear div
+    element.innerHTML = ''; // clear div main app div
     // add elements to parent div based on state.pageType
     const simplePages = ['tools', 'spells', 'ability-scores', 'skills', 'conditions', 'damage-types', 'languages']
     if (simplePages.includes(state.pageType)) {
@@ -14,9 +14,6 @@ referenceView.draw = (currentState) => {
         return;
     }
     switch (state.pageType) {
-        // case 'weapon':
-        //     referenceView.drawWeapon(state, element)
-        //     break;
         case 'adventuring_gear':
             referenceView.drawAdventuringGear(state, element);
             break;
@@ -26,17 +23,24 @@ referenceView.draw = (currentState) => {
         case 'equipment-categories':
             referenceView.drawEquipmentList(state, element);
             break;
-        // case 'classes':
-        //     referenceView.drawClass(state, element);
-        //     break;
         case 'list':
             referenceView.drawList(state, state.data, element);
             break;
         default:
             mediumLink.classList.remove('remove');
-
     }
 }
+
+// TODO
+// drawClases
+// drawEquipment - weapons, mounts & vehicles, instruments, 
+// drawSchooles of majic
+// drawMonsters
+// drawRaces
+// drawSkills
+// drawSpellcasting
+// drawSpetts
+// drawStarting equipment
 
 referenceView.drawWeapon = function(currentState, element) {
     const state = currentState;
@@ -45,6 +49,7 @@ referenceView.drawWeapon = function(currentState, element) {
     weaponDiv.innerHTML = `<h2>${data.index}</h2>`;
     element.appendChild(weaponDiv);
 }
+
 referenceView.drawAdventuringGear = function(currentState, element) {
     const state = currentState;
     const data = state.data;
@@ -182,6 +187,7 @@ referenceView.drawList = function(currentState, data, element) {
 }
 
 referenceView.addEvents = function(currentState) {
+    // add event listeners to nav buttons - on init
     const backButton = document.querySelector('#reference_nav_back');
     const forwardButton = document.querySelector('#reference_nav_forward');
     backButton.addEventListener('click',
