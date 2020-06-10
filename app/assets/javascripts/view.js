@@ -37,9 +37,8 @@ referenceView.draw = (currentState) => {
 // drawSchooles of majic
 // drawMonsters
 // drawRaces
-// drawSkills
 // drawSpellcasting
-// drawSpetts
+// drawSpells
 // drawStarting equipment
 
 referenceView.drawWeapon = function(currentState, element) {

@@ -40,8 +40,6 @@ During development api requests to 'https://dnd5e/api.co' need to be proxied awa
 * git push heroku master
 * copy supplied url and past it before 'https://dnd5e/api.co'
 
-
-
 New Deployment instructions
 
 * install - 'brew tap heroku/brew && brew install heroku'
