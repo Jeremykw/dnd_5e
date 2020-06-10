@@ -42,6 +42,7 @@ During development api requests to 'https://dnd5e/api.co' need to be proxied awa
 
 New Deployment instructions
 
+* javascript files need to be precompiled - 'rake assets:precompile'
 * install - 'brew tap heroku/brew && brew install heroku'
 * create/login - 'heroku login'
 * update master branch of git - 'git add .' - 'git ci *m "last commit before heroku deployment" - 'git push'
@@ -52,6 +53,7 @@ New Deployment instructions
 * run application - 'heroku open'
 
 Update existing live app: https://salty-inlet-98879.herokuapp.com/
+* precompiled javascript files - 'rake assets:precompile'
 * create/login - 'heroku login'
 * update master branch of git - 'git add .'' - 'git ci -m "last commit before heroku deployment"' - 'git push'
 * deploy - 'git push heroku master'
