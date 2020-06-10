@@ -31,7 +31,7 @@ Getting Started - Mac OS
 * rails server - Runs the app in the development mode. - [http://localhost:3000] to view it in the browser. 
 
 
-During development api requests to 'https://dnd5e/api.co' need to be proxied away from the 'localhost://3000'. Using 'https://cors-anywhere.herokuapp.com/' works but can be slow and hit and miss. cloneing the cors-anywhere repo and deploying an individul proxy server seems to work much better:
+During development api requests to 'https://dnd5e/api.co' need to be proxied away from the 'localhost://3000'. Using 'https://cors-anywhere.herokuapp.com/' works but can be slow and inconsistent. cloneing the cors-anywhere repo and deploying an individul proxy server seems to work much better:
 
 * git clone https://github.com/Rob--W/cors-anywhere.git
 * cd cors-anywhere
