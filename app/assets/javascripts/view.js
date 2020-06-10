@@ -26,6 +26,12 @@ referenceView.draw = (currentState) => {
         case 'list':
             referenceView.drawList(state, state.data, element);
             break;
+        // case 'classes':
+        //     referenceView.drawClass(state, element);
+        //     break;
+        // case 'weapon':
+        //     referenceView.drawWeapon(state, element)
+        //     break;
         default:
             mediumLink.classList.remove('remove');
     }
@@ -55,13 +61,13 @@ referenceView.drawAdventuringGear = function(currentState, element) {
     const adventuringGearDiv = document.createElement('div');
     adventuringGearDiv.classList.add('gear');
     adventuringGearDiv.innerHTML = `
-		<h2>${ data.full_name || data.name }</h2>
-		<div class="gearLt itemBackground">
-			<b>Cost: </b>${data.cost.quantity}${data.cost.unit}</br>
-			<b>Weght: </b>${data.weight ? `${data.weight}lb` : `--`}</br>
-			<b>Category: </b>${data.gear_category}</br>
-		</div>
-	`;
+        <h2>${ data.full_name || data.name }</h2>
+        <div class="gearLt itemBackground">
+            <b>Cost: </b>${data.cost.quantity}${data.cost.unit}</br>
+            <b>Weght: </b>${data.weight ? `${data.weight}lb` : `--`}</br>
+            <b>Category: </b>${data.gear_category}</br>
+        </div>
+    `;
     data.contents ? adventuringGearDiv.appendChild(referenceView.drawPack(data.contents, state)) : '';
     data.desc ? adventuringGearDiv.appendChild(referenceView.addDesc(data.desc)) : '';
     element.appendChild(adventuringGearDiv);
@@ -99,20 +105,20 @@ referenceView.drawArmor = function(currentState, element) {
     const data = currentState.data
     armorDiv.classList.add('gear')
     armorDiv.innerHTML = `
-		<h2>${ data.full_name || data.name } Armor</h2>
-		<div class="gearLt itemBackground">
-			<b>Cost: </b>${data.cost.quantity}${data.cost.unit}</br>
-			<b>Weght: </b>${data.weight}lb</br>
-			<b>Category: </b>${data.armor_category}</br>
-		</div>
-		<div class ="gearRt itemBackground">
-			<b>Armor Class: </b>${data.armor_class.base}
-						 ${data.armor_class.dex_bonus ? ' + Dex modifier' : ''}
-						 ${data.armor_class.max_bonus ? '(max 2)' : ''}</br>
-			<b>Effects on Stealth: </b>${data.stealth_disadvantage ? '--' : 'Disadvantage'}</br>
-			<b>Strength Minimum: </b>${data.str_minimum ? `${data.str_minimum}` : '--'}
-		</div>
-	`;
+        <h2>${ data.full_name || data.name } Armor</h2>
+        <div class="gearLt itemBackground">
+            <b>Cost: </b>${data.cost.quantity}${data.cost.unit}</br>
+            <b>Weght: </b>${data.weight}lb</br>
+            <b>Category: </b>${data.armor_category}</br>
+        </div>
+        <div class ="gearRt itemBackground">
+            <b>Armor Class: </b>${data.armor_class.base}
+                         ${data.armor_class.dex_bonus ? ' + Dex modifier' : ''}
+                         ${data.armor_class.max_bonus ? '(max 2)' : ''}</br>
+            <b>Effects on Stealth: </b>${data.stealth_disadvantage ? '--' : 'Disadvantage'}</br>
+            <b>Strength Minimum: </b>${data.str_minimum ? `${data.str_minimum}` : '--'}
+        </div>
+    `;
     element.appendChild(armorDiv);
 }
 referenceView.drawEquipmentList = function(currentState, element) {
@@ -141,9 +147,9 @@ referenceView.drawSimpleList = function(currentState, element) {
     div.classList.add('ability_score');
     div.id = data.index;
     div.innerHTML = `
-		<h2>${ data.full_name || data.name }</h2>
-		<p>${ data.desc ? data.desc : ''}</p>
-		`;
+        <h2>${ data.full_name || data.name }</h2>
+        <p>${ data.desc ? data.desc : ''}</p>
+        `;
     data.skills ? div.appendChild(referenceView.listSkills(data.skills, state)) : 1;
     element.appendChild(div);
 
